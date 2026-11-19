@@ -1,0 +1,66 @@
+{
+ "v": "dep-083753",
+ "kurimas": 200,
+ "sid": 8601,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Q": {
+  "v": "S1899q-1",
+  "md5": "6307d1a2d5861d58d4bf3500eab5ccc6",
+  "e": {
+   "21": "kiekis ir kaina (keičia ir darbuotojas), suma ≤ sumokėtos už eilutę (skirtumas → Klausimas „Grąžink klientui pinigus“) →",
+   "63": "sų klaida, pristatymas — atsisakymas tik visam, varnelė „tinkama prekybai“ → AV likutis) → POST `ps_dl_grazinimas` (`grazinimas_vykdyti`): WC grąžinimo įrašas be pinigų + kreditinė KR-AVPN tuo pačiu `kreditine_*` mechanizmu, 3,99 ",
+   "74": " *  - Klausimai — kortelės su priežastimi ir veiksmais (C8: 5 priežastys).",
+   "89": "(S1617, spec §12.5 „Pakartotinis užsakymas“ — Raimio sprendimai 09-05 (a)(b)(c)): Klausimų kortelėje „Siunta grįžta“ vietoj „Siųsti iš naujo“ —",
+   "109": " *   įrašą, laiškas klientui tik darbuotojo ranka). Klausimų kortelėje „Grąžink klientui pinigus“ kiekvienas `_ps_grazinti_rankomis` įrašas gauna mygtuką „Kreditinė“ →",
+   "132": " *   „Pakartotinis užsakymas“): Klausimų kortelėje „Siunta grįžta“ rodomos suskaičiuotos sumos — „Klientui grąžink: [sumokėta] − 3,99 = X €“",
+   "137": " *   `refund` 0) → po atšaukimo Klausimas „Grąžink klientui pinigus“ (kaip #4; galioja atšauktam), dialogai ir pastabos sako tikslią sumą. Naujų mygtukų nėra;",
+   "150": "a; (4) pastaba, įvykis `kiekis` (eilutė, prieš/po), žymė `_ps_grazinti_rankomis` → Klausimas „Grąžink klientui pinigus“",
+   "171": " * v3.17 (S1614, 5 etapas #3 — Raimis 09-04: „visi tokie užsakymai papuola į Klausimus, darbuotojas turi turėti dideles galimybes ir jis nusprendžia, ne sistema“):",
+   "195": " *   sąrašai `wp_ajax_ps_dl_vietos`. V14 (darbalaukio lygiu, variklio `klausimas()` neliestas): `faktai()` → Klausimas „Siuntos sukurti nepavyko“, kai",
+   "197": " *   kortelėje „Taisyti adresą“ → skydelis su atverta forma; po išsaugojimo Klausimas dingsta, lipdukas registruojamas iš naujo.",
+   "198": " — Raimio idėja 09-04, sutarta): MYGTUKAS „PRANEŠTI KLIENTUI APIE VĖLAVIMĄ“ — Klausimo kortelėje „[T] vėluoja“ IR skydelyje",
+   "201": " *   ir Klausimų sargai (darbuotojas sprendžia), kiti (žymė, apmokėta, būsena, dalis neišsiųsta, el. paštas) lieka. Vieną kartą: po to ta pati žymė,",
+   "207": " *   Klausimuose dingsta iš Surinkti AV. Taisyklė `faktai()` (`$f['veluoja']`): vėluoja = tiekėjo „tiesiai“ dalis, kuriai užsakymas išėjo prieš",
+   "208": "alys[t]['kada']`, `Petshop_AV_Dropship::perduotos()`) ir `issiusta` nėra. Bent viena → Klausimas",
+   "211": " *   nėra (tiekėjas išsiuntė, laukia AV; arba dar neužsakytas) — Klausimo nėra. Dingsta pats, kai dalis pažymima išsiųsta (darbuotojas ar cron),",
+   "213": " *   (Tiekimo partija) — kitas mechanizmas, ne šis. Darbalaukio klausimai „Siunta grįžta“ / „Prekė be sandėlio“ tikrinami PO V13 (kad variklio",
+   "214": " *   nuimtas tekstas jų neužstotų). Vėlavimo laiškas (#4) praleidžia užsakymus Klausimuose — su V13 „[T] vėluoja“ irgi (Raimio taisyklė; klausimas jam).",
+   "215": " *   v3.14.1: Klausimo kortelės žymė trumpa „ZB vėluoja“ (buvo visas sakinys mažosiomis — e9 ekrano nuotrauka), tekstas — pilnas sakinys.",
+   "221": "t viena dalis be `_ps_dalys_issiusta`; praleidžiam neapmokėtus, atšauktus, uždarytus, Klausimuose (`$f['kl']` — ir variklio „Tiekėjas vėluoja“),",
+   "224": "pranešta apie vėlavimą 09-04 14:00“, skydelio „Dabar“ — tas pats sakinys; į Klausimus NEkeliam. Variklio `_ps_sla_velavimas` neliesta.",
+   "236": "liento_siuntos()` „pristatyta“ — ir LP daliai. „Grįžta“ LP būsenos nėra — Klausimo nekeliam. Dev testas — meta rašoma tiesiogiai (plugino lentelė tuščia,",
+   "237": " *   jo cron mūsų testo neliečia). Radinys V14 (variklis): `Petshop_Desk::klausimas()` „Siuntos sukurti nepavyko“ žiūri į užsakymo STATUSĄ `lp-parcel-failed`,",
+   "238": "  kurio pluginas neskiria — LP klaida (#35416 `_woo_lithuaniapost_parcel_create_error`) Klausimu netampa; neliesta, Raimiui.",
+   "239": " * v3.11.1 (S1612, 4 etapas #3, log S1611 sprendimas 5 — Raimis 09-04): KLAUSIMAS „SIUNTA GRĮŽTA“ — DU MYGTUKAI, sprendžia darbuotojas, be sumų.",
+   "250": " *   Abu: `_ps_siunta_grizta[dalis]` nuimama (Klausimas išnyksta), pastaba + įvykis `grizta_is_naujo` / `grizta_atsaukti`.",
+   "251": " *   Taip pat: suma skydelyje / Klausimų kortelėse buvo „12,02&nbsp;&euro;“ (dviguba esc nuo C8) — `html_entity_decode`.",
+   "260": " *   [dalis]{nr,t,e,d,kada} → Klausimas „Siunta grįžta“ (darbalaukio lygiu — `Petshop_Desk::klausimas()` neliestas; įvykdytas užsakymas su tokia žyme",
+   "261": " *   įtraukiamas į Klausimų eilę). Sprendimo mygtukai „Siųsti iš naujo“ / „Atšaukti — prekės grįžo į AV“ — kitas žingsnis (4 etapo #3).",
+   "292": " * v3.9 (Raimis 09-03 / 3 etapas #4): neapmokėtas užsakymas — Gauti + Neapmokėti, ne Klausimai; skydelyje prekei be tiekėjo tiekėjo keliai",
+   "320": "ukiam iš tiekėjų · Surinkti AV · Užsakyti iš tiekėjų · Paruošta siųsti · Klausimai · Neapmokėti · Visi;",
+   "324": "uotas · Ruošiamas · Paruoštas · Išsiųstas · Įvykdytas · Atšauktas · Klausimas).",
+   "335": " *   Avesai · 6 Išsiųsta · 7 Gavimai · 8 Klausimai — gyvi skaičiai iš tų pačių faktų, žingsnis veda į eilę. Senas vaizdas tik su",
+   "337": " * v2.2: V1 — prekė be sandėlio → Klausimas „Prekė be sandėlio“, skydelyje leidžiama „Avesa sandėlis“ rankiniu būdu (be likučio,",
+   "382": "\t\t'klausimai'  => array( 'Klausimai',          'Reikia sprendimo — kortelė sako, ką gali daryti.', 'r' ),",
+   "618": "\t\tif ( $f['kl'] ) { return array( 'Klausimas', 'b-red' ); }",
+   "629": "array( 'kons' ), 'paruosta' => array( 'issiusta' ), 'neapmoketi' => array( 'apmoketa' ), 'klausimai' => array( 'spresti' ) );",
+   "727": "3.30.2: BE `//` — v3.30.1 komentaras nurijo 'kl' ir 'vez' */ 'kl' => self::d( 'klausimas', $o ), 'vez' => self::d( 'vezejas', $o ), 'ats' => self::atsiemimas( $o ), /* v3.35 (C) */",
+   "769": "\t\t// v3.11 (4 etapas #1): Venipak grąžina siuntą → Klausimas „Siunta grįžta“ (darbalaukio lygiu; galioja ir įvykdytam užsakymui).",
+   "803": "os sukurti nepavyko“ darbalaukio lygiu — Venipak/LP plugino klaidos meta (variklio `klausimas()` žiūri į statusą `lp-parcel-failed`, kurio pluginas neskiria).",
+   "806": "as #4): kiekis sumažintas / prekė išimta → pinigai klientui grąžinami rankomis — Klausimas, kol darbuotojas nepažymi „Grąžinta“ (galioja ir įvykdytam / atšauktam).",
+   "837": "\t\tif ( $f['kl'] && ! $neapm ) { $eiles['klausimai'] = 1; } // Raimis 09-03: neapmokėtas — tik Gauti + Neapmokėti, ne Klausimai",
+   "995": "\t\t\t'klausimas' => $f['kl'],",
+   "1036": ". Išsiuntę užsakymą informuosime Jus atskiru laišku. Jei turite klausimų, tiesiog atsakykite į šį laišką.“ Vieną kartą — po to mygtuko nebebus.',",
+   "1264": "\t\t\t// Vežėjo klaida — nuimama, kad lipduką būtų galima registruoti iš naujo ir Klausimas dingtų."
+  },
+  "fn": [
+   "klausimu_korteles"
+  ],
+  "meta": [
+   "_ps_klaus_laukti"
+  ]
+ }
+}
