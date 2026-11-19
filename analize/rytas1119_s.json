@@ -1,0 +1,88 @@
+{
+ "1": {
+  "v": "S1898s",
+  "ps_av_busenu_log": {
+   "6": [
+    "2026-11-17 14:51:20",
+    17363,
+    "instock",
+    "outofstock",
+    "patikra"
+   ],
+   "7": [
+    "2026-11-17 14:51:20",
+    17354,
+    "outofstock",
+    "instock",
+    "patikra"
+   ],
+   "8": [
+    "2026-11-17 14:51:20",
+    17348,
+    "outofstock",
+    "instock",
+    "patikra"
+   ],
+   "9": [
+    "2026-11-17 14:51:19",
+    15838,
+    "instock",
+    "outofstock",
+    "patikra"
+   ]
+  },
+  "ps_dp_busenu_log": {
+   "46": [
+    "2026-11-17 14:49:38",
+    37802,
+    "instock",
+    "outofstock",
+    "patikra"
+   ],
+   "47": [
+    "2026-11-17 14:49:38",
+    37744,
+    "instock",
+    "outofstock",
+    "patikra"
+   ],
+   "48": [
+    "2026-11-17 14:49:37",
+    37743,
+    "instock",
+    "outofstock",
+    "patikra"
+   ],
+   "49": [
+    "2026-11-17 14:49:37",
+    37742,
+    "instock",
+    "outofstock",
+    "patikra"
+   ]
+  },
+  "ps_av_busenu_isjungta": false,
+  "ps_dp_busenu_isjungta": false,
+  "cron": [
+   [
+    "ps_dp_kainos_naktinis",
+    "11-20 04:10"
+   ],
+   [
+    "ps_av_busenu_patikra",
+    "11-20 06:20"
+   ],
+   [
+    "ps_dp_busenu_patikra",
+    "11-20 06:30"
+   ]
+  ]
+ },
+ "v": "dep-075101",
+ "kurimas": 200,
+ "sid": 8598,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
