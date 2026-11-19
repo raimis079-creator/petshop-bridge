@@ -1,0 +1,39 @@
+{
+ "1": {
+  "v": "S1898z",
+  "imp2_acc": [
+   "Nov-2026.tar.gz.1 18/Nov/2026:18:00:01 /wp-load.php?k&import_id=2&action=trigger 200 25",
+   "Nov-2026.tar.gz.1 18/Nov/2026:18:01:01 /wp-load.php?k&import_id=2&action=processing 200 71",
+   "Nov-2026.tar.gz.2 18/Nov/2026:06:00:02 /wp-load.php?k&import_id=2&action=trigger 200 97",
+   "Nov-2026.tar.gz.2 18/Nov/2026:06:01:01 /wp-load.php?k&import_id=2&action=processing 500 422",
+   "Nov-2026.tar.gz.3 17/Nov/2026:18:00:01 /wp-load.php?k&import_id=2&action=trigger 200 97",
+   "Nov-2026.tar.gz.3 17/Nov/2026:18:01:01 /wp-load.php?k&import_id=2&action=processing 200 98"
+  ],
+  "imp2_acc_n": 6,
+  "php_0400utc": [
+   "[19-Nov-2026 04:32:23 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 608",
+   "[19-Nov-2026 04:32:31 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 608"
+  ],
+  "pub_18": [],
+  "pub_ivykiai": [],
+  "temp_akt": [
+   {
+    "id": "8593",
+    "n": "TEMP PS dep-074302",
+    "modified": "2026-11-19 07:43:59"
+   }
+  ],
+  "temp_seni": {
+   "n": "33",
+   "mb": "0.1"
+  },
+  "trukme_s": 0.1
+ },
+ "v": "dep-074302",
+ "kurimas": 200,
+ "sid": 8593,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
