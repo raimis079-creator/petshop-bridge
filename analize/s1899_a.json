@@ -1,0 +1,385 @@
+{
+ "v": "dep-075909",
+ "kurimas": 200,
+ "sid": 8599,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1899a-1",
+  "failai": {
+   "/plugins/petshop-core/templates/emails/refill.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "secondary": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "1ec643f4a25f11cae7012c8439721b60"
+   },
+   "/plugins/petshop-core/templates/emails/cart-abandoned-2.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "muted": 2,
+     "wrap": 1
+    },
+    "tr": 2,
+    "table": 0,
+    "md5": "fe362694f28c4c64e4bb2e0d4266b799"
+   },
+   "/plugins/petshop-core/templates/emails/order-paid.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "efabb3a9879378b7e11aad6c38a682b5"
+   },
+   "/plugins/petshop-core/templates/emails/post-purchase-7d.php": {
+    "m": {
+     "p": 3,
+     "button": 2,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "45d2867f2292d62510e423565bc291fa"
+   },
+   "/plugins/petshop-core/templates/emails/browse-abandoned.php": {
+    "m": {
+     "p": 2,
+     "button": 1,
+     "secondary": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "0933e4302ac4f5b82f351b68851c5a3d"
+   },
+   "/plugins/petshop-core/templates/emails/win-back-120.php": {
+    "m": {
+     "p": 3,
+     "button": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "810761c33523080550f0a38883df512e"
+   },
+   "/plugins/petshop-core/templates/emails/win-back-60.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "68332d565f25f302586ac3a2bb9539ce"
+   },
+   "/plugins/petshop-core/templates/emails/cart-abandoned-1.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "muted": 2,
+     "wrap": 1
+    },
+    "tr": 2,
+    "table": 0,
+    "md5": "f8bd8dc86046f0c7c89c26802e5d790c"
+   },
+   "/plugins/petshop-core/templates/emails/post-purchase-2d.php": {
+    "m": {
+     "p": 2,
+     "muted": 1,
+     "secondary": 1,
+     "wrap": 1
+    },
+    "tr": 2,
+    "table": 0,
+    "md5": "2a09c32b2b9a77a76f53d95cf795dfec"
+   },
+   "/plugins/petshop-core/templates/emails/shipment-returned.php": {
+    "m": {
+     "p": 3,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "a2a5465eeea966d5997f32943556b751"
+   },
+   "/plugins/petshop-core/templates/emails/pet-reminder.php": {
+    "m": {
+     "p": 1,
+     "button": 2,
+     "secondary": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "25b84c37bf69be6143f9ffc67b530c2b"
+   },
+   "/plugins/petshop-core/templates/emails/post-purchase-14d.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "fb004508c87aebb16b2ee55beb190a58"
+   },
+   "/plugins/petshop-core/templates/emails/consent-changed.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "muted": 1,
+     "wrap": 1
+    },
+    "tr": 4,
+    "table": 1,
+    "md5": "dcf14503abe5dc6d8f1ecdc5f5ec8be3"
+   },
+   "/plugins/petshop-core/templates/emails/subscription-t5.php": {
+    "m": {
+     "p": 4,
+     "button": 2,
+     "secondary": 2,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "344affa56dc4e257eb1b9afe2e16243b"
+   },
+   "/plugins/petshop-core/templates/emails/dunning-1.php": {
+    "m": {
+     "p": 3,
+     "button": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "57cc9d13de07d2a09d9da9f071363558"
+   },
+   "/plugins/petshop-core/templates/emails/legacy-l1.php": {
+    "m": {
+     "p": 3,
+     "button": 1,
+     "secondary": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "3ed26a9e7930d6f31e559e3195d5b86c"
+   },
+   "/plugins/petshop-core/templates/emails/founding.php": {
+    "m": {
+     "p": 2,
+     "button": 1,
+     "wrap": 1
+    },
+    "tr": 4,
+    "table": 1,
+    "md5": "8f383a47396b2484657cba3a02bb2362"
+   },
+   "/plugins/petshop-core/templates/emails/order-shipped.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "eb9378b4d6533fb7b72a24b897e65822"
+   },
+   "/plugins/petshop-core/templates/emails/back-in-stock.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "7818c45acf444468d388d5269d573b1a"
+   },
+   "/plugins/petshop-core/templates/emails/win-back-90.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "secondary": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 0,
+    "md5": "5a2c967994a43744e8e9e6d28b8a6fbb"
+   },
+   "/plugins/petshop-core/includes/class-email-layout.php": {
+    "m": [],
+    "tr": 15,
+    "table": 2,
+    "md5": "8efe42599ff865deb2cfbde565b3c3b8"
+   },
+   "/mu-plugins/ps-sablonai/krepselis-1.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "muted": 2,
+     "open": 1
+    },
+    "tr": 2,
+    "table": 0,
+    "md5": "43bcfdbf2c040c2bba53947f673a0b53"
+   },
+   "/mu-plugins/ps-sablonai/win-back-pakartoti.php": {
+    "m": {
+     "p": 3,
+     "secondary": 1,
+     "wrap": 1
+    },
+    "tr": 3,
+    "table": 1,
+    "md5": "8f6a89a15528899a27bec22542b36ba9"
+   },
+   "/mu-plugins/ps-sablonai/krepselis-2.php": {
+    "m": {
+     "p": 1,
+     "button": 1,
+     "muted": 2,
+     "open": 1
+    },
+    "tr": 2,
+    "table": 0,
+    "md5": "b1b43c3d80297841f06964957992eb0f"
+   },
+   "/mu-plugins/ps-sablonai/subscription-t5.php": {
+    "m": {
+     "p": 6,
+     "muted": 1,
+     "secondary": 1,
+     "wrap": 1
+    },
+    "tr": 2,
+    "table": 1,
+    "md5": "9c3be9be57f9f86f566d6cda50243e48"
+   },
+   "/mu-plugins/ps-sablonai/refill-pakartoti.php": {
+    "m": {
+     "p": 4,
+     "secondary": 1,
+     "wrap": 1
+    },
+    "tr": 3,
+    "table": 1,
+    "md5": "991993cdcaab59ddaf40ba4acc89d0d3"
+   },
+   "/mu-plugins/ps-sablonai/subscription-started.php": {
+    "m": {
+     "p": 5,
+     "button": 1,
+     "secondary": 1,
+     "muted": 1,
+     "wrap": 1
+    },
+    "tr": 0,
+    "table": 1,
+    "md5": "78ae6695dd54a184381061059c7f9929"
+   },
+   "/mu-plugins/ps-sablonai/subscription-changed.php": {
+    "m": {
+     "p": 5,
+     "muted": 1,
+     "wrap": 1
+    },
+    "tr": 2,
+    "table": 1,
+    "md5": "44562806a46b2e180efa58687b5b5b3d"
+   },
+   "/mu-plugins/petshop-laiskai.php": {
+    "m": {
+     "p": 2,
+     "muted": 1,
+     "button": 1,
+     "secondary": 2,
+     "divider": 1,
+     "wrap": 2
+    },
+    "tr": 2,
+    "table": 0,
+    "md5": "2c0d6a074dc6031caa5f79665b2cd954"
+   },
+   "/mu-plugins/petshop-bacs-priminimas.php": {
+    "m": {
+     "p": 2,
+     "muted": 1,
+     "wrap": 1
+    },
+    "tr": 2,
+    "table": 0,
+    "md5": "096621bf1b1b93120e17ef01b72ba694"
+   },
+   "/mu-plugins/petshop-langai-admin.php": {
+    "m": {
+     "wrap": 2
+    },
+    "tr": 7,
+    "table": 4,
+    "md5": "ba438ae024d245bd9ccefba56138f308"
+   },
+   "/mu-plugins/petshop-krepselio-priminimai.php": {
+    "m": {
+     "close": 1,
+     "C_MUTED": 2,
+     "divider": 1
+    },
+    "tr": 2,
+    "table": 0,
+    "md5": "f0b00035e51c59c027851035f73810a7"
+   },
+   "/mu-plugins/petshop-naujienlaiskiai.php": {
+    "m": {
+     "open": 1,
+     "p": 1,
+     "muted": 1,
+     "divider": 1,
+     "button": 1,
+     "secondary": 1,
+     "close": 1
+    },
+    "tr": 2,
+    "table": 1,
+    "md5": "43615fcf4755a758f3a2ead930c7e6b7"
+   }
+  },
+  "flows": {
+   "order_paid": "/plugins/petshop-core/templates/emails/order-paid.php",
+   "order_shipped": "/plugins/petshop-core/templates/emails/order-shipped.php",
+   "payment_failed": "/plugins/petshop-core/templates/emails/dunning-1.php",
+   "shipment_returned": "/plugins/petshop-core/templates/emails/shipment-returned.php",
+   "consent_changed": "/plugins/petshop-core/templates/emails/consent-changed.php",
+   "pet_reminder_due": "/plugins/petshop-core/templates/emails/pet-reminder.php",
+   "subscription_t5_notice": "/mu-plugins/ps-sablonai/subscription-t5.php",
+   "refill_due": "/mu-plugins/ps-sablonai/refill-pakartoti.php",
+   "cart_abandoned": "/mu-plugins/ps-sablonai/krepselis-1.php",
+   "cart_abandoned_2": "/mu-plugins/ps-sablonai/krepselis-2.php",
+   "post_purchase_2d": "/plugins/petshop-core/templates/emails/post-purchase-2d.php",
+   "post_purchase_7d": "/plugins/petshop-core/templates/emails/post-purchase-7d.php",
+   "post_purchase_14d": "/plugins/petshop-core/templates/emails/post-purchase-14d.php",
+   "win_back_60": "/plugins/petshop-core/templates/emails/win-back-60.php",
+   "win_back_90": "/plugins/petshop-core/templates/emails/win-back-90.php",
+   "win_back_120": "/plugins/petshop-core/templates/emails/win-back-120.php",
+   "legacy_reactivation_l1": "/plugins/petshop-core/templates/emails/legacy-l1.php",
+   "founding_activation": "/plugins/petshop-core/templates/emails/founding.php",
+   "back_in_stock": "/plugins/petshop-core/templates/emails/back-in-stock.php",
+   "newsletter": "/mu-plugins/petshop-laiskai/nl-renderis.php",
+   "browse_abandoned": "/plugins/petshop-core/templates/emails/browse-abandoned.php",
+   "subscription_started": "/mu-plugins/ps-sablonai/subscription-started.php",
+   "subscription_changed": "/mu-plugins/ps-sablonai/subscription-changed.php",
+   "win_back": "/mu-plugins/ps-sablonai/win-back-pakartoti.php"
+  }
+ }
+}
