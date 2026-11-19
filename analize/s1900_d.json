@@ -1,0 +1,94 @@
+{
+ "1": {
+  "v": "S1900d-1",
+  "engine": [
+   {
+    "TABLE_NAME": "gaj6_ps_tiekimas_eil",
+    "ENGINE": "InnoDB"
+   },
+   {
+    "TABLE_NAME": "gaj6_wc_orders_meta",
+    "ENGINE": "InnoDB"
+   },
+   {
+    "TABLE_NAME": "gaj6_wc_orders",
+    "ENGINE": "InnoDB"
+   },
+   {
+    "TABLE_NAME": "gaj6_ps_partijos",
+    "ENGINE": "InnoDB"
+   },
+   {
+    "TABLE_NAME": "gaj6_woocommerce_order_itemmeta",
+    "ENGINE": "InnoDB"
+   },
+   {
+    "TABLE_NAME": "gaj6_ps_subscription_items",
+    "ENGINE": "InnoDB"
+   },
+   {
+    "TABLE_NAME": "gaj6_postmeta",
+    "ENGINE": "InnoDB"
+   },
+   {
+    "TABLE_NAME": "gaj6_ps_tiekimas",
+    "ENGINE": "InnoDB"
+   },
+   {
+    "TABLE_NAME": "gaj6_ps_subscriptions",
+    "ENGINE": "InnoDB"
+   }
+  ],
+  "ext_cache": null,
+  "autocommit": "1",
+  "isolation": "READ-COMMITTED",
+  "rinkiniai": "\t\tif ( ! $pid ) { return false; }\n\t\tif ( isset( $kesas[ $pid ] ) ) { return $kesas[ $pid ]; }\n\t\tif ( get_post_type( $pid ) !== 'product' ) { return $kesas[ $pid ] = false; }\n\t\tif ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return $kesas[ $pid ] = true; }\n\t\t$tipas = get_the_terms( $pid, 'product_type' );\n\t\tif ( is_array( $tipas ) ) {\n\t\t\tforeach ( $tipas as $t ) { if ( $t->slug === 'mix-and-match' ) { return $kesas[ $pid ] = true; } }\n\t\t}\n\t\treturn $kesas[ $pid ] = false;\n\t}\n\n\t/**\n\t * Tiesioginio meta rasymo blokas. Tuscia reiksme praleidziam (WC pats\n\t * raso `_stock = ''`, kai manage_stock isjungtas — tai valymas, ne\n\t * likutis), `_manage_stock = no` praleidziam. Visa kita rinkiniui —\n\t * blokuojama: grazinus false, update_post_meta nieko neiraso.\n\t */\n\tpublic static function likucio_uzraktas_meta( $check, $object_id, $meta_key, $meta_value, $extra = null ) {\n\t\tif ( $meta_key !== '_stock' && $meta_key !== '_own_stock_qty' && $meta_key !== '_manage_stock' ) { return $check; }\n\t\tif ( ! self::ar_rinkinys( $object_id ) ) { return $check; }\n\t\tif ( $meta_key === '_manage_stock' ) {\n\t\t\treturn ( $meta_value === 'no' || $meta_value === '' ) ? $check : false;\n\t\t}\n\t\treturn ( $meta_value === '' || $meta_value === null ) ? $check : false;\n\t}\n\n\t/**\n\t * WC CRUD kelias: katalogo kortele ir importai likuti raso per\n\t * set_stock_quantity(), kuris atnaujina ir wc_product_meta_lookup\n\t * tiesiogine SQL — meta filtras to nepagauna. Todel pries issaugant\n\t * rinkinio objekta likutis nuvalomas.\n\t */\n\tpublic static function likucio_uzraktas_crud( $product ) {\n\t\tif ( ! $product || ! self::ar_rinkinys( $product->get_id() ) ) { return; }\n\t\tif ( $product->get_manage_stock() || $product->get_stock_quantity() !== null ) {\n\t\t\t$product->set_manage_stock( false );\n\t\t\t$product->set_stock_quantity( null );\n\t\t}\n\t}\n\n\t/**\n\t * v1.25: rankinio svorio taisykle (kurjeriui). Ranka irasyta reiksme\n\t * NUSTELBIA automatika ir islieka per visus persirasymus, kol formoje\n\t * neistrinama (tuscias laukas = grizta automatika). Ta pati logika\n\t * kaip `_ps_ranka_isimta`. Ivestis, lygi automatinei, rankiniu nelaikoma.\n",
+  "kabliai": {
+   "update_post_metadata": [
+    "10:Petshop_Ivykiai::pries_irasyma",
+    "10:Petshop_Nuotrauku_Zurnalas::pries_atnaujinant",
+    "10:Petshop_Rinkiniai::likucio_uzraktas_meta",
+    "10:WC_Post_Data::update_post_metadata"
+   ],
+   "updated_post_meta": [
+    "10:wp_cache_set_posts_last_changed",
+    "10:Petshop_AV_Busena::pagauti",
+    "10:Petshop_DP_Kainos::meta_pokytis",
+    "10:Petshop_Dydziu_Automatas::meta_pokytis",
+    "10:Petshop_Dydziu_Katalogas::meta_pokytis",
+    "10:Petshop_Ivykiai::meta_pakeista",
+    "10:Petshop_ZB_Matmenys::meta",
+    "10:wc_maybe_schedule_sale_events_on_meta_change",
+    "10:WC_Post_Data::flush_object_meta_cache",
+    "10:closure",
+    "20:Petshop_Gavimo_Perrusiavimas::meta_own",
+    "20:closure",
+    "999:Petshop_WC_Sync::meta_pakeista"
+   ],
+   "added_post_meta": [
+    "10:wp_cache_set_posts_last_changed",
+    "10:Petshop_AV_Busena::pagauti",
+    "10:Petshop_DP_Kainos::meta_pokytis",
+    "10:Petshop_Dydziu_Automatas::meta_pokytis",
+    "10:Petshop_Dydziu_Katalogas::meta_pokytis",
+    "10:Petshop_Ivykiai::meta_prideta",
+    "10:Petshop_ZB_Matmenys::meta",
+    "10:wc_maybe_schedule_sale_events_on_meta_change",
+    "10:WC_Post_Data::flush_object_meta_cache",
+    "10:closure",
+    "20:Petshop_Gavimo_Perrusiavimas::meta_own",
+    "20:closure",
+    "999:Petshop_WC_Sync::meta_pakeista"
+   ]
+  },
+  "av_prekiu": 366,
+  "av_neig": 0
+ },
+ "v": "dep-180557",
+ "kurimas": 200,
+ "sid": 8611,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
