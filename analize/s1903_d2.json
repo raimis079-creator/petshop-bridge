@@ -1,0 +1,273 @@
+{
+ "2": {
+  "v": "S1903d-1",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true,
+   "petshop-prenumeratos-langas.php": true
+  },
+  "versija": "2.10.0",
+  "db_ver": "7",
+  "lentele": "gaj6_ps_pren_rezervas",
+  "engine": "InnoDB",
+  "stulpeliai": [
+   "id",
+   "subscription_id",
+   "planine",
+   "product_id",
+   "baze_id",
+   "vnt",
+   "laukas",
+   "busena",
+   "order_id",
+   "tiekimo_eil_id",
+   "pastaba",
+   "sukurta",
+   "pakeista"
+  ],
+  "cron": "2026-11-20 06:10 UTC",
+  "s68": {
+   "sync": {
+    "rezervuota": 0,
+    "atlaisvinta": 0,
+    "perkelta": 0,
+    "klaidos": []
+   },
+   "bukle": {
+    "pilnas": false,
+    "truksta": 7,
+    "eil": [
+     {
+      "pid": 19496,
+      "q": 6,
+      "yra": 0,
+      "truksta": 6,
+      "ct": 299,
+      "tiek": "av",
+      "av_laisva": 86
+     },
+     {
+      "pid": 16950,
+      "q": 1,
+      "yra": 0,
+      "truksta": 1,
+      "ct": 1335,
+      "tiek": "zb",
+      "av_laisva": 7
+     }
+    ],
+    "visa_ct": 3129,
+    "yra_ct": 0,
+    "siulymas": "laukti",
+    "nezinoma": 0
+   },
+   "eil": []
+  },
+  "eile_sk": 0,
+  "eile_html": {
+   "ilgis": 737,
+   "fatal": 0,
+   "tekstas": "1. Reikia sprendimo · 0Nėra. Čia atsiras siuntos, kurioms likus 2 darbo dienoms iki išsiuntimo AV trūksta prekės.2. Reikia užsakyti iš tiekėjo · 0Nėra. Čia atsiras prekės, kurių AV neužtenka artėjančioms siuntoms: įprastiems tiekėjams — likus 7 d., Quattro / Ambrosia / Prins — likus 21 d.3. Artėjančios siuntos · 0 per 6 sav. · rodomos artimiausių 7 d. ir tos, kurioms trūkstaAktyvių prenumeratų siuntų per artimiausias 6 savaites nėra."
+  },
+  "darbalaukis": {
+   "ilgis": 70690,
+   "klaida": 0,
+   "fatal": 0
+  },
+  "log_pask": [
+   "[19-Nov-2026 21:14:07 UTC] PHP Fatal error:  Declaration of PS_T::T($m, ...$a) must be compatible with Petshop_Prenumerata::t() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code(7) : eval()'d code on line 308\n"
+  ]
+ },
+ "v": "dep-213302",
+ "kurimas": 200,
+ "sid": 8622,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1903d-1",
+  "F": "T",
+  "t": {
+   "0": {
+    "A": 10,
+    "B": 6,
+    "eil": ""
+   },
+   "0_eile_po_sukurti": [
+    70,
+    71
+   ],
+   "1_sync": [
+    "2/0/0",
+    "0/0/0",
+    {
+     "A": 6,
+     "B": 3,
+     "eil": "#1:s70:39017x4/rezervuota/2026-11-24 #2:s70:39019x3/rezervuota/2026-11-24"
+    },
+    true
+   ],
+   "2_gedimas": [
+    "0/0/0 KL: prekė #39017: DIRBTINIS GEDIMAS",
+    {
+     "A": 6,
+     "B": 3,
+     "eil": "#1:s70:39017x4/rezervuota/2026-11-24 #2:s70:39019x3/rezervuota/2026-11-24"
+    }
+   ],
+   "2b_be_gedimo": [
+    "1/0/0",
+    {
+     "A": 5,
+     "B": 3,
+     "eil": "#1:s70:39017x4/rezervuota/2026-11-24 #2:s70:39019x3/rezervuota/2026-11-24 #4:s70:39017x1/rezervuota/2026-11-24"
+    }
+   ],
+   "3_nukelta": [
+    "0/3/0",
+    {
+     "A": 10,
+     "B": 6,
+     "eil": "#1:s70:39017x4/atlaisvinta/2026-11-24 #2:s70:39019x3/atlaisvinta/2026-11-24 #4:s70:39017x1/atlaisvinta/2026-11-24"
+    }
+   ],
+   "4_ciklas": {
+    "t5": 0,
+    "uzsakymai": 1,
+    "sulaikyta": 0,
+    "dunning": 0,
+    "atkurta": 0,
+    "truksta_t2": 0,
+    "laukia_prekes": 1,
+    "rezervas": {
+     "prenumeratu": 3,
+     "rezervuota": 3,
+     "atlaisvinta": 0,
+     "perkelta": 0,
+     "klaidos": []
+    },
+    "klaidos": []
+   },
+   "4_po": {
+    "A": 0,
+    "B": 3,
+    "eil": "#1:s70:39017x4/atlaisvinta/2026-11-24 #2:s70:39019x3/atlaisvinta/2026-11-24 #4:s70:39017x1/atlaisvinta/2026-11-24 #5:s70:39017x5/perduota/2026-11-19 #6:s70:39019x3/perduota/2026-11-19 #7:s71:39017x5/rezervuota/2026-11-19"
+   },
+   "4_s1": [
+    "2026-12-19",
+    "39020"
+   ],
+   "4_s2": [
+    "2026-11-19",
+    null,
+    5
+   ],
+   "4_s2_ivykiai": [
+    "created",
+    "date_changed",
+    "guarantee_set",
+    "reserve_set",
+    "stock_hold"
+   ],
+   "5_uzs": [
+    "pending",
+    "60.00",
+    "MAIN",
+    [
+     [
+      39017,
+      5,
+      "av",
+      "5",
+      "",
+      0
+     ],
+     [
+      39019,
+      1,
+      "av",
+      "3",
+      "39018",
+      0
+     ]
+    ]
+   ],
+   "5_po_fiksuoti_mazinti": {
+    "A": 0,
+    "B": 3,
+    "eil": "#1:s70:39017x4/atlaisvinta/2026-11-24 #2:s70:39019x3/atlaisvinta/2026-11-24 #4:s70:39017x1/atlaisvinta/2026-11-24 #5:s70:39017x5/perduota/2026-11-19 #6:s70:39019x3/perduota/2026-11-19 #7:s71:39017x5/rezervuota/2026-11-19"
+   },
+   "5_atsaukus_x2": {
+    "A": 5,
+    "B": 6,
+    "eil": "#1:s70:39017x4/atlaisvinta/2026-11-24 #2:s70:39019x3/atlaisvinta/2026-11-24 #4:s70:39017x1/atlaisvinta/2026-11-24 #5:s70:39017x5/perduota/2026-11-19 #6:s70:39019x3/perduota/2026-11-19 #7:s71:39017x5/rezervuota/2026-11-19"
+   },
+   "6_ciklas_dar_karta": {
+    "uzsakymai": 1,
+    "laukia_prekes": 0,
+    "rezervas": {
+     "prenumeratu": 3,
+     "rezervuota": 1,
+     "atlaisvinta": 0,
+     "perkelta": 0,
+     "klaidos": []
+    },
+    "klaidos": []
+   },
+   "6_po": {
+    "A": 0,
+    "B": 6,
+    "eil": "#1:s70:39017x4/atlaisvinta/2026-11-24 #2:s70:39019x3/atlaisvinta/2026-11-24 #4:s70:39017x1/atlaisvinta/2026-11-24 #5:s70:39017x5/perduota/2026-11-19 #6:s70:39019x3/perduota/2026-11-19 #7:s71:39017x5/perduota/2026-11-19 #8:s71:39017x5/perduota/2026-11-19"
+   },
+   "7_nutraukta_s2": [
+    "0/0/0",
+    {
+     "A": 0,
+     "B": 6,
+     "eil": "#1:s70:39017x4/atlaisvinta/2026-11-24 #2:s70:39019x3/atlaisvinta/2026-11-24 #4:s70:39017x1/atlaisvinta/2026-11-24 #5:s70:39017x5/perduota/2026-11-19 #6:s70:39019x3/perduota/2026-11-19 #7:s71:39017x5/perduota/2026-11-19 #8:s71:39017x5/perduota/2026-11-19"
+    }
+   ],
+   "7b_pauze_s1": [
+    "0/0/0",
+    {
+     "A": 0,
+     "B": 6,
+     "eil": "#1:s70:39017x4/atlaisvinta/2026-11-24 #2:s70:39019x3/atlaisvinta/2026-11-24 #4:s70:39017x1/atlaisvinta/2026-11-24 #5:s70:39017x5/perduota/2026-11-19 #6:s70:39019x3/perduota/2026-11-19 #7:s71:39017x5/perduota/2026-11-19 #8:s71:39017x5/perduota/2026-11-19"
+    }
+   ],
+   "pabaiga_turi_buti": "A=10, B=6",
+   "s68": {
+    "id": "68",
+    "status": "active",
+    "next_cycle_date": "2027-01-16",
+    "pending_order_id": null
+   },
+   "valymas": {
+    "pries_trinant": {
+     "A": "0",
+     "B": "6"
+    },
+    "sources": 1,
+    "ok": [
+     true,
+     true,
+     true,
+     0,
+     0,
+     0
+    ],
+    "ids": [
+     39017,
+     39018,
+     39019,
+     [
+      70,
+      71
+     ]
+    ],
+    "laiskai": []
+   }
+  }
+ }
+}
