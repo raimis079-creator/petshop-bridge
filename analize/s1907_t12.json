@@ -1,0 +1,76 @@
+{
+ "1": {
+  "v": "t1",
+  "F": "1",
+  "pries": {
+   "title": "Prenumeratos taisyklės",
+   "status": "draft",
+   "slug": "prenumeratos-taisykles",
+   "len": 3330,
+   "pradzia": "<!-- v0.4 — S1/S2/S3 uzrakinta. Liko [PATIKRINTI] teisininkui del grazinimu. -->\n<h2>Kas yra prenumerata</h2>\n<p>Prenumerata — tai jūsų pasirinktų prekių reguliarūs užsakymai jūsų pasirinktu dažnumu (nuo 1 iki 12 savaičių). Prenumeratą bet kada galite keisti, pristabdyti ar nutraukti — be jokių papi",
+   "bak_yra": false
+  },
+  "po": {
+   "status": "publish",
+   "len": 8894,
+   "sutampa": true,
+   "url": "https://petshop.lt/prenumeratos-taisykles/"
+  }
+ },
+ "2": {
+  "v": "t1",
+  "F": "2",
+  "pries": {
+   "title": "Prenumeratos taisyklės",
+   "status": "publish",
+   "slug": "prenumeratos-taisykles",
+   "len": 8894,
+   "pradzia": "<p><em>Galioja nuo 2026 m. lapkričio 20 d. Versija 1.0.</em></p>\n\n<h2>1. Kas teikia prenumeratą</h2>\n<p>1.1. Prenumeratą teikia UAB „Avesa“, įmonės kodas 302568442, buveinė Liucionių g. 46, Liucionių k., Nemenčinės sen., Vilniaus r., LT-15166, tel. +370 681 87787 (toliau – „Pardavėjas“, „mes“). Rašy",
+   "bak_yra": true
+  },
+  "http": {
+   "code": 200,
+   "9.4.1": 1,
+   "skyriu": 16,
+   "PATIKRINTI": 0,
+   "ETAPAS": 0
+  },
+  "shots": [
+   {
+    "n": "s1907_taisykles_tel",
+    "u": "https://petshop.lt/prenumeratos-taisykles/?s=1",
+    "w": 390,
+    "h": 900,
+    "full": 1
+   },
+   {
+    "n": "s1907_taisykles_pc",
+    "u": "https://petshop.lt/prenumeratos-taisykles/?s=2",
+    "w": 1366,
+    "h": 900,
+    "full": 0
+   }
+  ]
+ },
+ "v": "dep-112255",
+ "kurimas": 200,
+ "sid": 8663,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1907_taisykles_tel": {
+   "status": 201,
+   "url": "https://petshop.lt/prenumeratos-taisykles/?s=1",
+   "title": "Prenumeratos taisyklės - Petshop.lt",
+   "errors": []
+  },
+  "s1907_taisykles_pc": {
+   "status": 201,
+   "url": "https://petshop.lt/prenumeratos-taisykles/?s=2",
+   "title": "Prenumeratos taisyklės - Petshop.lt",
+   "errors": []
+  }
+ }
+}
