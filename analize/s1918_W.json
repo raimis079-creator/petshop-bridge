@@ -1,0 +1,57 @@
+{
+ "v": "dep-214926",
+ "kurimas": 200,
+ "sid": 8719,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "s1918w",
+  "shop": [
+   11,
+   "publish",
+   "https://petshop.lt/parduotuve/",
+   34543
+  ],
+  "url": {
+   "/parduotuve/": [
+    200,
+    ""
+   ],
+   "/katalogas/": [
+    404,
+    ""
+   ],
+   "/prekes/": [
+    404,
+    ""
+   ],
+   "/shop/": [
+    301,
+    "https://petshop.lt/parduotuve/"
+   ],
+   "/visos-prekes/": [
+    301,
+    "https://petshop.lt/parduotuve/"
+   ]
+  },
+  "shots": [
+   {
+    "n": "s1918_shop",
+    "u": "https://petshop.lt/parduotuve/",
+    "w": 1366,
+    "h": 1000,
+    "full": 0
+   }
+  ]
+ },
+ "shots": {
+  "s1918_shop": {
+   "status": 201,
+   "url": "https://petshop.lt/parduotuve/",
+   "title": "Visos prekės gyvūnams internetu | Petshop.lt",
+   "errors": []
+  }
+ }
+}
