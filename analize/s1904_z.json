@@ -1,10 +1,307 @@
 {
- "v": "dep-073512",
+ "1": {
+  "v": "S1904z",
+  "ej_due_utc": [],
+  "ej_pending_next": [
+   {
+    "flow": "post_purchase_14d",
+    "n": "122",
+    "mn": "2026-11-20 08:06:19"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "51",
+    "mn": "2026-11-20 09:06:24"
+   }
+  ],
+  "ej_sent_24h": [
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "n": "1",
+    "max_velu": "4"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "n": "1",
+    "max_velu": "1"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "n": "2",
+    "max_velu": "3"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "n": "10",
+    "max_velu": "4"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "n": "19",
+    "max_velu": "3"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "n": "3",
+    "max_velu": "8"
+   },
+   {
+    "flow": "win_back",
+    "status": "sent",
+    "n": "2",
+    "max_velu": "3"
+   }
+  ],
+  "ej_failed_7d": [],
+  "pragma_log": [
+   {
+    "time": "2026-10-21 23:06:34",
+    "message": "2026-09: PATAISYTI pardavimai + pardavimai_sum issiusti (OK) S1793"
+   },
+   {
+    "time": "2026-11-05 10:58:44",
+    "message": "2026-10: eksportas sekmingai. Uzsakymu: 314, Nauju klientu: 275"
+   },
+   {
+    "time": "2026-11-05 11:05:08",
+    "message": "2026-10: eksportas ISSIUSTAS dalimis 3/3 laiskai (S1829 rankinis po 11-05 cron gedimo). Uzsakymu: 314, Nauju klientu: 275"
+   }
+  ],
+  "pragma_cron": {
+   "petshop_pragma_dry_check": "2026-12-04 10:00",
+   "petshop_pragma_monthly_export": "2026-12-05 10:00",
+   "petshop_pragma_retry": "nera"
+  },
+  "sources": {
+   "laikas": "2026-11-20 06:20:15",
+   "prekiu": 5210,
+   "prideta": 4,
+   "atnaujinta": 4347,
+   "isjungta": 4,
+   "be_saltinio": 975,
+   "atm_mb": 134
+  },
+  "vf_ap": 0,
+  "vmvt_pub": 0,
+  "ranka_pub": 0,
+  "kanap_n": 0,
+  "nauji": [],
+  "kaledu": [
+   {
+    "ID": "17928",
+    "t": "Kalėdinis skanėstų rinkinys vidutinių ir didelių v",
+    "st": "draft"
+   },
+   {
+    "ID": "17932",
+    "t": "Kalėdinis skanėstų rinkinys vidutinių ir didelių v",
+    "st": "draft"
+   },
+   {
+    "ID": "17937",
+    "t": "Kalėdinis skanėstų rinkinys mažų veislių šunims",
+    "st": "draft"
+   },
+   {
+    "ID": "36762",
+    "t": "TRX_927130 TRIXIE Xmas Guolis elfas, 45 × 47 cm, r",
+    "st": "draft"
+   },
+   {
+    "ID": "36764",
+    "t": "TRX_927131 TRIXIE Xmas Guolis elfas 45 × 47 cm, bu",
+    "st": "draft"
+   },
+   {
+    "ID": "38707",
+    "t": "Trixie Premio advento kalendorius šunims, 30x34x3,",
+    "st": "publish"
+   },
+   {
+    "ID": "38709",
+    "t": "Trixie Premio advento kalendorius katėms, 30x34x3,",
+    "st": "publish"
+   },
+   {
+    "ID": "38737",
+    "t": "TRX_9268 TRIXIE Xmas Advento kalendorius šunims, 3",
+    "st": "draft"
+   }
+  ],
+  "ps_av_busenu_log": {
+   "8": [
+    "2026-11-17 14:51:20",
+    17348,
+    "outofstock",
+    "instock",
+    "patikra"
+   ],
+   "9": [
+    "2026-11-17 14:51:19",
+    15838,
+    "instock",
+    "outofstock",
+    "patikra"
+   ]
+  },
+  "ps_dp_busenu_log": {
+   "48": [
+    "2026-11-17 14:49:38",
+    37816,
+    "instock",
+    "outofstock",
+    "patikra"
+   ],
+   "49": [
+    "2026-11-17 14:49:38",
+    37803,
+    "instock",
+    "outofstock",
+    "patikra"
+   ]
+  },
+  "tempas_cb": [
+   {
+    "f": "wp-content/mu-plugins/petshop-sargas.php",
+    "l": "208-215",
+    "src": [
+     "\tpublic static function cron_atsiskaite() {",
+     "\t\t$hook = current_action();",
+     "\t\tif ( ! $hook ) { return; }",
+     "\t\t$z = get_option( self::CRON_ZINIOS, array() );",
+     "\t\tif ( ! is_array( $z ) ) { $z = array(); }",
+     "\t\t$z[ $hook ] = time();",
+     "\t\tupdate_option( self::CRON_ZINIOS, $z, false );",
+     "\t}"
+    ]
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-import-tempas.php",
+    "l": "59-75",
+    "src": [
+     "\tpublic static function vykdyti(): void {",
+     "\t\tglobal $wpdb;",
+     "\t\t$key = self::raktas();",
+     "\t\tif ( $key === '' ) return;",
+     "\t\tforeach ( self::IMPORTAI as $id ) {",
+     "\t\t\t$r = $wpdb->get_row( $wpdb->prepare( \"SELECT triggered, processing, executing FROM {$wpdb->prefix}pmxi_imports WHERE id=%d\", $id ), ARRAY_A );",
+     "\t\t\tif ( ! $r || (int) $r['triggered'] !== 1 || (int) $r['processing'] === 1 || (int) $r['executing'] === 1 ) continue;",
+     "\t\t\tif ( get_transient( 'ps_import_tempas_lock_' . $id ) ) continue;",
+     "\t\t\tset_transient( 'ps_import_tempas_lock_' . $id, 1, 90 );",
+     "\t\t\t$url = self::hostas() . '/wp-load.php?import_key=' . rawurlencode( $key ) . '&import_id=' . $id . '&action=processing';",
+     "\t\t\t$t0  = microtime( true );",
+     "\t\t\t$r   = wp_remote_get( $url, [ 'timeout' => 75, 'sslverify' => false ] );",
+     "\t\t\t$ats = is_wp_error( $r ) ? $r->get_error_message() : mb_substr( (string) wp_remote_retrieve_body( $r ), 0, 120 );",
+     "\t\t\tdelete_transient( 'ps_import_tempas_lock_' . $id );",
+     "\t\t\tupdate_option( self::OPT, [ 'laikas' => current_time( 'mysql' ), 'import_id' => $id, 'veiksmas' => 'processing', 'hostas' => self::hostas(), 'sek' => round( microtime( true ) - $t0, 1 ), 'atsakymas' => $ats ], false )",
+     "\t\t}",
+     "\t}"
+    ]
+   }
+  ],
+  "cron_imp": [
+   [
+    "petshop_import_tempas",
+    "11-20 09:41",
+    "petshop_2min",
+    120
+   ]
+  ],
+  "opt_tempas": [
+   {
+    "option_name": "petshop_import_log",
+    "v": "a:500:{i:0;a:9:{s:4:\"kada\";s:19:\"2026-11-09 19:22:09\";s:9:\"import_id\";i:7;s:7:\"created\";i:0;s:7:\"updated\";i:8;s:7:\"skipped\";i:2611;s:6:\"trukme\";N;s:11:\"pavadinimas\";s:11:\"vf-feed.xml\";s:8:\"imported\";i:8;s:16:\"uzsakymu_per_val\";i:1;}i:1;a:9:{s:4:\"kada\";s:19:\"2026-11-09 20:09:57\";s:9:\"import_id\";i:3;s:7:\"created\";i:0;s:7:\"updated\";i:1;s:7:\"skipped\";i:2763;s:6:\"trukme\";N;s:11:\"pavadinimas\";s:10:\"stocks.php\";s:8:\"imported\";i:1;s:16:\"uzsakymu_per_val\";i:2;}i:2;a:9:{s:4:\"kada\";s:19:\"2026-11-09 20:22:15\";s:9:\"import_id\";i:7;s:7:\"created\";i:0;s:7:\"updated\";i:6;s:7:\"skipped\";i:2613;s:6:\"trukme\";N;s:11:"
+   },
+   {
+    "option_name": "ps_import_tempas_host",
+    "v": "https://petshop.lt"
+   },
+   {
+    "option_name": "ps_import_tempas_paskutinis",
+    "v": "a:6:{s:6:\"laikas\";s:19:\"2026-11-20 09:07:49\";s:9:\"import_id\";i:3;s:8:\"veiksmas\";s:10:\"processing\";s:6:\"hostas\";s:18:\"https://petshop.lt\";s:3:\"sek\";d:23.8;s:9:\"atsakymas\";s:45:\"{\"status\":200,\"message\":\"Import #3 complete\"}\";}"
+   }
+  ],
+  "imp2": {
+   "triggered": "1",
+   "processing": "0",
+   "executing": "0",
+   "queue_chunk_number": "801",
+   "imported": "128",
+   "skipped": "672",
+   "count": "2779",
+   "last_activity": "2026-11-20 04:02:04",
+   "registered_on": "2026-11-20 04:02:04"
+  },
+  "imp2_opt": {
+   "create_new_records": "1",
+   "is_delete_missing": "0",
+   "records_per_request": "10",
+   "is_fast_mode": "0",
+   "chuncking": "1",
+   "import_processing": "ajax",
+   "processing_iteration_logic": "auto"
+  },
+  "log_uzraktas": [
+   "[19-Nov-2026 20:58:20 UTC] [Petshop_AV_Stock] UŽRAKTAS: prekė 39010 užimta >10 s"
+  ],
+  "log_import": [],
+  "log_tempas": [],
+  "pren_ciklas": {
+   "kada": "2026-11-20 06:10:00",
+   "diena": "2026-11-20",
+   "rez": {
+    "t5": 0,
+    "uzsakymai": 0,
+    "sulaikyta": 0,
+    "dunning": 0,
+    "atkurta": 0,
+    "truksta_t2": 0,
+    "laukia_prekes": 0,
+    "rezervas": {
+     "prenumeratu": 1,
+     "rezervuota": 0,
+     "atlaisvinta": 0,
+     "perkelta": 0,
+     "klaidos": []
+    },
+    "klaidos": []
+   }
+  },
+  "pren_rez": [],
+  "pren_akt": [
+   {
+    "status": "active",
+    "n": "1"
+   }
+  ],
+  "av_pastabos": [
+   {
+    "oid": "39025",
+    "d": "2026-11-20 09:02:35",
+    "c": "AV nurašymas: #18320 grynai AV 4 -> 3"
+   }
+  ],
+  "snip_stat": {
+   "n": "597",
+   "mb": "4.9",
+   "akt": "78",
+   "temp_n": "519",
+   "temp_akt": "1",
+   "temp_mb": "4.4"
+  },
+  "trukme_s": 0.2
+ },
+ "v": "dep-073821",
  "kurimas": 200,
- "sid": 8631,
+ "sid": 8633,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "zalias_1": "<!DOCTYPE html>\n<html lang=\"lt-LT\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t\t<meta name='robots' content='max-image-preview:large, noindex, follow' />\n\t<title>WordPress &rsaquo; Klaida</title>\n\t<style type=\"text/css\">\n\t\thtml {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\t\tbody {\n\t\t\tbackground: #fff;\n\t\t\tborder: 1px solid #ccd0d4;\n\t\t\tcolor: #444;\n\t\t\tfont-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif;\n\t\t\tmargin: 2em auto;\n\t\t\tpadding: 1em 2em;\n\t\t\tmax-width: 700px;\n\t\t\t-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .04);\n\t\t\tbox-shadow: 0 1px 1px rgba(0, 0, 0, .04);\n\t\t}\n\t\th1 {\n\t\t\tborder-bottom: 1px solid #dadada;\n\t\t\tclear: both;\n\t\t\tcolor: #666;\n\t\t\tfont-size: 24px;\n\t\t\tmargin: 30px 0 0 0;\n\t\t\tpadding: 0;\n\t\t\tpadding-bottom: 7px;\n\t\t}\n\t\t#error-page {\n\t\t\tmargin-top: 50px;\n\t\t}\n\t\t#error-page p,\n\t\t#error-page .wp-die-message {\n\t\t\tfont-size: 14px;\n\t\t\tline-height: 1.5;\n\t\t\tmargin: 25px 0 20px;\n\t\t}\n\t\t#error-page code {\n\t\t\tfont-family: Consolas, Monaco, monospace;\n\t\t}\n\t\tul li {\n\t\t\tmargin-bottom: 10px;\n\t\t\tfont-size: 14px ;\n\t\t}\n\t\ta {\n\t\t\tcolor: #2271b1;\n\t\t}\n\t\ta:hover,\n\t\ta:active {\n\t\t\tcolor: #135e96;\n\t\t}\n\t\ta:focus {\n\t\t\tcolor: #043959;\n\t\t\tbox-shadow: 0 0 0 2px #2271b1;\n\t\t\toutline: 2px solid transparent;\n\t\t}\n\t\t.button {\n\t\t\tbackground: #f3f5f6;\n\t\t\tborder: 1px solid #016087;\n\t\t\tcolor: #016087;\n\t\t\tdisplay: inline-block;\n\t\t\ttext-decoration: none;\n\t\t\tfont-size: 13px;\n\t\t\tline-height: 2;\n\t\t\theight: 28px;\n\t\t\tmargin: 0;\n\t\t\tpadding: 0 10px 1px;\n\t\t\tcursor: pointer;\n\t\t\t-webkit-border-radius: 3px;\n\t\t\t-webkit-appearance: none;\n\t\t\tborder-radius: 3px;\n\t\t\twhite-space: nowrap;\n\t\t\t-webkit-box-sizing: border-box;\n\t\t\t-moz-box-sizing:    border-box;\n\t\t\tbox-sizing:         border-box;\n\n\t\t\tvertical-align: top;\n\t\t}\n\n\t\t.button.button-large {\n\t\t\tline-height: 2.30769231;\n\t\t\tmin-height: 32px;\n\t\t\tpadding: 0 12px;\n\t\t}\n\n\t\t.button:hover,\n\t\t.button:focus {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\n\t\t.button:focus {\n\t\t\tbackground: #f3f5f6;\n\t\t\tborder-color: #007cba;\n\t\t\t-webkit-box-shadow: 0 0 0 1px #007cba;\n\t\t\tbox-shadow: 0 0 0 1px #007cba;\n\t\t\tcolor: #016087;\n\t\t\toutline: 2px solid transparent;\n\t\t\toutline-offset: 0;\n\t\t}\n\n\t\t.button:active {\n\t\t\tbackground: #f3f5f6;\n\t\t\tborder-color: #7e8993;\n\t\t\t-webkit-box-shadow: none;\n\t\t\tbox-shadow: none;\n\t\t}\n\n\t\t\t</style>\n</head>\n<body id=\"error-page\">\n\t<div class=\"wp-die-message\"><p>Tinklalapyje įvyko kritinė klaida.</p><p><a href=\"https://wordpress.org/documentation/article/faq-troubleshooting/\">Sužinokite daugiau apie problemų paiešką WordPress.</a></p></div></body>\n</html>\n\t"
+ }
 }
