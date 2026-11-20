@@ -1,0 +1,60 @@
+{
+ "1": {
+  "v": "S1908h-1",
+  "F": "1",
+  "parse": "ok",
+  "bak": {
+   "ps-sablonai/subscription-t1.php": "20c10ca8752eba15512a2d89bf863f77"
+  },
+  "md5": {
+   "ps-sablonai/subscription-t1.php": "049de82678e0bd138914a0c5a78324c9"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400,
+   "/wp-cron.php": 200
+  }
+ },
+ "3": {
+  "v": "S1908h-1",
+  "F": "3",
+  "ok": {
+   "ps-sablonai/subscription-t1.php": true
+  },
+  "versija": "2.12.3",
+  "sms_tekstas": "Petshop.lt: rytoj issiunciame Jusu siunta i pastomata AIBE, Nemencine. Pakeisti pristatymo data dar galite siandien savo paskyroje. Info +37068187787",
+  "sms_ilgis": 149,
+  "telefonas_75": "+37068187787",
+  "t1_75_tikrinimas": {
+   "praleista": "nepatvirtinta"
+  },
+  "vietu_testai": [
+   [
+    152,
+    "Petshop.lt: rytoj issiunciame Jusu siunta i pastomata Maxima XX, Vilnius. Pakeisti pristatymo data dar galite siandien savo paskyroje. Info +37068187787"
+   ],
+   [
+    141,
+    "Petshop.lt: rytoj issiunciame Jusu siunta i pastomata Vilnius. Pakeisti pristatymo data dar galite siandien savo paskyroje. Info +37068187787"
+   ],
+   [
+    154,
+    "Petshop.lt: rytoj issiunciame Jusu siunta kurjeriu adresu Svencioniu g. 72. Pakeisti pristatymo data dar galite siandien savo paskyroje. Info +37068187787"
+   ]
+  ],
+  "laiskas": {
+   "ok": true,
+   "job_id": 3472,
+   "duplicate": false
+  }
+ },
+ "v": "dep-141758",
+ "kurimas": 200,
+ "sid": 8677,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
