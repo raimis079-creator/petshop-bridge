@@ -1,0 +1,177 @@
+{
+ "v": "dep-202828",
+ "kurimas": 200,
+ "sid": 8705,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "s1914k",
+  "sablonai": {
+   "emails": [
+    [
+     "back-in-stock.php",
+     3,
+     "p,button,wrap"
+    ],
+    [
+     "browse-abandoned.php",
+     5,
+     "p,button,secondary,wrap"
+    ],
+    [
+     "cart-abandoned-1.php",
+     5,
+     "p,button,muted,wrap"
+    ],
+    [
+     "cart-abandoned-2.php",
+     5,
+     "p,button,muted,wrap"
+    ],
+    [
+     "consent-changed.php",
+     4,
+     "p,button,muted,wrap"
+    ],
+    [
+     "dunning-1.php",
+     5,
+     "p,button,wrap"
+    ],
+    [
+     "founding.php",
+     4,
+     "p,button,wrap"
+    ],
+    [
+     "legacy-l1.php",
+     6,
+     "p,button,secondary,wrap"
+    ],
+    [
+     "order-paid.php",
+     3,
+     "p,button,wrap"
+    ],
+    [
+     "order-shipped.php",
+     3,
+     "p,button,wrap"
+    ],
+    [
+     "pet-reminder.php",
+     5,
+     "p,button,secondary,wrap"
+    ],
+    [
+     "post-purchase-14d.php",
+     3,
+     "p,button,wrap"
+    ],
+    [
+     "post-purchase-2d.php",
+     5,
+     "p,muted,secondary,wrap"
+    ],
+    [
+     "post-purchase-7d.php",
+     6,
+     "p,button,wrap"
+    ],
+    [
+     "refill.php",
+     4,
+     "p,button,secondary,wrap"
+    ],
+    [
+     "shipment-returned.php",
+     4,
+     "p,wrap"
+    ],
+    [
+     "subscription-t5.php",
+     9,
+     "p,button,secondary,wrap"
+    ],
+    [
+     "win-back-120.php",
+     5,
+     "p,button,wrap"
+    ],
+    [
+     "win-back-60.php",
+     3,
+     "p,button,wrap"
+    ],
+    [
+     "win-back-90.php",
+     4,
+     "p,button,secondary,wrap"
+    ]
+   ],
+   "ps-sablonai": [
+    [
+     "krepselis-1.php",
+     5,
+     "p,button,muted,open"
+    ],
+    [
+     "krepselis-2.php",
+     5,
+     "p,button,muted,open"
+    ],
+    [
+     "refill-pakartoti.php",
+     6,
+     "p,secondary,wrap"
+    ],
+    [
+     "subscription-changed.php",
+     7,
+     "p,muted,wrap"
+    ],
+    [
+     "subscription-started.php",
+     9,
+     "p,button,secondary,muted,wrap"
+    ],
+    [
+     "subscription-t1.php",
+     7,
+     "p,muted,wrap"
+    ],
+    [
+     "subscription-t5.php",
+     9,
+     "p,muted,secondary,wrap"
+    ],
+    [
+     "win-back-pakartoti.php",
+     5,
+     "p,secondary,wrap"
+    ]
+   ]
+  },
+  "kodas": {
+   "petshop-bacs-priminimas.php": 4,
+   "petshop-krepselio-priminimai.php": 4,
+   "petshop-laiskai.php": 9,
+   "petshop-langai-admin.php": 2,
+   "petshop-naujienlaiskiai.php": 7
+  },
+  "layout_md5": "8efe42599ff865deb2cfbde565b3c3b8",
+  "metodai": [
+   "logo_url",
+   "open",
+   "p",
+   "muted",
+   "button",
+   "secondary",
+   "divider",
+   "close",
+   "wrap"
+  ]
+ }
+}
