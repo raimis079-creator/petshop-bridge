@@ -1,0 +1,59 @@
+{
+ "2": {
+  "v": "s1911",
+  "F": "2",
+  "pries": {
+   "title": "Prenumeratos taisyklės",
+   "status": "publish",
+   "slug": "prenumeratos-taisykles",
+   "len": 9543,
+   "pradzia": "<p><em>Galioja nuo 2026 m. lapkričio 20 d. Versija 1.0.</em></p>\n\n<h2>1. Kas teikia prenumeratą</h2>\n<p>1.1. Prenumeratą teikia UAB „Avesa“, įmonės kodas 302568442 (toliau – „Pardavėjas“, „mes“). Buveinės adresas ir kiti rekvizitai nurodyti <a href=\"https://petshop.lt/kontaktai/\">Kontaktuose</a> ir ",
+   "bak_yra": true
+  },
+  "http": {
+   "941": 1,
+   "code": 200,
+   "el": 0,
+   "skyriu": 16,
+   "PATIKRINTI": 0,
+   "ETAPAS": 0
+  },
+  "shots": [
+   {
+    "n": "s1911_taisykles_tel",
+    "u": "https://petshop.lt/prenumeratos-taisykles/?s=1",
+    "w": 390,
+    "h": 900,
+    "full": 1
+   },
+   {
+    "n": "s1911_taisykles_pc",
+    "u": "https://petshop.lt/prenumeratos-taisykles/?s=2",
+    "w": 1366,
+    "h": 900,
+    "full": 0
+   }
+  ]
+ },
+ "v": "dep-175248",
+ "kurimas": 200,
+ "sid": 8696,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1911_taisykles_tel": {
+   "status": 201,
+   "url": "https://petshop.lt/prenumeratos-taisykles/?s=1",
+   "title": "Prenumeratos taisyklės - Petshop.lt",
+   "errors": []
+  },
+  "s1911_taisykles_pc": {
+   "status": 201,
+   "url": "https://petshop.lt/prenumeratos-taisykles/?s=2",
+   "title": "Prenumeratos taisyklės - Petshop.lt",
+   "errors": []
+  }
+ }
+}
