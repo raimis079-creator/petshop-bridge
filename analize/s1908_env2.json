@@ -1,0 +1,114 @@
+{
+ "v": "dep-135429",
+ "kurimas": 200,
+ "sid": 8674,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "env": "dev",
+  "wp_env": "production",
+  "home": "https://petshop.lt",
+  "ivykiai": [
+   {
+    "id": "4229",
+    "event_id": "order_shipped_39000",
+    "event_name": "order_shipped",
+    "email": "vaitkuvienei4@gmail.com",
+    "payload_json": "{\"order_id\":39000,\"order_number\":\"1828\",\"carrier\":\"lp_express\",\"tracking_number\":\"CC133509788LT\",\"tracking_url\":\"https://www.post.lt/siuntu-sekimas?parcels=CC133509788LT\",\"delivery_type\":\"parcel_terminal\",\"estimated_delivery\":null}",
+    "emitted_at": "2026-11-20 13:53:41",
+    "status": "sent",
+    "adapter_name": "sender",
+    "attempts": "0",
+    "next_retry_at": null,
+    "last_error": null,
+    "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+   },
+   {
+    "id": "4228",
+    "event_id": "order_paid_39055",
+    "event_name": "order_paid",
+    "email": "irmairmute23@gmail.com",
+    "payload_json": "{\"order_id\":39055,\"order_number\":\"1846\",\"order_total\":31.99,\"order_currency\":\"EUR\",\"order_items\":[{\"product_id\":25307,\"sku\":\"C0004/M\",\"name\":\"Cazo Himalayan sūris su linų sėmenimis M 9-14cm\",\"quantity\":1,\"line_total\":5.363636,\"fulfillment_source\":\"vf\"},{\"product_id\":18590,\"sku\":\"HYPS02\",\"name\":\"Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg\",\"quantity\":1,\"line_total\":17.438017,\"fulfillment_source\":\"vf\"},{\"product_id\":17403,\"sku\":\"m14441\",\"name\":\"Monge Fresh Puppy Pate and chunkies Veal with Vegetables - konservai šuniukams/jauniems šunims su veršienos gabaliukais ir daržovėmis, 400 g\",\"quantity\":2,\"line_total\":3.636364,\"fulfillment_source\":\"zb\"}],\"payment_method\":\"paysera\",\"shipping_method\":\"VENIPAK paštomatai/atsiėmimo punktai\",\"customer_note\":null,\"is_first_order\":false,\"order_count_at_time\":3}",
+    "emitted_at": "2026-11-20 13:47:37",
+    "status": "sent",
+    "adapter_name": "sender",
+    "attempts": "0",
+    "next_retry_at": null,
+    "last_error": null,
+    "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+   },
+   {
+    "id": "4227",
+    "event_id": "order_paid_39052",
+    "event_name": "order_paid",
+    "email": "Renatuke1988@gmail.com",
+    "payload_json": "{\"order_id\":39052,\"order_number\":\"1845\",\"order_total\":167.85,\"order_currency\":\"EUR\",\"order_items\":[{\"product_id\":23886,\"sku\":\"ZOOV061\",\"name\":\"Vetoquinol papildas Zylkene kapsulėmis 225 mg, N10\",\"quantity\":15,\"line_total\":138.719008,\"fulfillment_source\":\"vf\"}],\"payment_method\":\"paysera\",\"shipping_method\":\"VENIPAK paštomatai/atsiėmimo punktai\",\"customer_note\":null,\"is_first_order\":false,\"order_count_at_time\":2}",
+    "emitted_at": "2026-11-20 10:12:23",
+    "status": "skipped",
+    "adapter_name": "sender",
+    "attempts": "1",
+    "next_retry_at": null,
+    "last_error": "skipped: subscriber_not_in_sender",
+    "esp_response": "{\"message\":\"Subscriber not found\",\"success\":false}"
+   },
+   {
+    "id": "4226",
+    "event_id": "order_shipped_39027",
+    "event_name": "order_shipped",
+    "email": "aiste.capiene@gmail.com",
+    "payload_json": "{\"order_id\":39027,\"order_number\":\"1844\",\"carrier\":\"venipak\",\"tracking_number\":\"V07267E1000853\",\"tracking_url\":\"https://venipak.lt/tracking/track/V07267E1000853\",\"delivery_type\":\"parcel_terminal\",\"estimated_delivery\":null}",
+    "emitted_at": "2026-11-20 09:57:18",
+    "status": "sent",
+    "adapter_name": "sender",
+    "attempts": "0",
+    "next_retry_at": null,
+    "last_error": null,
+    "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+   },
+   {
+    "id": "4225",
+    "event_id": "order_shipped_39023",
+    "event_name": "order_shipped",
+    "email": "smilteslus@gmail.com",
+    "payload_json": "{\"order_id\":39023,\"order_number\":\"1841\",\"carrier\":\"venipak\",\"tracking_number\":\"V07267E1000852\",\"tracking_url\":\"https://venipak.lt/tracking/track/V07267E1000852\",\"delivery_type\":\"parcel_terminal\",\"estimated_delivery\":null}",
+    "emitted_at": "2026-11-20 09:57:18",
+    "status": "sent",
+    "adapter_name": "sender",
+    "attempts": "0",
+    "next_retry_at": null,
+    "last_error": null,
+    "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+   },
+   {
+    "id": "4224",
+    "event_id": "order_shipped_38999",
+    "event_name": "order_shipped",
+    "email": "k.grinevic@gmail.com",
+    "payload_json": "{\"order_id\":38999,\"order_number\":\"1827\",\"carrier\":\"venipak\",\"tracking_number\":\"V07267E1000851\",\"tracking_url\":\"https://venipak.lt/tracking/track/V07267E1000851\",\"delivery_type\":\"courier\",\"estimated_delivery\":null}",
+    "emitted_at": "2026-11-20 09:57:18",
+    "status": "sent",
+    "adapter_name": "sender",
+    "attempts": "0",
+    "next_retry_at": null,
+    "last_error": null,
+    "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+   }
+  ],
+  "kolonos": [
+   "id",
+   "event_id",
+   "event_name",
+   "email",
+   "payload_json",
+   "emitted_at",
+   "status",
+   "adapter_name",
+   "attempts",
+   "next_retry_at",
+   "last_error",
+   "esp_response"
+  ]
+ }
+}
