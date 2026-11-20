@@ -1,0 +1,319 @@
+{
+ "v": "dep-180336",
+ "kurimas": 200,
+ "sid": 8698,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "s1912e",
+  "src": {
+   "petshop-login-sargas.php": "<?php\n/**\n * Plugin Name: Petshop Prisijungimo sargas\n * Description: Riboja nesėkmingus prisijungimo bandymus (NF9). 5 bandymai per 15 min. iš to paties adreso — tada 15 min. pauzė. Magic link ir REST NELIEČIAMI.\n * Version: 1.0.1\n *\n * TŽ §5 NF9: „Login attempt limits (5 bandymai / 15 min lockout)\".\n * Išmatuota 2026-08-19 (H085): saugumo pluginų nėra nė vieno, wp-login.php\n * priima neribotai.\n *\n * TRYS SAUGIKLIAI — sąmoningai, nes tai autentifikacijos sluoksnis:\n *\n *  1. IŠJUNGIMO VĖLIAVA  wp-content/uploads/ps-login-sargas.off\n *     Failas yra → sargas nedirba. Sukuriama per DirectAdmin, be WP admin.\n *     Jei kada nors užsirakintum — vienas failas ir viskas atsidaro.\n *\n *  2. NIEKADA NEBLOKUOJAMA:\n *     - REST API (tiltas, programinės sąsajos)\n *     - magic link (M8 P0 kelias — žmogus be slaptažodžio)\n *     - jau prisijungę vartotojai\n *     Sargas dirba TIK ten, kur siunčiamas slaptažodis: wp-login.php ir xmlrpc.php.\n *\n *  3. NIEKADA NEBLOKUOJAMA VISAM LAIKUI. Ilgiausia pauzė — 15 min.\n *     Jokių „juodųjų sąrašų\", jokio rankinio atrakinimo.\n *\n * ADRESAS imamas TIK iš REMOTE_ADDR. `X-Forwarded-For` sąmoningai\n * neskaitomas: jį galima suklastoti, todėl juo pasitikint sargą apeitų\n * tas, nuo ko jis saugo.\n */\n\nif (!defined('ABSPATH')) exit;\n\nfinal class Petshop_Prisijungimo_Sargas {\n\n\tconst VERSIJA   = '1.0.0';\n\tconst RIBA      = 5;                 // bandymų\n\tconst LANGAS    = 900;               // 15 min. — per kiek skaičiuojama\n\tconst PAUZE     = 900;               // 15 min. — kiek laukiama\n\tconst VELIAVA   = 'ps-login-sargas.off';\n\tconst PREFIKSAS = 'ps_lgn_';\n\n\tpublic static function pradzia() {\n\t\tadd_filter('authenticate',  [__CLASS__, 'tikrinti'], 30, 3);\n\t\tadd_action('wp_login_failed', [__CLASS__, 'nesekme'], 10, 1);\n\t\tadd_action('wp_login',        [__CLASS__, 'sekme'], 10, 2);\n\t\tadd_filter('login_message',   [__CLASS__, 'pranesimas']);\n\t}\n\n\t/** Ar sargas apskritai dirba. */\n\tprivate static function veikia() {\n\t\t$u = wp_upload_dir();\n\t\treturn !file_exists(trailingslashit($u['basedir']) . self::VELIAVA);\n\t}\n\n\t/** Ar ŠI užklausa yra ta, kurią saugom. */\n\tprivate static function saugomas_kelias() {\n\t\tif (defined('REST_REQUEST') && REST_REQUEST) return false;\n\t\tif (defined('WP_CLI') && WP_CLI)             return false;\n\t\tif (defined('DOING_CRON') && DOING_CRON)     return false;\n\t\tif (is_user_logged_in())                      return false;\n\n\t\t$kelias = isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '';\n\t\tif (strpos($kelias, '/wp-json/') !== false)   return false;\n\n\t\t$login = (strpos($kelias, 'wp-login.php') !== false);\n\t\t$xml   = (strpos($kelias, 'xmlrpc.php')   !== false);\n\t\treturn ($login || $xml);\n\t}\n\n\tprivate static function adresas() {\n\t\t$ip = isset($_SERVER['REMOTE_ADDR']) ? (string) $_SERVER['REMOTE_ADDR'] : '';\n\t\treturn $ip !== '' ? $ip : '0.0.0.0';\n\t}\n\n\tprivate static function raktas($ip = null) {\n\t\treturn self::PREFIKSAS . md5(($ip === null ? self::adresas() : $ip));\n\t}\n\n\t/** Dabartinė būklė: kiek bandymų ir ar užrakinta. */\n\tpublic static function bukle($ip = null) {\n\t\t$b = get_transient(self::raktas($ip));\n\t\tif (!is_array($b)) $b = ['kiek' => 0, 'iki' => 0];\n\t\treturn $b;\n\t}\n\n\t/** Blokavimas PRIEŠ tikrinant slaptažodį. */\n\tpublic static function tikrinti($vartotojas, $login, $slaptazodis) {\n\n\t\tif (!self::veikia())          return $vartotojas;\n\t\tif ($slaptazodis === '')      return $vartotojas;   // magic link, tuščia forma\n\t\tif (!self::saugomas_kelias()) return $vartotojas;\n\n\t\t$b = self::bukle();\n\t\tif (!empty($b['iki']) && $b['iki'] > time()) {\n\t\t\t$liko = (int) ceil(($b['iki'] - time()) / 60);\n\t\t\treturn new WP_Error(\n\t\t\t\t'ps_per_daug_bandymu',\n\t\t\t\tsprintf(\n\t\t\t\t\t/* translators: %d — minučių */\n\t\t\t\t\t__('Per daug nesėkmingų bandymų. Pabandykite po %d min. Slaptažodį galite atkurti el. paštu.', 'petshop'),\n\t\t\t\t\tmax(1, $liko)\n\t\t\t\t)\n\t\t\t);\n\t\t}\n\t\treturn $vartotojas;\n\t}\n\n\tpublic static function nesekme($login) {\n\n\t\tif (!self::veikia())          return;\n\t\tif (!self::saugomas_kelias()) return;\n\n\t\t$b = self::bukle();\n\t\tif (!empty($b['iki']) && $b['iki'] > time()) return;   // jau užrakinta\n\n\t\t$b['kiek'] = (int) $b['kiek'] + 1;\n\n\t\tif ($b['kiek'] >= self::RIBA) {\n\t\t\t$b['iki']  = time() + self::PAUZE;\n\t\t\t$b['kiek'] = 0;\n\t\t\tself::zurnalas('uzrakinta', $login);\n\t\t}\n\n\t\tset_transient(self::raktas(), $b, max(self::LANGAS, self::PAUZE));\n\t}\n\n\t/** Pavykus — skaitiklis nunulinamas. */\n\tpublic static function sekme($login, $vartotojas = null) {\n\t\tdelete_transient(self::raktas());\n\t}\n\n\tpublic static function pranesimas($zinute) {\n\t\tif (!self::veikia()) return $zinute;\n\t\t$b = self::bukle();\n\t\tif (empty($b['iki']) || $b['iki'] <= time()) return $zinute;\n\t\t$liko = (int) ceil(($b['iki'] - time()) / 60);\n\t\treturn $zinute . '<p class=\"message\">' . esc_html(sprintf(\n\t\t\t'Prisijungimas laikinai pristabdytas. Liko apie %d min.', max(1, $liko)\n\t\t)) . '</p>';\n\t}\n\n\t/**\n\t * Įrašas į petshop-sargas žurnalą (ps_sargas_klaidos), jei jis yra; kitaip tyliai praleidžiama.\n\t * S1741 (2026-09-30): stulpeliai pagal lentelę (laikas, lygis, parasas, zinute, url, kiek). Anksčiau rašė\n\t * ivyko/tipas — INSERT krisdavo („Unknown column\"), užrakinimai niekur nebuvo fiksuojami.\n\t * Tas pats įvykis + adresas per 24 val. → kiek+1 (kaip petshop-sargas). lygis = 'login'.\n\t */\n\tprivate static function zurnalas($ivykis, $login) {\n\t\tglobal $wpdb;\n\t\t$l = $wpdb->prefix . 'ps_sargas_klaidos';\n\t\tif ($wpdb->get_var(\"SHOW TABLES LIKE '{$l}'\") !== $l) return;\n\t\t$adr     = self::adresas();\n\t\t$zinute  = sprintf('%s: %s (bandytas vardas: %s)', $ivykis, $adr, substr((string) $login, 0, 60));\n\t\t$parasas = md5('login|' . $ivykis . '|' . $adr);\n\t\t$yra = $wpdb->get_var($wpdb->prepare(\n\t\t\t\"SELECT id FROM `{$l}` WHERE parasas=%s AND laikas > %s LIMIT 1\",\n\t\t\t$parasas, wp_date('Y-m-d H:i:s', time() - DAY_IN_SECONDS)\n\t\t));\n\t\tif ($yra) {\n\t\t\t$wpdb->query($wpdb->prepare(\"UPDATE `{$l}` SET kiek=kiek+1, laikas=%s, zinute=%s WHERE id=%d\", current_time('mysql'), $zinute, (int) $yra));\n\t\t\treturn;\n\t\t}\n\t\t$wpdb->insert($l, [\n\t\t\t'laikas'  => current_time('mysql'),\n\t\t\t'lygis'   => 'login',\n\t\t\t'parasas' => $parasas,\n\t\t\t'zinute'  => $zinute,\n\t\t\t'url'     => isset($_SERVER['REQUEST_URI']) ? substr((string) $_SERVER['REQUEST_URI'], 0, 255) : '',\n\t\t\t'kiek'    => 1,\n\t\t]);\n\t}\n}\n\nPetshop_Prisijungimo_Sargas::pradzia();\n",
+   "petshop-botu-sargas.php": "<?php\n/**\n * Plugin Name: Petshop Botų sargas v1.2 (add-to-cart ir filtrų GET be JS slapuko; nofollow; užtvaros suvestinė)\n * Description: S1719 (2026-09-25). Access log 09-24: 9 725 `?add-to-cart=` GET/parą iš šimtų Azijos debesų IP (vienas UA) ir 56 081 filtrų (`yith_wcan=`/`filter_`) užklausų/parą — botai, apsimetantys Chrome. Naršyklė vykdo JS ir gauna slapuką `ps_js=1`; užklausa be slapuko: add-to-cart GET → prekė nededama, 302 į prekę (be sesijos, be ps_carts, be GA4); filtrų GET → 302 į URL be filtrų parametrų, X-Robots-Tag noindex. Neliečia: POST, prisijungusių, `/kasa/`, `wc-ajax`, `wp-json`, `wp-admin`, `ps_*` bridge raktų, `ps_pakartoti`/`ps_atkurti`. Google/Bing/GPTBot/ClaudeBot šių URL nespaudžia (robots.txt), tad nepaveikti. Žurnalas: ps-archyvas/botu-sargas/YYYY-MM-DD.log (IP, UA, kelias), valomas po 14 d. Išjungti: opcija ps_botu_sargas_isjungtas=1.\n * Version: 1.2\n * S1721 (2026-09-26): access log 09-26 — botai seka 302, o tikslas be pasvirojo brūkšnio davė dar 301 (WP kanoninis) → 12 046 301/4 val.; v1.1 filtrų 302 tiesiai į kanoninį URL (su „/\", be /page/1/), shortlink <link rel=shortlink> ir Link antraštė nuimtos (1 086 /?p=N 301/4 val. iš botų, sekančių shortlink).\n * S1724 (2026-09-27): (a) filtrų nuorodoms (`filter_`/`yith_wcan=`) kataloguose/paieškoje pridedamas `rel=\"nofollow\"` (ob buferis template_redirect, href nekeičiamas — YITH AJAX veikia); (b) `uztvara_suvestine()` Ryto sargui: vakarykštis Apache access log archyvas (logs/*.tar.gz, 00:11) → 403 (`.htaccess` PS Botu uztvara S1723), 500, viso; rezultatas kešuojamas opcijoje pagal archyvo mtime.\n */\nif ( ! defined( 'ABSPATH' ) ) exit;\n\nclass Petshop_Botu_Sargas {\n    const SLAPUKAS = 'ps_js';\n    const LOG_DIR  = '/home/gyvunai2/domains/petshop.lt/ps-archyvas/botu-sargas';\n\n    public static function init() {\n        add_action( 'wp_head', array( __CLASS__, 'js' ), 0 );\n        add_action( 'wp_loaded', array( __CLASS__, 'sargas' ), 1 ); // prieš WC_Form_Handler::add_to_cart_action (wp_loaded 20)\n        add_action( 'ps_botu_sargas_valymas', array( __CLASS__, 'valymas' ) );\n        add_action( 'template_redirect', array( __CLASS__, 'nofollow_buferis' ), 999 );\n        remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );\n        remove_action( 'template_redirect', 'wp_shortlink_header', 11 );\n        if ( ! wp_next_scheduled( 'ps_botu_sargas_valymas' ) ) wp_schedule_event( strtotime( 'tomorrow 04:45' ), 'daily', 'ps_botu_sargas_valymas' );\n    }\n\n    public static function js() {\n        // Techninis slapukas (ne sekimo): žymi, kad užklausas siunčia naršyklė, vykdanti JS. 1 metai, Lax, Secure.\n        echo \"<script>try{if(document.cookie.indexOf('\" . self::SLAPUKAS . \"=')<0){document.cookie='\" . self::SLAPUKAS . \"=1;path=/;max-age=31536000;SameSite=Lax\" . ( is_ssl() ? ';Secure' : '' ) . \"';}}catch(e){}</script>\\n\";\n    }\n\n    private static function praleisti() {\n        if ( get_option( 'ps_botu_sargas_isjungtas' ) ) return true;\n        if ( ( $_SERVER['REQUEST_METHOD'] ?? 'GET' ) !== 'GET' ) return true;\n        if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) return true;\n        if ( ! empty( $_COOKIE[ self::SLAPUKAS ] ) ) return true;\n        if ( is_user_logged_in() ) return true;\n        $uri = (string) ( $_SERVER['REQUEST_URI'] ?? '' );\n        if ( preg_match( '#^/(wp-json|wp-admin|wp-login\\.php|kasa/?(\\?|$)|krepselis|paskyra|feed/)#', $uri ) ) return true;\n        if ( isset( $_GET['wc-ajax'] ) || isset( $_GET['rest_route'] ) || isset( $_GET['ps_pakartoti'] ) || isset( $_GET['ps_atkurti'] ) ) return true;\n        foreach ( array_keys( $_GET ) as $k ) { if ( strpos( (string) $k, 'ps_' ) === 0 ) return true; } // bridge/vidiniai raktai\n        return false;\n    }\n\n    public static function sargas() {\n        if ( self::praleisti() ) return;\n        // 1) add-to-cart GET be slapuko\n        if ( isset( $_GET['add-to-cart'] ) ) {\n            $pid = absint( $_GET['add-to-cart'] );\n            unset( $_GET['add-to-cart'], $_REQUEST['add-to-cart'], $_GET['quantity'], $_REQUEST['quantity'] );\n            $to = $pid ? get_permalink( $pid ) : '';\n            if ( ! $to ) $to = home_url( '/' );\n            self::log( 'atc', $pid );\n            nocache_headers();\n            header( 'X-Robots-Tag: noindex, nofollow', true );\n            wp_redirect( $to, 302, 'Petshop-Botu-Sargas' );\n            exit;\n        }\n        // 2) filtrų GET be slapuko\n        $filtrai = false;\n        foreach ( array_keys( $_GET ) as $k ) {\n            $k = (string) $k;\n            if ( $k === 'yith_wcan' || strpos( $k, 'filter_' ) === 0 || strpos( $k, 'query_type_' ) === 0 ) { $filtrai = true; break; }\n        }\n        if ( $filtrai ) {\n            $uri  = (string) ( $_SERVER['REQUEST_URI'] ?? '/' );\n            $path = strtok( $uri, '?' );\n            $path = preg_replace( '#/page/1(/|$)#', '/', $path );       // /page/1/ → WP vis tiek 301'ina į be page\n            $path = user_trailingslashit( rtrim( $path, '/' ) );        // be „/\" WP 301'ina į su „/\" — iš karto kanoninis\n            if ( $path === '' ) $path = '/';\n            $lik  = array();\n            foreach ( $_GET as $k => $v ) { // paliekam tik nekenksmingus (paged, s, orderby)\n                $k = (string) $k;\n                if ( in_array( $k, array( 'paged', 's', 'orderby', 'post_type' ), true ) ) $lik[ $k ] = is_scalar( $v ) ? (string) $v : '';\n            }\n            $to = home_url( $path ) . ( $lik ? '?' . http_build_query( $lik ) : '' );\n            self::log( 'filtrai', $uri );\n            nocache_headers();\n            header( 'X-Robots-Tag: noindex, nofollow', true );\n            wp_redirect( $to, 302, 'Petshop-Botu-Sargas' );\n            exit;\n        }\n    }\n\n    private static function log( $tipas, $kas ) {\n        try {\n            if ( ! is_dir( self::LOG_DIR ) ) @mkdir( self::LOG_DIR, 0700, true );\n            $ip = (string) ( $_SERVER['REMOTE_ADDR'] ?? '-' );\n            $ua = substr( preg_replace( '/[\\r\\n\\t]/', ' ', (string) ( $_SERVER['HTTP_USER_AGENT'] ?? '-' ) ), 0, 120 );\n            $ln = gmdate( 'H:i:s' ) . \"\\t$tipas\\t$ip\\t\" . substr( (string) $kas, 0, 160 ) . \"\\t$ua\\n\";\n            @file_put_contents( self::LOG_DIR . '/' . gmdate( 'Y-m-d' ) . '.log', $ln, FILE_APPEND | LOCK_EX );\n        } catch ( \\Throwable $e ) {}\n    }\n\n    public static function valymas() {\n        foreach ( glob( self::LOG_DIR . '/*.log' ) ?: array() as $f ) { if ( filemtime( $f ) < time() - 14 * 86400 ) @unlink( $f ); }\n    }\n\n    /** S1724: filtrų <a> → rel=\"nofollow\" (tik kataloguose/paieškoje, tik ne-admin GET). */\n    public static function nofollow_buferis() {\n        if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) return;\n        if ( get_option( 'ps_botu_sargas_isjungtas' ) ) return;\n        if ( ! function_exists( 'is_product_taxonomy' ) ) return;\n        if ( ! ( is_product_taxonomy() || is_shop() || is_search() || is_post_type_archive( 'product' ) ) ) return;\n        ob_start( array( __CLASS__, 'nofollow_html' ) );\n    }\n    public static function nofollow_html( $html ) {\n        if ( ! is_string( $html ) || strpos( $html, 'filter_' ) === false && strpos( $html, 'yith_wcan=' ) === false ) return $html;\n        $out = preg_replace_callback( '#<a\\b([^>]*?)>#i', function ( $m ) {\n            $a = $m[1];\n            if ( stripos( $a, 'rel=' ) !== false ) return $m[0];\n            if ( ! preg_match( '#href=\"[^\"]*(?:filter_|yith_wcan=)[^\"]*\"#i', $a ) ) return $m[0];\n            return '<a' . $a . ' rel=\"nofollow\">';\n        }, $html );\n        return is_string( $out ) ? $out : $html;\n    }\n\n    /** S1724: Ryto sargui — vakarykštis access log archyvas (naujausias logs/*.tar.gz* su mtime 00:00–01:00). Grąžina [lygis, tekstas]. */\n    public static function uztvara_suvestine() {\n        $dom = dirname( ABSPATH ); $f = null; $fm = 0;\n        foreach ( glob( $dom . '/logs/*.tar.gz*' ) ?: array() as $fx ) { $m = filemtime( $fx ); if ( (int) wp_date( 'G', $m ) <= 1 && $m > $fm ) { $fm = $m; $f = $fx; } }\n        if ( ! $f ) return array( 'pilka', 'Botų užtvara: access log archyvo nėra' );\n        $k = 'ps_uztvara_suvestine'; $c = get_option( $k ); if ( is_array( $c ) && ( $c['mtime'] ?? 0 ) === $fm ) return $c['rez'];\n        $t0 = microtime( true ); $h = @gzopen( $f, 'rb' ); if ( ! $h ) return array( 'pilka', 'Botų užtvara: archyvo neatidaro' );\n        gzread( $h, 512 ); $n = 0; $s403 = 0; $s403f = 0; $s500 = 0; $s302 = 0; $ip = array(); $nutr = false;\n        while ( ( $ln = gzgets( $h, 8192 ) ) !== false ) {\n            if ( ! preg_match( '/^(\\S+) \\S+ \\S+ \\[[^\\]]*\\] \"(\\S+) (\\S+)[^\"]*\" (\\d{3}) /', $ln, $m ) ) continue;\n            $n++; $st = $m[4];\n            if ( $st === '403' ) { $s403++; if ( strpos( $m[3], 'filter_' ) !== false || strpos( $m[3], 'yith_wcan' ) !== false || strpos( $m[3], 'add-to-cart' ) !== false ) { $s403f++; $ip[ $m[1] ] = 1; } }\n            elseif ( $st === '500' ) $s500++;\n            elseif ( $st === '302' ) $s302++;\n            if ( ( $n & 4095 ) === 0 && microtime( true ) - $t0 > 60 ) { $nutr = true; break; }\n        }\n        gzclose( $h );\n        $lyg = $s500 >= 50 ? 'raudona' : ( ( $s500 >= 10 || $s403f >= 150000 ) ? 'geltona' : 'zalia' );\n        $tx = sprintf( 'Botų užtvara (log %s): 403 %s (filtrai/atc %s, IP %s), 500 %s, 302 %s, viso %s užkl.%s', wp_date( 'm-d', $fm - 6 * 3600 ), number_format( $s403, 0, ',', ' ' ), number_format( $s403f, 0, ',', ' ' ), number_format( count( $ip ), 0, ',', ' ' ), $s500, number_format( $s302, 0, ',', ' ' ), number_format( $n, 0, ',', ' ' ), $nutr ? ' (nutraukta po 60 s)' : '' );\n        $rez = array( $lyg, $tx ); update_option( $k, array( 'mtime' => $fm, 'rez' => $rez, 'kada' => current_time( 'mysql' ) ), false );\n        return $rez;\n    }\n\n    /** Suvestinė žurnalui/sargams: [diena => [atc => n, filtrai => n, ip_unik => n]] */\n    public static function suvestine( $dienos = 3 ) {\n        $out = array();\n        for ( $i = 0; $i < $dienos; $i++ ) {\n            $d = gmdate( 'Y-m-d', time() - $i * 86400 ); $f = self::LOG_DIR . \"/$d.log\";\n            if ( ! file_exists( $f ) ) continue;\n            $atc = 0; $fl = 0; $ips = array();\n            $h = fopen( $f, 'r' ); while ( ( $ln = fgets( $h ) ) !== false ) { $p = explode( \"\\t\", $ln ); if ( count( $p ) < 3 ) continue; if ( $p[1] === 'atc' ) $atc++; else $fl++; $ips[ $p[2] ] = 1; } fclose( $h );\n            $out[ $d ] = array( 'atc' => $atc, 'filtrai' => $fl, 'ip_unik' => count( $ips ) );\n        }\n        return $out;\n    }\n}\nPetshop_Botu_Sargas::init();\n",
+   "petshop-cf-ip.php": "<?php\n/**\n * Plugin Name: Petshop CF IP v1.0 (tikras lankytojo IP už Cloudflare)\n * Version: 1.0\n *\n * S1724 (2026-09-27). Po Cloudflare proxy serveris (Apache/PHP) mato Cloudflare IP kaip\n * REMOTE_ADDR. Šis mu-plugin'as ANKSTI (mu-plugins krauna prieš visus plugin'us) perrašo\n * $_SERVER['REMOTE_ADDR'] iš antraštės CF-Connecting-IP, BET TIK kai REMOTE_ADDR priklauso\n * oficialiems Cloudflare diapazonams (kitaip antraštę galėtų suklastoti bet kas).\n * Naudotojai: botų sargas (IP žurnalas), WC užsakymų IP, ps_web_ivykiai, login sargas,\n * Complianz, WP Mail SMTP antraštės ir kt. Apache access log'ą tai NEKEIČIA (mod_remoteip\n * — serverio lygis, shared hostinge neprieinamas; log'e liks CF IP, tikras IP — antraštėje).\n *\n * Išjungti: wp-config.php `define('PS_CF_IP_ISJUNGTA', true);` (opcijų DB dar nėra šiame etape).\n * Diapazonai: https://www.cloudflare.com/ips/ (2026-09 būklė). Atnaujinti, jei Cloudflare praneš.\n */\n\ndefined( 'ABSPATH' ) || exit;\n\nif ( ! function_exists( 'ps_cf_ip_apply' ) ) {\n\tfunction ps_cf_ip_cidr_match( $ip, $cidr ) {\n\t\tlist( $sub, $bits ) = explode( '/', $cidr, 2 );\n\t\t$bits = (int) $bits;\n\t\t$ip_b  = @inet_pton( $ip );\n\t\t$sub_b = @inet_pton( $sub );\n\t\tif ( $ip_b === false || $sub_b === false || strlen( $ip_b ) !== strlen( $sub_b ) ) { return false; }\n\t\t$bytes = intdiv( $bits, 8 ); $rest = $bits % 8;\n\t\tif ( $bytes > 0 && substr( $ip_b, 0, $bytes ) !== substr( $sub_b, 0, $bytes ) ) { return false; }\n\t\tif ( $rest === 0 ) { return true; }\n\t\t$mask = ( 0xFF << ( 8 - $rest ) ) & 0xFF;\n\t\treturn ( ord( $ip_b[ $bytes ] ) & $mask ) === ( ord( $sub_b[ $bytes ] ) & $mask );\n\t}\n\n\tfunction ps_cf_ip_apply() {\n\t\tif ( defined( 'PS_CF_IP_ISJUNGTA' ) && PS_CF_IP_ISJUNGTA ) { return; }\n\t\tif ( empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) || empty( $_SERVER['REMOTE_ADDR'] ) ) { return; }\n\t\t$cf = trim( (string) $_SERVER['HTTP_CF_CONNECTING_IP'] );\n\t\tif ( filter_var( $cf, FILTER_VALIDATE_IP ) === false ) { return; }\n\t\t$remote = (string) $_SERVER['REMOTE_ADDR'];\n\t\t$ranges = array(\n\t\t\t'173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22', '141.101.64.0/18',\n\t\t\t'108.162.192.0/18', '190.93.240.0/20', '188.114.96.0/20', '197.234.240.0/22', '198.41.128.0/17',\n\t\t\t'162.158.0.0/15', '104.16.0.0/13', '104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22',\n\t\t\t'2400:cb00::/32', '2606:4700::/32', '2803:f800::/32', '2405:b500::/32', '2405:8100::/32',\n\t\t\t'2a06:98c0::/29', '2c0f:f248::/32',\n\t\t);\n\t\tforeach ( $ranges as $r ) {\n\t\t\tif ( ps_cf_ip_cidr_match( $remote, $r ) ) {\n\t\t\t\t$_SERVER['PS_CF_EDGE_IP'] = $remote;\n\t\t\t\t$_SERVER['REMOTE_ADDR']   = $cf;\n\t\t\t\treturn;\n\t\t\t}\n\t\t}\n\t}\n\tps_cf_ip_apply();\n}\n"
+  },
+  "opt": [
+   {
+    "option_name": "_site_transient_timeout_woocommerce_blocks_patterns",
+    "l": "10",
+    "v": "1796870191"
+   },
+   {
+    "option_name": "_site_transient_woocommerce_blocks_patterns",
+    "l": "16278",
+    "v": "a:2:{s:7:\"version\";s:6:\"11.0.1\";s:8:\"patterns\";a:41:{i:0;a:11:{s:5:\"title\";s:6:\"Banner\";s:4:\"slug\";s:25:\"woocommerce-blocks/banner\";s:11:\"description\";s:0:\"\";s:13:\"viewportWidth\";s:0:\"\";s:10:\"categories\";s:29:\"WooCommerce, featured-selling\";s:8:\"keywords\";s:0:\"\";s:10:\"blockTypes\";s:0:\"\";s:8:\"inserter\";s:0:\"\";s:11:\"featureFlag\";s:0:\"\";s:13:\"templateTypes\";s:0:\"\";s:6:\"source\";s:10:\"banner.php\";}i:1;"
+   },
+   {
+    "option_name": "_transient_ps_dk_024d33bb2dcda8c41098f5ca0f91dadc",
+    "l": "5557",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:17529;s:1:\"u\";s:5:\"100 g\";s:3:\"url\";s:111:\"https://petshop.lt/product/miamor-feine-filets-konservai-katems-vistienos-ir-tuno-gabaleliai-drebuciuose-100-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>2,05&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,05 €/vnt.\";s:4:\"best"
+   },
+   {
+    "option_name": "_transient_ps_dk_05b5e65574220c67002ca0ca6207dda5",
+    "l": "3234",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38079;s:1:\"u\";s:11:\"12 × 140 g\";s:3:\"url\";s:119:\"https://petshop.lt/product/12-vnt-farmina-nd-ocean-konservai-suaugusiems-mazu-veisliu-sunims-su-menke-ir-moliugu-140-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>30,19&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,52 €/"
+   },
+   {
+    "option_name": "_transient_ps_dk_06cc68f778e33519792e9f73691b5b2e",
+    "l": "3213",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38112;s:1:\"u\";s:11:\"12 × 285 g\";s:3:\"url\";s:105:\"https://petshop.lt/product/12-vnt-farmina-nd-ocean-konservai-suaugusiems-sunims-su-lasisa-ir-menke-285-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>42,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"3,58 €/vnt.\";s:4:\"bes"
+   },
+   {
+    "option_name": "_transient_ps_dk_10ed63184b95393253aab4024d8fe8a0",
+    "l": "3057",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38055;s:1:\"u\";s:10:\"18 × 70 g\";s:3:\"url\";s:95:\"https://petshop.lt/product/18-vnt-farmina-nd-natural-konservai-katems-su-tunu-ir-vistiena-70-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>29,49&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,64 €/vnt.\";s:4:\"best\";i:0;s:3:\""
+   },
+   {
+    "option_name": "_transient_ps_dk_11b336d5b67931863d5a6f363743370d",
+    "l": "2758",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37788;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:95:\"https://petshop.lt/product/24-vnt-monge-fresh-pastetas-sunims-su-kalakutienos-gabaleliais-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>23,09&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"0,96 €/vnt.\";s:4:\"best\";i:0;s:3:"
+   },
+   {
+    "option_name": "_transient_ps_dk_168fe82e959d47d3c362bd7eba9e2e1d",
+    "l": "3213",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:37992;s:1:\"u\";s:11:\"12 × 285 g\";s:3:\"url\";s:108:\"https://petshop.lt/product/12-vnt-farmina-nd-ocean-konservai-suaugusiems-sunims-su-menke-ir-kalmarais-285-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>42,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"3,58 €/vnt.\";s:4:\""
+   },
+   {
+    "option_name": "_transient_ps_dk_172ad5068c0e981c3c111d6fde589376",
+    "l": "3177",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38088;s:1:\"u\";s:11:\"12 × 140 g\";s:3:\"url\";s:124:\"https://petshop.lt/product/12-vnt-farmina-nd-prime-konservai-suaugusiems-mazu-veisliu-sunims-su-vistiena-ir-granatais-140-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>30,19&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,"
+   },
+   {
+    "option_name": "_transient_ps_dk_17fa1dda7d3de5d40d7ae9935242dbb5",
+    "l": "2684",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37796;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:105:\"https://petshop.lt/product/24-vnt-monge-fresh-pastetas-sunims-su-vistienos-gabaleliais-ir-darzovemis100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>23,09&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"0,96 €/vnt.\";s:4:\"bes"
+   },
+   {
+    "option_name": "_transient_ps_dk_19a510b8c08eceef5226b40b420718c0",
+    "l": "4849",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:17544;s:1:\"u\";s:5:\"100 g\";s:3:\"url\";s:102:\"https://petshop.lt/product/miamor-feine-filets-konservai-katems-tunas-su-darzovemis-drebuciuose-100-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>2,05&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,05 €/vnt.\";s:4:\"best\";i:0;s:3"
+   },
+   {
+    "option_name": "_transient_ps_dk_1cc4a33be1ecbabc5936831e3724a3b1",
+    "l": "2875",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:17057;s:1:\"u\";s:4:\"95 g\";s:3:\"url\";s:93:\"https://petshop.lt/product/ontario-super-premium-konservai-katems-su-vistiena-ir-lasisa-95-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>1,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,99 €/vnt.\";s:4:\"best\";i:0;s:3:\"img\";s:13"
+   },
+   {
+    "option_name": "_transient_ps_dk_1da06c5d3548e03d13dfc329be6f6474",
+    "l": "2134",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37585;s:1:\"u\";s:11:\"24 × 415 g\";s:3:\"url\";s:86:\"https://petshop.lt/product/24-vnt-simba-konservuotas-pasaras-katems-su-triusiena-415g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>25,39&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,06 €/vnt.\";s:4:\"best\";i:0;s:3:\"img\";s:1"
+   },
+   {
+    "option_name": "_transient_ps_dk_20b36af9b38737c2f9c797263d7f6b13",
+    "l": "2509",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:15740;s:1:\"u\";s:1:\"S\";s:3:\"url\";s:62:\"https://petshop.lt/product/zolux-anah-sepetys-sunims-minkstas/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>7,32&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:0:\"\";s:4:\"best\";i:0;s:3:\"img\";s:97:\"https://petshop.lt/wp-content/uploads/2026/0"
+   },
+   {
+    "option_name": "_transient_ps_dk_21b0ba100633159c7433b876f3c3784c",
+    "l": "6827",
+    "v": "a:5:{i:0;a:14:{s:2:\"id\";i:17312;s:1:\"u\";s:1:\"S\";s:3:\"url\";s:82:\"https://petshop.lt/product/naturalus-skanestai-sunims-elnio-rago-kramtukas-kietas/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>5,35&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:0:\"\";s:4:\"best\";i:0;s:3:\"img\";s:117:\"https://petshop.lt/wp-c"
+   },
+   {
+    "option_name": "_transient_ps_dk_2767980d38f0973248376e9527aeb560",
+    "l": "2138",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37587;s:1:\"u\";s:11:\"24 × 415 g\";s:3:\"url\";s:85:\"https://petshop.lt/product/24-vnt-simba-konservuotas-pasaras-katems-su-vistiena-415g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>25,39&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,06 €/vnt.\";s:4:\"best\";i:0;s:3:\"img\";s:11"
+   },
+   {
+    "option_name": "_transient_ps_dk_2769f3a0540467df3168e4d629a777c6",
+    "l": "2667",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37825;s:1:\"u\";s:11:\"9 × 1250 g\";s:3:\"url\";s:120:\"https://petshop.lt/product/9-vnt-gemon-medium-adult-konservuotas-pasaras-su-vistienos-ir-kalakutienos-gabaliukais-1250g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>28,69&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"3,19 €"
+   },
+   {
+    "option_name": "_transient_ps_dk_2a72556fec77f3dc59196a5b0f54fadd",
+    "l": "3174",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37686;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:97:\"https://petshop.lt/product/24-vnt-monge-bwild-adult-pastetas-katems-su-lasisa-ir-darzovemis-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>25,39&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,06 €/vnt.\";s:4:\"best\";i:0;s:"
+   },
+   {
+    "option_name": "_transient_ps_dk_2d41d2c367d1f01a2ba678a7b70178b4",
+    "l": "3739",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:17517;s:1:\"u\";s:5:\"100 g\";s:3:\"url\";s:90:\"https://petshop.lt/product/miamor-super-premium-konservai-katems-su-tunu-ir-ryziais-100-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>1,79&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,79 €/vnt.\";s:4:\"best\";i:0;s:3:\"img\";s:104:"
+   },
+   {
+    "option_name": "_transient_ps_dk_30df26dc619ea3a2965b933a8c8959c4",
+    "l": "4934",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:16552;s:1:\"u\";s:6:\"1,5 kg\";s:3:\"url\";s:93:\"https://petshop.lt/product/quattro-sb-su-antiena-sausas-jaunu-mazu-veisliu-sunu-pasaras-15kg/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>15,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:12:\"10,00 €/kg\";s:4:\"best\";i:0;s:3:\"img\";s:"
+   },
+   {
+    "option_name": "_transient_ps_dk_313817122643d2f0ea4e5d542fe1b261",
+    "l": "4795",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:16945;s:1:\"u\";s:4:\"90 g\";s:3:\"url\";s:86:\"https://petshop.lt/product/pasta-katems-su-antiena-ontario-duck-fresh-meat-paste-90-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>1,15&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,15 €/vnt.\";s:4:\"best\";i:0;s:3:\"img\";s:121:\"http"
+   },
+   {
+    "option_name": "_transient_ps_dk_322b5054316780fd195d6e632b06ef95",
+    "l": "3346",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37482;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:99:\"https://petshop.lt/product/24-vnt-monge-bwild-adult-pastetas-katems-su-su-menke-ir-darzovemis-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>24,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,04 €/vnt.\";s:4:\"best\";i:0;"
+   },
+   {
+    "option_name": "_transient_ps_dk_32b626bbd4130e8f7dd0ef95866d8be6",
+    "l": "3350",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37488;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:110:\"https://petshop.lt/product/24-vnt-monge-bwild-adult-pastetas-sterilizuotoms-katems-su-tunu-ir-darzovemis-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>24,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,04 €/vnt.\";s:4"
+   },
+   {
+    "option_name": "_transient_ps_dk_32c25bf02e08f250d31b81b4c6c45818",
+    "l": "2402",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:17526;s:1:\"u\";s:5:\"100 g\";s:3:\"url\";s:106:\"https://petshop.lt/product/miamor-feine-filets-konservai-katems-vistienos-ir-tuno-gabaleliai-padaze-100-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>2,05&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,05 €/vnt.\";s:4:\"best\";i:0"
+   },
+   {
+    "option_name": "_transient_ps_dk_33098be2709b87e68341fbf2f70e396a",
+    "l": "7049",
+    "v": "a:5:{i:0;a:14:{s:2:\"id\";i:18584;s:1:\"u\";s:5:\"800 g\";s:3:\"url\";s:111:\"https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-800-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>10,59&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:12:\"13,24 €/kg\";s:4:\"best"
+   },
+   {
+    "option_name": "_transient_ps_dk_3395f7f6a84c483216164a39544cf9a0",
+    "l": "3851",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:16561;s:1:\"u\";s:4:\"7 kg\";s:3:\"url\";s:120:\"https://petshop.lt/product/quattro-sb-7kg-su-balta-zuvimi-ir-kriliu-sausas-seniems-dietinis-mazu-veisliu-sunims-pasaras/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>49,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:11:\"7,00 €/kg\";s:"
+   },
+   {
+    "option_name": "_transient_ps_dk_37da52a47c6e22f33847e749eb1c532f",
+    "l": "3634",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37684;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:114:\"https://petshop.lt/product/24-vnt-monge-bwild-large-breed-keptas-pastetas-katems-su-buivoliena-ir-darzovemis-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>25,39&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,06 €/vnt.\""
+   },
+   {
+    "option_name": "_transient_ps_dk_3c1e694cf56bc3be13f00355770c3e92",
+    "l": "5700",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:16540;s:1:\"u\";s:6:\"1,5 kg\";s:3:\"url\";s:106:\"https://petshop.lt/product/quattro-sb-su-lasisa-ir-kriliu-sausas-suaugusiu-mazu-veisliu-sunu-pasaras-15kg/\";s:3:\"yra\";i:1;s:2:\"ph\";s:515:\"<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi>15,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span></del> <span class"
+   },
+   {
+    "option_name": "_transient_ps_dk_3d089ebe1d41115fdd9231e3fada6d21",
+    "l": "2211",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:35112;s:1:\"u\";s:1:\"S\";s:3:\"url\";s:55:\"https://petshop.lt/product/zolux-anah-sepetys-katems-s/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>7,39&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:0:\"\";s:4:\"best\";i:0;s:3:\"img\";s:98:\"https://petshop.lt/wp-content/uploads/2026/08/zo-zo"
+   },
+   {
+    "option_name": "_transient_ps_dk_3de5b786c564333e426736decea05787",
+    "l": "3466",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37688;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:114:\"https://petshop.lt/product/24-vnt-monge-bwild-adult-pastetas-sterilizuotoms-katems-su-serniena-ir-darzovemis-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>25,39&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,06 €/vnt.\""
+   },
+   {
+    "option_name": "_transient_ps_dk_3f61d13b2800cc6056fba8e52f004fa2",
+    "l": "2621",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:17245;s:1:\"u\";s:5:\"200 g\";s:3:\"url\";s:95:\"https://petshop.lt/product/ontario-monoproteino-konservai-sunims-su-jautiena-ir-morkomis-200-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>1,79&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:11:\"8,95 €/kg\";s:4:\"best\";i:0;s:3:\"img\";s:1"
+   },
+   {
+    "option_name": "_transient_ps_dk_4cd5ce70f585792958668dbaa8ce9517",
+    "l": "5025",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:16537;s:1:\"u\";s:6:\"1,5 kg\";s:3:\"url\";s:96:\"https://petshop.lt/product/quattro-sb-su-eriena-sausas-suaugusiu-mazu-veisliu-sunu-pasaras-15kg/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>14,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:11:\"9,33 €/kg\";s:4:\"best\";i:0;s:3:\"img\";"
+   },
+   {
+    "option_name": "_transient_ps_dk_50545ec9b571977c5c3c02489cfb63a6",
+    "l": "1940",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37792;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:90:\"https://petshop.lt/product/24-vnt-monge-fresh-pastetas-sunims-su-lasisos-gabaleliais-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>23,09&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"0,96 €/vnt.\";s:4:\"best\";i:0;s:3:\"img\""
+   },
+   {
+    "option_name": "_transient_ps_dk_52baff88bff06d1fbf77ffda403ebd8d",
+    "l": "4435",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:17520;s:1:\"u\";s:5:\"100 g\";s:3:\"url\";s:103:\"https://petshop.lt/product/miamor-super-premium-konservai-katems-su-tunu-ir-putpeliu-kiausiniais-100-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>1,79&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,79 €/vnt.\";s:4:\"best\";i:0;s:"
+   },
+   {
+    "option_name": "_transient_ps_dk_550acf845e3634121cd40d9b5735e1af",
+    "l": "3134",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37751;s:1:\"u\";s:11:\"22 × 150 g\";s:3:\"url\";s:88:\"https://petshop.lt/product/22-vnt-special-dog-exc-fresh-konservai-sunims-su-eriena-150g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>31,79&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,45 €/vnt.\";s:4:\"best\";i:0;s:3:\"img\";s"
+   },
+   {
+    "option_name": "_transient_ps_dk_55906ed89d0fe0f49ffa215118ca62d4",
+    "l": "3264",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38085;s:1:\"u\";s:11:\"12 × 140 g\";s:3:\"url\";s:121:\"https://petshop.lt/product/12-vnt-farmina-nd-ocean-konservai-suaugusiems-mazu-veisliu-sunims-su-upetakiu-ir-lasisa-140-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>30,19&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,52 "
+   },
+   {
+    "option_name": "_transient_ps_dk_57e11a99e33d9c8b794b2ed1e419786a",
+    "l": "6",
+    "v": "a:0:{}"
+   },
+   {
+    "option_name": "_transient_ps_dk_585ce5b33ae55e34693e90bc7fa10305",
+    "l": "3189",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38100;s:1:\"u\";s:11:\"12 × 140 g\";s:3:\"url\";s:126:\"https://petshop.lt/product/12-vnt-farmina-nd-pumpkin-konservai-suaugusiems-mazu-veisliu-sunims-su-putpeliena-ir-moliugu-140-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>30,19&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\""
+   },
+   {
+    "option_name": "_transient_ps_dk_59ae955710e73d58e9c86f8c381d870d",
+    "l": "2630",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37594;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:91:\"https://petshop.lt/product/24-vnt-lechat-exc-konservai-suaugusioms-katems-su-jautiena-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>25,39&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,06 €/vnt.\";s:4:\"best\";i:0;s:3:\"img"
+   },
+   {
+    "option_name": "_transient_ps_dk_5cf4ae6b8c7f257f16cce3031d6b50bb",
+    "l": "2410",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37823;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:127:\"https://petshop.lt/product/24-vnt-gemon-all-breeds-adult-konservuotas-pasaras-suaugusiems-sunims-su-zverienos-gabaleliais-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>20,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:"
+   },
+   {
+    "option_name": "_transient_ps_dk_626cea59f4f87e93ad489a4a61c63446",
+    "l": "2688",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37680;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:95:\"https://petshop.lt/product/24-vnt-lechat-exc-konservai-sterilizuotoms-katems-su-triusiena-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>25,39&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,06 €/vnt.\";s:4:\"best\";i:0;s:3:"
+   },
+   {
+    "option_name": "_transient_ps_dk_652ac6fbe06d8f9ebd778561d8990901",
+    "l": "2096",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37747;s:1:\"u\";s:11:\"24 × 415 g\";s:3:\"url\";s:81:\"https://petshop.lt/product/24-vnt-simba-konservuotas-pasaras-katems-su-tunu-415g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>25,39&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,06 €/vnt.\";s:4:\"best\";i:0;s:3:\"img\";s:114:\"h"
+   },
+   {
+    "option_name": "_transient_ps_dk_653738427b5b7ca3e352844191a2d013",
+    "l": "3138",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:12576;s:1:\"u\";s:6:\"1,5 kg\";s:3:\"url\";s:54:\"https://petshop.lt/product/monge-kitten-vistiena-15kg/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>13,49&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:11:\"8,99 €/kg\";s:4:\"best\";i:0;s:3:\"img\";s:100:\"https://petshop.lt/wp-content/uploa"
+   },
+   {
+    "option_name": "_transient_ps_dk_724d3ecffd0f410e8b076f086870f2e4",
+    "l": "3222",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37749;s:1:\"u\";s:11:\"22 × 150 g\";s:3:\"url\";s:93:\"https://petshop.lt/product/22-vnt-special-dog-exc-fresh-konservai-sunims-su-kalakutiena-150g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>31,79&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,45 €/vnt.\";s:4:\"best\";i:0;s:3:\"i"
+   },
+   {
+    "option_name": "_transient_ps_dk_7357667239b2c61b8c70da69c57ac9b2",
+    "l": "3099",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38007;s:1:\"u\";s:11:\"12 × 285 g\";s:3:\"url\";s:113:\"https://petshop.lt/product/12-vnt-farmina-nd-pumpkin-konservai-suaugusiems-sunims-su-putpeliena-ir-moliugu-285-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>42,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"3,58 €/vnt.\";"
+   },
+   {
+    "option_name": "_transient_ps_dk_75b1a4cf17f6451f687ff6175dd00701",
+    "l": "3258",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:37995;s:1:\"u\";s:11:\"12 × 285 g\";s:3:\"url\";s:108:\"https://petshop.lt/product/12-vnt-farmina-nd-ocean-konservai-suaugusiems-sunims-su-upetakiu-ir-lasisa-285-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>42,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"3,58 €/vnt.\";s:4:\""
+   },
+   {
+    "option_name": "_transient_ps_dk_75c26008c2fd0236900be008b1b3ba22",
+    "l": "3180",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38001;s:1:\"u\";s:11:\"12 × 285 g\";s:3:\"url\";s:121:\"https://petshop.lt/product/12-vnt-farmina-nd-pumpkin-konservai-suaugusiems-sunims-su-vistiena-moliugu-ir-granatais-285-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>42,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"3,58 "
+   },
+   {
+    "option_name": "_transient_ps_dk_7715cf7cf5d0ab5304add1e738c80e84",
+    "l": "4334",
+    "v": "a:4:{i:0;a:14:{s:2:\"id\";i:12538;s:1:\"u\";s:6:\"2,5 kg\";s:3:\"url\";s:81:\"https://petshop.lt/product/monge-mini-puppy-sausas-pasaras-eriena-ir-ryziai-25kg/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>19,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:11:\"8,00 €/kg\";s:4:\"best\";i:0;s:3:\"img\";s:124:\"https://"
+   },
+   {
+    "option_name": "_transient_ps_dk_77aafc1824ed445a40dbee4d7f7aaaa1",
+    "l": "3689",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:12583;s:1:\"u\";s:6:\"1,5 kg\";s:3:\"url\";s:63:\"https://petshop.lt/product/monge-sterilised-adult-antiena-15kg/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>14,09&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:11:\"9,39 €/kg\";s:4:\"best\";i:0;s:3:\"img\";s:127:\"https://petshop.lt/wp-cont"
+   },
+   {
+    "option_name": "_transient_ps_dk_78939bee15abc52b718f9053162f70c6",
+    "l": "3135",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38091;s:1:\"u\";s:11:\"12 × 140 g\";s:3:\"url\";s:122:\"https://petshop.lt/product/12-vnt-farmina-nd-prime-konservai-suaugusiems-mazu-veisliu-sunims-su-eriena-ir-melynemis-140-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>32,49&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,71"
+   },
+   {
+    "option_name": "_transient_ps_dk_7bf00b993e429a9f0a83d16638d094ec",
+    "l": "2722",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37786;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:92:\"https://petshop.lt/product/24-vnt-monge-fresh-pastetas-sunims-su-jautienos-gabaleliais-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>23,09&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"0,96 €/vnt.\";s:4:\"best\";i:0;s:3:\"im"
+   },
+   {
+    "option_name": "_transient_ps_dk_8158af0604fb6d49260e200df620dffb",
+    "l": "3225",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:38097;s:1:\"u\";s:11:\"12 × 140 g\";s:3:\"url\";s:132:\"https://petshop.lt/product/12-vnt-farmina-nd-pumpkin-konservai-suaugusiems-mazu-veisliu-sunims-su-eriena-moliugu-ir-melynemis-140-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>32,49&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";"
+   },
+   {
+    "option_name": "_transient_ps_dk_8325db3eabde76874c19a6193ddeabf8",
+    "l": "4441",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:17535;s:1:\"u\";s:5:\"100 g\";s:3:\"url\";s:103:\"https://petshop.lt/product/miamor-feine-filets-konservai-katems-vistiena-paukstienos-drebuciuose-100-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>2,05&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,05 €/vnt.\";s:4:\"best\";i:0;s:"
+   },
+   {
+    "option_name": "_transient_ps_dk_84b79276b72d8d924bcc64b93b1c2223",
+    "l": "2319",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:17176;s:1:\"u\";s:5:\"400 g\";s:3:\"url\";s:117:\"https://petshop.lt/product/ontario-konservai-sunims-su-versiena-ir-ciberzole-400-g-veal-pate-flavoured-with-turmeric/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>2,59&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:11:\"6,48 €/kg\";s:4:\""
+   },
+   {
+    "option_name": "_transient_ps_dk_86a533293fa2477ce67a4015118cee6c",
+    "l": "4816",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:17541;s:1:\"u\";s:5:\"100 g\";s:3:\"url\";s:101:\"https://petshop.lt/product/miamor-feine-filets-konservai-katems-tunas-su-kalmarais-drebuciuose-100-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:149:\"<span class=\"woocommerce-Price-amount amount\"><bdi>2,05&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,05 €/vnt.\";s:4:\"best\";i:0;s:3:"
+   },
+   {
+    "option_name": "_transient_ps_dk_8a93a742491824796883f2324d77b03e",
+    "l": "3372",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37485;s:1:\"u\";s:11:\"24 × 100 g\";s:3:\"url\";s:101:\"https://petshop.lt/product/24-vnt-monge-bwild-adult-pastetas-katems-su-anciuviais-ir-darzovemis-100g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>24,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"1,04 €/vnt.\";s:4:\"best\";i"
+   },
+   {
+    "option_name": "_transient_ps_dk_900a9c4d84e371ebe5173b9ab8f0bebf",
+    "l": "3204",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:37998;s:1:\"u\";s:11:\"12 × 285 g\";s:3:\"url\";s:121:\"https://petshop.lt/product/12-vnt-farmina-nd-pumpkin-konservai-suaugusiems-sunims-su-serniena-moliugu-ir-obuoliais-285-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>42,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"3,58 "
+   },
+   {
+    "option_name": "_transient_ps_dk_9364601c22c08c25d87f79b50c5fc9db",
+    "l": "3159",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:37986;s:1:\"u\";s:11:\"12 × 140 g\";s:3:\"url\";s:123:\"https://petshop.lt/product/12-vnt-farmina-nd-pumpkin-konservai-suaugusiems-mazu-veisliu-sunims-su-antiena-ir-moliugu-140-g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>30,19&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"2,5"
+   },
+   {
+    "option_name": "_transient_ps_dk_945a1e1352318ce97726d9e4f0922a03",
+    "l": "2595",
+    "v": "a:2:{i:0;a:14:{s:2:\"id\";i:37767;s:1:\"u\";s:11:\"9 × 1250 g\";s:3:\"url\";s:119:\"https://petshop.lt/product/9-vnt-gemon-maxi-adult-konservuotas-pasaras-suaugusiems-sunims-su-jautiena-ir-ryziais-1250g/\";s:3:\"yra\";i:1;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>28,69&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:13:\"3,19 €/"
+   },
+   {
+    "option_name": "_transient_ps_dk_9607c3393c808e1d314c29b635375b2a",
+    "l": "5052",
+    "v": "a:3:{i:0;a:14:{s:2:\"id\";i:16546;s:1:\"u\";s:6:\"1,5 kg\";s:3:\"url\";s:97:\"https://petshop.lt/product/quattro-sb-su-antiena-sausas-suaugusiu-mazu-veisliu-sunu-pasaras-15kg/\";s:3:\"yra\";i:0;s:2:\"ph\";s:150:\"<span class=\"woocommerce-Price-amount amount\"><bdi>14,00&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span>\";s:2:\"kg\";s:11:\"9,33 €/kg\";s:4:\"best\";i:0;s:3:\"img\""
+   }
+  ]
+ }
+}
