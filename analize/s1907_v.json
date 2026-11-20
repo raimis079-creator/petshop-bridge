@@ -1,0 +1,64 @@
+{
+ "v": "dep-104327",
+ "kurimas": 200,
+ "sid": 8661,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "b1",
+  "faze": "V",
+  "uid": 6156,
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "paysera-patikra|1795178692|LDqlbbsyOHGBUVOjBn4JIXOyn5lVGr3xcpAWdgxouwH|9d18a0d6a24119cc8f7b95db76a7d180a40addac8b785d2c0fa50bd29f480e1c",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ],
+  "pw_nustatytas": true,
+  "login_forma": {
+   "pw_laukas": true,
+   "username_laukas": true,
+   "len": 198593
+  },
+  "shots": [
+   {
+    "n": "s1907_paskyra_tel",
+    "u": "https://petshop.lt/paskyra/prenumeratos/",
+    "w": 390,
+    "h": 900,
+    "full": 1,
+    "eval": "document.body.innerText.slice(0,1500)"
+   },
+   {
+    "n": "s1907_paskyra_pc",
+    "u": "https://petshop.lt/paskyra/prenumeratos/?p=2",
+    "w": 1366,
+    "h": 900,
+    "full": 1
+   }
+  ]
+ },
+ "shots": {
+  "s1907_paskyra_tel": {
+   "status": 201,
+   "url": "https://petshop.lt/paskyra/prenumeratos/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": "Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analitikos ir rinkodaros slapukus įjungiame tik jums sutikus.\nPRIIMTI\nATMESTI\nNUOSTATOS\nSlapukų politika\nPrivatumo politika\nSkip to content\nNemokamas pristatymas į paštomatus nuo 30 €\n0\nMANO PASKYRA\nPRENUMERATA\nP Paysera Patikra\nSkydelis\nMano augintinis\nUžsakymai\nPrenumerata\nAdresai\nPaskyros duomenys\nAtsijungti\nPRENUMERATA\nJūsų augintinio maistu pasirūpinsime mes.\n\nLikus 7 dienoms parašome, ką ir už kiek išsiųsime. Jums nieko daryti nereikia.\n\n✓ Parašome likus 7 d.\n✓ Praleiskite ar keiskite bet kada\n✓ Nutraukite vienu paspaudimu\nKITA SIUNTA\nvasario 15 d.\nSuplanuota\nBENDRA SUMA\n31,29 €\nPristatymas nemokamas\nAnimonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g\n6 vnt.\n17,94 €\nPapildas gyvūnams Bioveterinary Sąnariai&kaulai, Joints&Bones, 28 pok.\n1 vnt.\n13,35 €\n+ Pridėti prekę\nKeisti prekes\n↻\nDAŽNUMAS\nKas 30 dienų\nKeisti\n⌖\nPRISTATYMAS\nVenipak paštomatas\nVenipak locker, AIBĖ Venipak paštomatas, Švenčionių g. 72, Nemenčinė\nKeisti\n✉\nPRANEŠIMAI\nEl. paštu likus 7 dienoms ir išsiuntus\nParašysime vasario 8 d. – nieko daryti nereikia. Praleisti ar pakeisti galite bet kada iki tol. Praleisti · Nukelti 7 d. · Nukelti 14 d.\nPristabdyti prenumeratą\nNutraukti prenumeratą →\nGaukite naudingus patarimus ir Petshop.lt pasiūlymus\nRetai, bet iš esmės: maisto naujienos, praktiniai patarimai ir aktualūs pasiūlymai.\nEl. pašto adresas\nPrenu"
+  },
+  "s1907_paskyra_pc": {
+   "status": 201,
+   "url": "https://petshop.lt/paskyra/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": []
+  }
+ }
+}
