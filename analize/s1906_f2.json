@@ -1,0 +1,111 @@
+{
+ "2": {
+  "v": "S1906f-1",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true
+  },
+  "versija": "2.11.2",
+  "kaupiamos_pries": [],
+  "t": {
+   "1_sync": [
+    "1/0/0/T1",
+    {
+     "AV": 0,
+     "rez": "#17:rezervuotax2 #18:laukiamax4→e321",
+     "tiek": "e321:p90/kaupiama qty4"
+    }
+   ],
+   "1_eile": "2. Reikia užsakyti iš tiekėjo · 0Nėra. Čia atsiras prekės, kurių AV neužtenka artėjančioms siuntoms: įprastiems tiekėjams — likus 7 d., Quattro / Ambrosia / Prins — likus 21 d.3. Artėjančios siuntos · 2 per 6 sav. · rodomos artimiausių 7 d. ir tos, kurioms trūkstaSiuntaKlientasPrekės (AV likutis paskirstytas pagal datą)PristatymasBūsenatrečiadienį, lapkričio 25 d.prenumerata #74s1906-testas@petshop.lt6× S1906 TESTAS — yraPaštomatasLaiškas klientui — lapkričio 18 d.",
+   "2_sync_dar": [
+    "0/0/0/T0",
+    {
+     "AV": 0,
+     "rez": "#17:rezervuotax2 #18:laukiamax4→e321",
+     "tiek": "e321:p90/kaupiama qty4"
+    }
+   ],
+   "3_kiekis_8": [
+    "0/0/0/T0",
+    {
+     "AV": 0,
+     "rez": "#17:rezervuotax2 #18:laukiamax6→e321",
+     "tiek": "e321:p90/kaupiama qty6"
+    }
+   ],
+   "4_zmogus_10_kiekis_7": [
+    "0/0/0/T0",
+    {
+     "AV": 0,
+     "rez": "#17:rezervuotax2 #18:laukiamax6→e321",
+     "tiek": "e321:p90/kaupiama qty10"
+    }
+   ],
+   "5_uzsakyta": [
+    "0/0/0/T0",
+    {
+     "AV": 0,
+     "rez": "#17:rezervuotax2 #18:laukiamax5→e321",
+     "tiek": "e321:p90/uzsakyta qty5"
+    }
+   ],
+   "6_eile_po_gavimo": [
+    74
+   ],
+   "6_po_gavimo": {
+    "AV": 0,
+    "rez": "#17:rezervuotax2 #18:laukiamax2→e322 #19:rezervuotax3",
+    "tiek": "e321:p90/gauta qty5 e322:p91/kaupiama qty2"
+   },
+   "6b_sync": [
+    "0/0/0/T0",
+    {
+     "AV": 0,
+     "rez": "#17:rezervuotax2 #18:laukiamax2→e322 #19:rezervuotax3",
+     "tiek": "e321:p90/gauta qty5 e322:p91/kaupiama qty2"
+    }
+   ],
+   "7_zmogus_istryne": [
+    "0/0/0/T0",
+    {
+     "AV": 0,
+     "rez": "#17:rezervuotax2 #18:atmestax2→e322 #19:rezervuotax3",
+     "tiek": "e321:p90/gauta qty5"
+    }
+   ],
+   "7b_dar_karta": [
+    "0/0/0/T0",
+    {
+     "AV": 0,
+     "rez": "#17:rezervuotax2 #18:atmestax2→e322 #19:rezervuotax3",
+     "tiek": "e321:p90/gauta qty5"
+    }
+   ],
+   "8_nukelta": [
+    "0/2/0/T0",
+    {
+     "AV": 5,
+     "rez": "#17:atlaisvintax2 #18:atmestax2→e322 #19:atlaisvintax3",
+     "tiek": "e321:p90/gauta qty5"
+    }
+   ]
+  },
+  "valymas": {
+   "ok": {
+    "preke": true,
+    "sub": 0,
+    "rez": 0,
+    "partijos": 0
+   },
+   "kaupiamos_po": []
+  },
+  "log": []
+ },
+ "v": "dep-100759",
+ "kurimas": 200,
+ "sid": 8658,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
