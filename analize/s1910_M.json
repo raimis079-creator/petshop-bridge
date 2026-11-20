@@ -1,0 +1,54 @@
+{
+ "v": "dep-153356",
+ "kurimas": 200,
+ "sid": 8687,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "M": {
+  "F": "M",
+  "core": [
+   "back-in-stock.php",
+   "browse-abandoned.php",
+   "cart-abandoned-1.php",
+   "cart-abandoned-2.php",
+   "consent-changed.php",
+   "dunning-1.php",
+   "founding.php",
+   "legacy-l1.php",
+   "order-paid.php",
+   "order-shipped.php",
+   "pet-reminder.php",
+   "post-purchase-14d.php",
+   "post-purchase-2d.php",
+   "post-purchase-7d.php",
+   "refill.php",
+   "shipment-returned.php",
+   "subscription-t5.php",
+   "win-back-120.php",
+   "win-back-60.php",
+   "win-back-90.php"
+  ],
+  "sablonai": [
+   "krepselis-1.php",
+   "krepselis-2.php",
+   "refill-pakartoti.php",
+   "subscription-changed.php",
+   "subscription-started.php",
+   "subscription-t1.php",
+   "subscription-t5.php",
+   "win-back-pakartoti.php"
+  ],
+  "srautai": [
+   "subscription_started",
+   "subscription_changed",
+   "subscription_t1_notice"
+  ],
+  "res": {
+   "ok": true,
+   "job_id": 3487,
+   "duplicate": false
+  }
+ }
+}
