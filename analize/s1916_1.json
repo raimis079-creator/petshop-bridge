@@ -1,0 +1,38 @@
+{
+ "1": {
+  "v": "S1916d-1",
+  "F": "1",
+  "parse": "ok",
+  "bak": {
+   "plugins/petshop-core/includes/class-email-layout.php": "8efe4259",
+   "mu-plugins/ps-sablonai/subscription-started.php": "78ae6695",
+   "mu-plugins/ps-sablonai/subscription-t5.php": "9c3be9be",
+   "mu-plugins/ps-sablonai/subscription-changed.php": "44562806",
+   "mu-plugins/ps-sablonai/subscription-t1.php": "ae187b76",
+   "mu-plugins/petshop-prenumerata.php": "711ea0a0"
+  },
+  "md5": {
+   "plugins/petshop-core/includes/class-email-layout.php": "2c5914c0",
+   "mu-plugins/ps-sablonai/subscription-started.php": "507bf461",
+   "mu-plugins/ps-sablonai/subscription-t5.php": "a4e80f6d",
+   "mu-plugins/ps-sablonai/subscription-changed.php": "6b7ee5dd",
+   "mu-plugins/ps-sablonai/subscription-t1.php": "85525ea8",
+   "mu-plugins/ps-sablonai/subscription-payment-failed.php": "794d4d52",
+   "mu-plugins/petshop-prenumerata.php": "67af3c58"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-cron.php": 200,
+   "/prenumeratos-taisykles/": 200
+  }
+ },
+ "v": "dep-212640",
+ "kurimas": 200,
+ "sid": 8711,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
