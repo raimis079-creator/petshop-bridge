@@ -1,0 +1,54 @@
+{
+ "2": {
+  "v": "S1905d-1",
+  "F": "2",
+  "ok": {
+   "petshop-fakt-atsargos.php": true,
+   "petshop-rytas.php": true
+  },
+  "t": {
+   "be_rez": {
+    "prenumeratoms": 0,
+    "likuciai": [
+     10,
+     50
+    ],
+    "savikaina": [
+     200,
+     "_cost_price"
+    ]
+   },
+   "su_rez": {
+    "prenumeratoms": 4
+   },
+   "verte_ct": {
+    "laisvas": 10,
+    "fizinis": 14,
+    "verte": 2800,
+    "turi_buti": 2800
+   },
+   "sargo_tekstas": "#39046 S1905 TESTAS (3 užs., rezervuota prenumeratoms 4)"
+  },
+  "valymas": {
+   "preke": true,
+   "rez_eil": 0
+  },
+  "snapshot_dry": {
+   "diena": "2026-11-20",
+   "dry": true,
+   "prekiu": 3686,
+   "irasyta": 0,
+   "stockout": 1550,
+   "verte_ct": 2347318,
+   "be_savikainos": 88
+  },
+  "log": []
+ },
+ "v": "dep-092236",
+ "kurimas": 200,
+ "sid": 8646,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
