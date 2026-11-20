@@ -1,0 +1,67 @@
+{
+ "2": {
+  "v": "S1917d-1",
+  "F": "2",
+  "pries": {
+   "mu": true,
+   "puslapis": [
+    39108,
+    "publish"
+   ]
+  },
+  "anonimas": {
+   "code": 404,
+   "turinio": 0,
+   "noindex": 1
+  },
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "paysera-patikra|1795217670|12Dp7nl84sz3CduAp9uY3iiDqFAgAf1TKqJfx50o0rM|952b0d129bc327de00f95a03663b3d256b7c8b41d2d32c143e6d901196d80c8f",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1917_pc",
+    "u": "https://petshop.lt/prenumerata/?s1=1",
+    "w": 1366,
+    "h": 900,
+    "full": 1
+   },
+   {
+    "n": "s1917_tel",
+    "u": "https://petshop.lt/prenumerata/?s1=2",
+    "w": 390,
+    "h": 900,
+    "full": 1
+   }
+  ]
+ },
+ "v": "dep-213301",
+ "kurimas": 200,
+ "sid": 8715,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1917_pc": {
+   "status": 201,
+   "url": "https://petshop.lt/prenumerata/?s1=1",
+   "title": "Prenumerata - Petshop.lt",
+   "errors": []
+  },
+  "s1917_tel": {
+   "status": 201,
+   "url": "https://petshop.lt/prenumerata/?s1=2",
+   "title": "Prenumerata - Petshop.lt",
+   "errors": []
+  }
+ }
+}
