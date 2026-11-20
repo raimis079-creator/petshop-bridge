@@ -1,0 +1,20 @@
+{
+ "v": "dep-135311",
+ "kurimas": 200,
+ "sid": 8673,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "env": "dev",
+  "wp_env": "production",
+  "home": "https://petshop.lt",
+  "lenteles": [
+   "gaj6_ps_event_log",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_subscription_events",
+   "gaj6_wpmailsmtp_debug_events"
+  ]
+ }
+}
