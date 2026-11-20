@@ -1,0 +1,48 @@
+{
+ "v": "dep-133804",
+ "kurimas": 200,
+ "sid": 8668,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "PR": {
+  "v": "s1",
+  "F": "PR",
+  "len": 151,
+  "pries": {
+   "code": 200,
+   "phone": "+370 681 87787",
+   "status": {
+    "email": "active",
+    "sms": "active",
+    "temail": "active",
+    "tsms": "active"
+   }
+  },
+  "po_tsms_unsub": {
+   "email": "active",
+   "sms": "active",
+   "temail": "active",
+   "tsms": "active"
+  },
+  "po_trans_unsub": {
+   "email": "active",
+   "sms": "active",
+   "temail": "active",
+   "tsms": "unsubscribed"
+  },
+  "po_trans_act": {
+   "email": "active",
+   "sms": "active",
+   "temail": "active",
+   "tsms": "active"
+  },
+  "po_tsms_act": {
+   "email": "active",
+   "sms": "active",
+   "temail": "active",
+   "tsms": "active"
+  }
+ }
+}
