@@ -1,0 +1,61 @@
+{
+ "v": "dep-205342",
+ "kurimas": 200,
+ "sid": 8707,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "s1915h",
+  "f": {
+   "hero": {
+    "0": 1600,
+    "1": 640,
+    "2": 18,
+    "3": "width=\"1600\" height=\"640\"",
+    "bits": 8,
+    "mime": "image/webp"
+   },
+   "suo": {
+    "0": 260,
+    "1": 288,
+    "2": 2,
+    "3": "width=\"260\" height=\"288\"",
+    "bits": 8,
+    "channels": 3,
+    "mime": "image/jpeg"
+   }
+  },
+  "shots": [
+   {
+    "n": "s1915_hero",
+    "u": "https://petshop.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp",
+    "w": 1200,
+    "h": 700,
+    "full": 0
+   },
+   {
+    "n": "s1915_suo",
+    "u": "https://petshop.lt/wp-content/uploads/ps-relaunch/suo.jpg",
+    "w": 1000,
+    "h": 700,
+    "full": 0
+   }
+  ]
+ },
+ "shots": {
+  "s1915_hero": {
+   "status": 201,
+   "url": "https://petshop.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.webp",
+   "title": "hero-augintiniai-pagrindinis.webp (1600×640)",
+   "errors": []
+  },
+  "s1915_suo": {
+   "status": 201,
+   "url": "https://petshop.lt/wp-content/uploads/ps-relaunch/suo.jpg",
+   "title": "suo.jpg (260×288)",
+   "errors": []
+  }
+ }
+}
