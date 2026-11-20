@@ -1,0 +1,57 @@
+{
+ "1": {
+  "v": "S1908d-1",
+  "F": "1",
+  "parse": "ok",
+  "bak": {
+   "petshop-prenumerata.php": "2bbef842f0cd5371c39c80ac3f3b0e28"
+  },
+  "md5": {
+   "petshop-prenumerata.php": "980835bc72a55036ec1057583ee80003",
+   "ps-sablonai/subscription-t1.php": "20c10ca8752eba15512a2d89bf863f77"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400,
+   "/wp-cron.php": 200
+  }
+ },
+ "2": {
+  "v": "S1908d-1",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true,
+   "ps-sablonai/subscription-t1.php": true
+  },
+  "versija": "2.12.0",
+  "sms_tekstas": "Petshop.lt: rytoj issiunciame Jusu prenumerata (31,29 EUR) i pastomata AIBE, Svencioniu g. 72, Nemencine. Praleisti galite siandien paskyroje. Info +37068187787",
+  "sms_ilgis": 160,
+  "telefonas_75": "+37068187787",
+  "t1_75_tikrinimas": {
+   "praleista": "nepatvirtinta"
+  },
+  "vietu_testai": [
+   [
+    145,
+    "Petshop.lt: rytoj issiunciame Jusu prenumerata (31,29 EUR) i pastomata Maxima XX, Vilnius. Praleisti galite siandien paskyroje. Info +37068187787"
+   ],
+   [
+    160,
+    "Petshop.lt: rytoj issiunciame Jusu prenumerata (31,29 EUR) i pastomata Labai ilgas prekybos centro \"Akro. Praleisti galite siandien paskyroje. Info +37068187787"
+   ],
+   [
+    158,
+    "Petshop.lt: rytoj issiunciame Jusu prenumerata (31,29 EUR) kurjeriu adresu Svencioniu g. 72, Nemencine. Praleisti galite siandien paskyroje. Info +37068187787"
+   ]
+  ]
+ },
+ "v": "dep-134528",
+ "kurimas": 200,
+ "sid": 8670,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
