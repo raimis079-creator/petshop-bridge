@@ -1,0 +1,34 @@
+{
+ "v": "dep-182451",
+ "kurimas": 200,
+ "sid": 8700,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "s1912g",
+  "sesijos_6h": [
+   {
+    "uid": 6156,
+    "login": "paysera-patikra",
+    "roles": "customer",
+    "prisijunge": "19:40",
+    "ip": "216.128.1…",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb"
+   },
+   {
+    "uid": 6157,
+    "login": "martingarrett13",
+    "roles": "customer",
+    "prisijunge": "14:53",
+    "ip": "92.63.94.…",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb"
+   }
+  ],
+  "admin_caps": {
+   "manage_options": true,
+   "manage_woocommerce": true
+  }
+ }
+}
