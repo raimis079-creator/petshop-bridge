@@ -1,0 +1,29 @@
+{
+ "1": {
+  "v": "S1905d-1",
+  "F": "1",
+  "parse": "ok",
+  "md5": {
+   "petshop-fakt-atsargos.php": "e724b668778cc0242bcc88c2868b67ea",
+   "petshop-rytas.php": "2b815b00bb5e601423b37e30ff9f8728"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/wp-admin/admin-ajax.php": 400,
+   "/wp-cron.php": 200
+  }
+ },
+ "v": "dep-092052",
+ "kurimas": 200,
+ "sid": 8645,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1905d-1",
+  "F": "D",
+  "parse": "ok"
+ }
+}
