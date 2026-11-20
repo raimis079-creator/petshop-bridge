@@ -1,0 +1,225 @@
+{
+ "1": {
+  "v": "S1904g",
+  "langas": [
+   "11-19 09:31",
+   "11-20 09:31"
+  ],
+  "failai": [
+   [
+    "Nov-2026.tar.gz",
+    "0.2MB",
+    "11-20 04:42"
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    "1.4MB",
+    "11-20 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.10",
+    "0.3MB",
+    "11-15 07:17"
+   ],
+   [
+    "Nov-2026.tar.gz.11",
+    "1.2MB",
+    "11-15 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.12",
+    "0.3MB",
+    "11-14 06:23"
+   ],
+   [
+    "Nov-2026.tar.gz.2",
+    "0.3MB",
+    "11-19 05:59"
+   ],
+   [
+    "Nov-2026.tar.gz.3",
+    "1.2MB",
+    "11-19 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.4",
+    "0.3MB",
+    "11-18 06:02"
+   ],
+   [
+    "Nov-2026.tar.gz.5",
+    "1.6MB",
+    "11-18 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.6",
+    "0.4MB",
+    "11-17 06:29"
+   ],
+   [
+    "Nov-2026.tar.gz.7",
+    "1.2MB",
+    "11-17 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.8",
+    "0.4MB",
+    "11-16 08:00"
+   ],
+   [
+    "Nov-2026.tar.gz.9",
+    "1.1MB",
+    "11-16 00:11"
+   ],
+   [
+    "php_error.log",
+    "7.5MB",
+    "11-20 09:30"
+   ]
+  ],
+  "skaityta": [
+   [
+    "Nov-2026.tar.gz",
+    5328
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    38693
+   ]
+  ],
+  "viso": 97,
+  "statusai": {
+   "200": 97
+  },
+  "view_statusai": {
+   "-|200": 86,
+   "visos_kruvoje|200": 11
+  },
+  "kruva_uzkl": [
+   {
+    "t": "11-19 13:48:43",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "WP89500",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 13:53:19",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": " 0TRX_9267",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 13:53:21",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "visos",
+    "q": "0TRX_9267",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 13:53:25",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "visos",
+    "q": "0TRX_9267",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 13:55:00",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "visos",
+    "q": "0TRX_9268",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 13:55:11",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "visos",
+    "q": "0TRX_9267",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 14:49:05",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "lapiukas",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 15:34:45",
+    "st": "200",
+    "view": "",
+    "kruva": "juodrasciai",
+    "q": "",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 15:34:57",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "juodrasciai",
+    "q": "adven",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 15:35:30",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "visos",
+    "q": "adven",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 20:39:51",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "exclusion",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-19 20:40:42",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "exclusion",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   }
+  ],
+  "e500": [],
+  "php_log": "php_error.log",
+  "fatal_para_n": 2,
+  "fatal_para": [
+   "11-19 23:14:07  Fatal error:  Declaration of PS_T::T($m, ...$a) must be compatible with Petshop_Prenumerata::t() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(",
+   "11-20 06:32:15  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-all-import-pro/models/import/re"
+  ],
+  "e500_fatal": [],
+  "trukme_s": 0.2
+ },
+ "v": "dep-073020",
+ "kurimas": 200,
+ "sid": 8629,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
