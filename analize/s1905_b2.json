@@ -1,0 +1,123 @@
+{
+ "2": {
+  "v": "S1905b-1",
+  "F": "2",
+  "ok": {
+   "petshop-katalogas.php": true
+  },
+  "t": {
+   "laukas": "_own_stock_qty",
+   "0_be_rez_12": {
+    "ok": true,
+    "buvo": 10,
+    "tapo": 12,
+    "pastaba": "",
+    "zinute": null,
+    "av_laukas": 12
+   },
+   "a_14_(fizinis=tas_pats)": {
+    "ok": true,
+    "buvo": 14,
+    "tapo": 14,
+    "pastaba": "iš jų 4 rezervuota prenumeratoms",
+    "zinute": null,
+    "av_laukas": 10
+   },
+   "b_16": {
+    "ok": true,
+    "buvo": 14,
+    "tapo": 16,
+    "pastaba": "iš jų 4 rezervuota prenumeratoms",
+    "zinute": null,
+    "av_laukas": 12
+   },
+   "c_3_mazesnis_uz_rez": {
+    "ok": false,
+    "buvo": null,
+    "tapo": null,
+    "pastaba": null,
+    "zinute": "lentynoje negali būti mažiau nei rezervuota prenumeratoms (4 vnt.) – likutis nepakeistas. Jei tiek tikrai nėra, pirma praleiskite ar sumažinkite prenumeratos siuntą.",
+    "av_laukas": 12
+   },
+   "d_+2": {
+    "ok": true,
+    "buvo": 16,
+    "tapo": 18,
+    "pastaba": "iš jų 4 rezervuota prenumeratoms",
+    "zinute": null,
+    "av_laukas": 14
+   },
+   "e_-1": {
+    "ok": true,
+    "buvo": 18,
+    "tapo": 17,
+    "pastaba": "iš jų 4 rezervuota prenumeratoms",
+    "zinute": null,
+    "av_laukas": 13
+   },
+   "f_-20": {
+    "ok": false,
+    "buvo": null,
+    "tapo": null,
+    "pastaba": null,
+    "zinute": "lentynoje negali būti mažiau nei rezervuota prenumeratoms (4 vnt.) – likutis nepakeistas. Jei tiek tikrai nėra, pirma praleiskite ar sumažinkite prenumeratos siuntą.",
+    "av_laukas": 13
+   },
+   "kortele": "kort-lik-av\">AV — Avesos sandėlyje🔒17 vnt. iš jų 4 prenumeratoms",
+   "suvestine": {
+    "av_savikaina": 31,
+    "turi_buti": 31,
+    "vnt": 17
+   },
+   "eilute_duom": {
+    "av": 13,
+    "avr": 4
+   },
+   "eilute_html": "<td class=\"num av-lang red-lang\" data-st=\"av\" data-id=\"39048\" data-buvo=\"17\"><span class=\"av-rodo\" data-p=\"Spustelk ir įrašyk, kiek guli lentynoje. 12 nustato, +5 prideda, −2 atima. Iš jų 4 rezervuota prenumeratoms.\">17</span><small class=\"av-pren\" title=\"Atidėta prenumeratų siuntoms – pirkėjams neparduodama\">4 pren.</small></td>",
+   "zurnalas": [
+    {
+     "buvo": "10",
+     "tapo": "12",
+     "pokytis": "2",
+     "priezastis": "inventorizacija"
+    },
+    {
+     "buvo": "10",
+     "tapo": "10",
+     "pokytis": "0",
+     "priezastis": "inventorizacija"
+    },
+    {
+     "buvo": "10",
+     "tapo": "12",
+     "pokytis": "2",
+     "priezastis": "inventorizacija"
+    },
+    {
+     "buvo": "12",
+     "tapo": "14",
+     "pokytis": "2",
+     "priezastis": "inventorizacija"
+    },
+    {
+     "buvo": "14",
+     "tapo": "13",
+     "pokytis": "-1",
+     "priezastis": "inventorizacija"
+    }
+   ]
+  },
+  "valymas": {
+   "preke": true,
+   "rez_eil": 0
+  },
+  "log": []
+ },
+ "v": "dep-093928",
+ "kurimas": 200,
+ "sid": 8651,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
