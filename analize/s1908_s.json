@@ -1,0 +1,45 @@
+{
+ "v": "dep-124904",
+ "kurimas": 200,
+ "sid": 8665,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "s1",
+  "F": "GO",
+  "len": 151,
+  "pries": {
+   "code": 200,
+   "phone": "",
+   "status": {
+    "email": "active",
+    "temail": "active"
+   }
+  },
+  "patch": {
+   "code": 200,
+   "body": "{\"data\":{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"axvpvn\",\"title\":\"PS_PREN_SMS\",\"type\":\"text\",\"value\":\"TESTAS 2. Petshop.lt: rytoj issiunciame Jusu prenumerata (31,29 EUR) i pastomata AIBE Nemencine. Praleisti galite siandien paskyroje. Info +37068187787\"}],\"created\":\"2026-01-04 16:07:57\",\"created_utc\":\"2026-01-04 16:07:57\",\"email\":\"terra@gyvunai.lt\",\"firstname\":null,\"id\":\"AMYvBNl\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"+370 681 87787\",\"phone_country\":{\"country_code\":\"LT\",\"phone_code\":370},\"source\":\"API\",\"status\":{\"email\":\"active\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"bDxp2q\",\"title\":\"PS_TEST\"}],\"unsubscribed_at\":\"2026-01-04 16:09:58\",\"unsubscribed_at_utc\":\"2026-01-04 16:09:58\"},\"message\":{\"text\":\"Subscriber created\"},\"success\":true}"
+  },
+  "event": {
+   "code": 200,
+   "body": "{\"message\":\"Event created\",\"success\":true}"
+  },
+  "po": {
+   "phone": "+370 681 87787",
+   "status": {
+    "email": "active",
+    "temail": "active"
+   },
+   "laukas": [
+    {
+     "id": "axvpvn",
+     "title": "PS_PREN_SMS",
+     "type": "text",
+     "value": "TESTAS 2. Petshop.lt: rytoj issiunciame Jusu prenumerata (31,29 EUR) i pastomata AIBE Nemencine. Praleisti galite siandien paskyroje. Info +37068187787"
+    }
+   ]
+  }
+ }
+}
