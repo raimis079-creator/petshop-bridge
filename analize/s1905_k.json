@@ -1,0 +1,76 @@
+{
+ "1": {
+  "v": "S1905k-1",
+  "md5": {
+   "petshop-katalogas.php": "58e5d317cada5376a0cf9e1a4c860478",
+   "petshop-darbalaukis.php": "0a61424a6ade9ce2c92ce7c748fe2f82",
+   "petshop-gavimas.php": "89396be298ff05c2e01868bc42c08dfd"
+  },
+  "h": {
+   "petshop-katalogas.php": [
+    "114: *   AV likutis       (`_own_stock_qty`)  kiek TU parsiveze i Avesos sandeli.",
+    "187: * atsivezti prekiu pas save i AV sandeli. Vienintelis isskirtinumas",
+    "264: * butu nugules i `_own_stock_qty`, kurio parduotuve neskaito. Skaicius butu",
+    "268: * `_own_stock_qty` visoje bazeje yra vos 1 irasas.",
+    "276: * ISIMTIS: `_own_stock_qty` lieka tiems atvejams, kai TA PACIA preke turim ir",
+    "298: *   · LIKUTIS — AV likutis keiciamas kortelėje (`12`, `+3`, `-2`) su privaloma",
+    "408: * Savininkas: „kaip gali buti be saltinio, jei 20 ausu guli AV sandelyje?\"",
+    "776: * `_own_stock_qty`. Ta pati taisyklė, kurią skaitant naudoja gyvi_is_meta().",
+    "811: * Išimtis: `_own_stock_qty` — tai MŪSŲ laukas, CRUD jo nepažįsta.",
+    "955: * Į kurį lauką rašomas AV likutis.",
+    "956: * Prekė be tiekėjo laiko likutį `_stock`; prekė su tiekėju — `_own_stock_qty`,",
+    "969: * TIEKEJO XML kiekis: AV rode svetima skaiciu, o irasytas AV likutis",
+    "995: * AV likutis ivedamas ranka VISADA — tai musu lentyna, jos niekas",
+    "1009: * Avesos lentynos kiekis gyvena `_own_stock_qty` (S590).",
+    "1013: return self::tiekejo_sandelis( $pid ) === '' ? '_stock' : '_own_stock_qty';",
+    "1155: /* _own_stock_qty — mūsų laukas, WooCommerce jo nepažįsta */",
+    "1199: * Iki v8.5 sąraše buvo redaguojami tik AV likutis ir kaina, o savikaina —",
+    "1223: /* v8.5: TIK AV sandėlis (savininko sprendimas 2026-08-17).",
+    "1229: $klaidos[] = array( 'id' => $pid, 'kl' => 'ne AV sandėlis (' . ( $sand ?: 'nenurodytas' ) . ') — savikaina redaguojama tik AV prekėms' ); continue;",
+    "2290: 'av'     => $r['av'],",
+    "4103: . 'Pakeitus likutį ar savikainą, prekės AV likutis ir svertinė savikaina perskaičiuojami.</div>';",
+    "4921: $vardai = array( '_stock' => 'Likutis', '_own_stock_qty' => 'AV likutis',",
+    "5063: $turi = array( 'av' => false, 'vf' => false, 'zb' => false );",
+    "5119: /* Variacine preke: AV likutis = variaciju suma (zr. $var_likuciai).",
+    "5183: 'av'    => $av,",
+    "5353: '_ps_sandelis','_own_stock_qty','_stock','_cost_price',",
+    "5433: $own   = $v( '_own_stock_qty' );",
+    "5795: * Pvz. `sal=cost~tuscia;av~>~0` — savikaina tuščia IR AV likutis > 0.",
+    "5929: 'av'         => array( 'g' => 'Vieta',    'v' => 'AV likutis',         't' => 'sk' ),",
+    "6483: $sand = array( '' => 'visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB', 'quattro' => 'Quattro',",
+    "6596: <div class=\"p\"><span class=\"l\">AV atsargų savikaina<i title=\"AV likutis × savikaina, be PVM. Tiekėjų likučiai neįskaičiuoti — tai ne įmonės turtas.\">ⓘ</i></span><span class=\"v\">' . $e( $s['av_savikaina'] ) . ' €</span></"
+   ],
+   "petshop-darbalaukis.php": [
+    "66: * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('intervalas')`), Apmokėjimas (pavedimu / Paysera / grynais / neapmokėtas), Būsena (vykdo",
+    "181: *   (laikas|kas|nr) — `faktai()` jas išima iš dalių (av_side/tiesiai), žingsnelių nėra, užraktas „atšaukta“; likutis: tiekėjo eilutės +q į `_own_stock_qty`",
+    "250: *   „Atšaukti — prekės grįžo į AV“ (`grizta_atsaukti`): dropship eilutėms +q į `_own_stock_qty` (`Petshop_AV_Stock::increase` — sukuria lauką, prekė tampa",
+    "350: *   V2 — grynai AV likutis per `wc_update_product_stock` (atominis) + užraktas veiksmui; V3 — be `wp_cache_flush`.",
+    "391: const KELIAI = array( 'av' => 'Iš AV', 'tiesiai' => 'siunčia klientui', 'i_av' => 'veža į AV' );",
+    "644: $v = array( 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB', 'quattro' => 'Quattro', 'prins' => 'Prins', 'ambrosia' => 'Ambrosia', 'belcor_tofu' => 'Belacor', 'lp' => 'LP', 'tiekejo' => 'tiekėjo' );",
+    "770: 'gauta' => $gauta, 'atsaukta' => $ats, 'issiusta_l' => $iss_l, 'kodel' => (string) $it->get_meta( '_ps_source_reason' ), 'galimi' => array( 'av' => 'av' === $k || '' === $k || ( null !== $av_qty && $av_qty >= $q ), 'ties",
+    "1460: /** Eilutės AV likučio judesys: +q / −q pagal prekės rūšį (grynai AV → `_stock`, AV+tiekėjas → `_own_stock_qty`). */",
+    "1758: if ( class_exists( 'Petshop_AV_Stock' ) && null !== Petshop_AV_Stock::qty( $pid ) ) {",
+    "2899: $out = array( 'venipak_kurjeris' => array( 't' => 'Venipak kurjeris', 'tipas' => 'kurjeris', 'inst' => array() ), 'venipak_pastomatas' => array( 't' => 'Venipak paštomatas', 'tipas' => 'pastomatas', 'inst' => array() ), ",
+    "3012: $out[] = array( 'id' => (int) $id, 'n' => $p->get_name(), 'sku' => (string) $p->get_sku(), 'av' => class_exists( 'Petshop_AV_Stock' ) ? (int) Petshop_AV_Stock::qty( (int) $id ) : (int) $p->get_stock_quantity(), 'tiek' =>",
+    "3035: $out[] = array( 'id' => (int) $id, 'n' => $p->get_name(), 'sku' => (string) $p->get_sku(), 'kaina' => round( (float) wc_get_price_including_tax( $p ), 2 ), 'reg' => round( (float) wc_get_price_including_tax( $p, array( '",
+    "3501: *  → cancelled (AV grąžina variklis, dropship +q). Kai yra — tik grįžusi dalis: eilutės `_ps_atsaukta`, likutis (dropship +q `_own_stock_qty`; AV — variklio",
+    "3943: $cls = array( 'av' => 'sandelis', 'tiesiai' => 'tk', 'i_av' => 'ts' );"
+   ],
+   "petshop-gavimas.php": [
+    "284: 'av'      => (int) $av,",
+    "322: 'av'   => Petshop_Partijos::av_likutis( $pid ),",
+    "434: /* AV sandelis — be sios zymes preke neatsirastu nei partijose, nei",
+    "522: 'av'      => 0,",
+    "1100: . '<span class=\"dsn\">Prekių gavimas į AV sandėlį</span></div>';",
+    "1617: +\". Tiekėjo laukai neperkeliami — nauja prekė yra AV sandėlio.</div>\""
+   ]
+  }
+ },
+ "v": "dep-092741",
+ "kurimas": 200,
+ "sid": 8647,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
