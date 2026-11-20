@@ -1,0 +1,108 @@
+{
+ "1": {
+  "v": "S1909d-1",
+  "F": "1",
+  "parse": "ok",
+  "bak": {
+   "petshop-prenumerata.php": "9a215256",
+   "petshop-prenumerata-paysera.php": "a059a4e2",
+   "petshop-prenumerata-paskyra.php": "c8712e52"
+  },
+  "md5": {
+   "petshop-prenumerata.php": "711ea0a0",
+   "petshop-prenumerata-paysera.php": "2a19856c",
+   "petshop-prenumerata-paskyra.php": "8f1242dc"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-cron.php": 200
+  }
+ },
+ "2": {
+  "v": "S1909d-1",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true,
+   "petshop-prenumerata-paysera.php": true,
+   "petshop-prenumerata-paskyra.php": true
+  },
+  "versijos": [
+   "2.13.0",
+   "1.2",
+   "1.00"
+  ],
+  "t": {
+   "pradeti_75": "nesukonfiguruota",
+   "pradeti_svetimas": "ne_jusu",
+   "neapmoketa_75": "nera",
+   "apmoketi_75": "nera",
+   "1_prid_nesutampa": [
+    "manual",
+    "laukiama"
+   ],
+   "2_ok": [
+    "paysera_token",
+    "notify_only",
+    true,
+    "ok",
+    "nera"
+   ],
+   "3_pakartotinis": "nepakeista",
+   "4_nepavyko": [
+    true,
+    "nepavyko"
+   ],
+   "ivykiai": [
+    "created",
+    "card_changed",
+    "card_change_failed"
+   ],
+   "isvalyta": [
+    0,
+    true
+   ]
+  },
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "paysera-patikra|1795194996|pYHVXfIB8Y3b0N0E0Nkw0gYSHzfJROWT1BT8Fr3YeXT|d9d3dc49e3d0bfebd980344fed75d2ddaca58275ebcacc53bb7350fbd9600993",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1909_paskyra_kortele",
+    "u": "https://petshop.lt/paskyra/prenumeratos/?kortele=grizo&ks=KS75-rodyti",
+    "w": 390,
+    "h": 900,
+    "full": 1,
+    "click": ".psn3-keisti >> nth=3",
+    "eval": "(()=>{const a=document.querySelector('.psn3-alert');const k=[...document.querySelectorAll('.psn3-zym')].map(x=>x.textContent).join('|');return (a?a.textContent:'-')+' || '+k})()"
+   }
+  ]
+ },
+ "v": "dep-151436",
+ "kurimas": 200,
+ "sid": 8683,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1909_paskyra_kortele": {
+   "status": 201,
+   "url": "https://petshop.lt/paskyra/prenumeratos/?kortele=grizo&ks=KS75-rodyti",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('.psn3-keisti').nth(3)\n",
+   "eval": "Kortelė pakeista. Nuo šiol prenumeratos mokėjimai bus nurašomi nauja kortele. Patikros suma grąžinta (banko išraše grąžinimas gali pasirodyti vėliau). || KITA SIUNTA|BENDRA SUMA|DAŽNUMAS|PRISTATYMAS|PRANEŠIMAI|MOKĖJIMAS"
+  }
+ }
+}
