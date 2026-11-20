@@ -1,0 +1,1056 @@
+{
+ "v": "dep-180137",
+ "kurimas": 200,
+ "sid": 8697,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "s1912d",
+  "site": {
+   "home": "https://petshop.lt",
+   "siteurl": "https://petshop.lt",
+   "env": "production",
+   "wp": "6.9.4",
+   "php": "8.3.37",
+   "laikas": "2026-11-20 20:02:42",
+   "COOKIE_DOMAIN": "",
+   "ADMIN_COOKIE_PATH": "/wp-admin",
+   "FORCE_SSL_ADMIN": true,
+   "is_ssl": true
+  },
+  "aktyvus_pluginai": [
+   "code-snippets/code-snippets.php",
+   "complianz-gdpr/complianz-gpdr.php",
+   "loco-translate/loco.php",
+   "petshop-attributes/petshop-attributes.php",
+   "petshop-core/petshop-core.php",
+   "petshop-esp/petshop-esp.php",
+   "petshop-fbt/petshop-fbt.php",
+   "petshop-feeds/petshop-feeds.php",
+   "petshop-fonts/petshop-fonts.php",
+   "petshop-pragma/petshop-pragma.php",
+   "petshop-promotions/petshop-promotions.php",
+   "petshop-xml/petshop-xml.php",
+   "seo-by-rank-math/rank-math.php",
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+   "woo-lithuaniapost-main/woo-lithuaniapost.php",
+   "woo-payment-gateway-paysera/paysera.php",
+   "woo-update-manager/woo-update-manager.php",
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+   "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php",
+   "woocommerce-xml-csv-product-import/plugin.php",
+   "woocommerce/woocommerce.php",
+   "wordpress-importer/wordpress-importer.php",
+   "wp-all-import-pro/wp-all-import-pro.php",
+   "wp-mail-smtp/wp_mail_smtp.php",
+   "wp-super-cache/wp-cache.php",
+   "wpforms-lite/wpforms.php",
+   "yith-woocommerce-ajax-navigation/init.php"
+  ],
+  "mu": [
+   [
+    "automation-by-installatron.php",
+    "2026-05-05 15:43",
+    983
+   ],
+   [
+    "petshop-404-atitikmuo.php",
+    "2026-11-17 08:22",
+    10566
+   ],
+   [
+    "petshop-ads-offline.php",
+    "2026-11-02 13:23",
+    4199
+   ],
+   [
+    "petshop-akcijos.php",
+    "2026-08-11 07:10",
+    96257
+   ],
+   [
+    "petshop-analitika-langas.php",
+    "2026-09-14 18:51",
+    20365
+   ],
+   [
+    "petshop-analitika.php",
+    "2026-09-29 15:40",
+    39569
+   ],
+   [
+    "petshop-anketa-ivykiai.php",
+    "2026-08-16 17:51",
+    16602
+   ],
+   [
+    "petshop-anketos-ataskaita.php",
+    "2026-11-15 14:10",
+    36732
+   ],
+   [
+    "petshop-ataskaita-atsargos.php",
+    "2026-08-31 21:32",
+    29887
+   ],
+   [
+    "petshop-ataskaita-klientai.php",
+    "2026-08-31 20:54",
+    32444
+   ],
+   [
+    "petshop-ataskaita-lankomumas.php",
+    "2026-09-10 18:44",
+    21175
+   ],
+   [
+    "petshop-ataskaita-menuo.php",
+    "2026-08-27 19:28",
+    14709
+   ],
+   [
+    "petshop-ataskaita-pardavimai.php",
+    "2026-08-27 19:32",
+    60181
+   ],
+   [
+    "petshop-ataskaita-prekes.php",
+    "2026-08-31 20:53",
+    19922
+   ],
+   [
+    "petshop-ataskaitos-ui.php",
+    "2026-08-27 16:26",
+    44861
+   ],
+   [
+    "petshop-ataskaitu-agregavimas.php",
+    "2026-08-26 08:40",
+    23457
+   ],
+   [
+    "petshop-ataskaitu-eksportas.php",
+    "2026-08-16 09:54",
+    37431
+   ],
+   [
+    "petshop-atributai.php",
+    "2026-08-28 14:52",
+    13295
+   ],
+   [
+    "petshop-atsargu-laukimas.php",
+    "2026-08-29 09:14",
+    11507
+   ],
+   [
+    "petshop-atsisakymas.php",
+    "2026-08-22 13:23",
+    7049
+   ],
+   [
+    "petshop-autorius.php",
+    "2026-09-30 17:41",
+    5321
+   ],
+   [
+    "petshop-av-admin.php",
+    "2026-08-05 11:03",
+    7510
+   ],
+   [
+    "petshop-av-dropship.php",
+    "2026-09-29 16:31",
+    68372
+   ],
+   [
+    "petshop-av-expiry.php",
+    "2026-08-05 11:21",
+    8633
+   ],
+   [
+    "petshop-av-limit.php",
+    "2026-09-28 16:10",
+    5068
+   ],
+   [
+    "petshop-av-manifestas.php",
+    "2026-09-23 18:53",
+    6983
+   ],
+   [
+    "petshop-av-order.php",
+    "2026-10-18 19:35",
+    5890
+   ],
+   [
+    "petshop-av-reduce.php",
+    "2026-11-19 20:56",
+    10143
+   ],
+   [
+    "petshop-av-sheets.php",
+    "2026-09-14 12:32",
+    10349
+   ],
+   [
+    "petshop-av-source.php",
+    "2026-10-18 19:35",
+    11098
+   ],
+   [
+    "petshop-av-stock.php",
+    "2026-11-19 20:56",
+    18493
+   ],
+   [
+    "petshop-av-tiekimas.php",
+    "2026-11-06 20:58",
+    79506
+   ],
+   [
+    "petshop-bacs-priminimas.php",
+    "2026-11-08 18:53",
+    13555
+   ],
+   [
+    "petshop-botu-sargas.php",
+    "2026-09-27 11:07",
+    10727
+   ],
+   [
+    "petshop-cache.php",
+    "2026-09-30 07:30",
+    10897
+   ],
+   [
+    "petshop-cf-ip.php",
+    "2026-09-27 10:00",
+    2664
+   ],
+   [
+    "petshop-clarity.php",
+    "2026-09-17 07:42",
+    1113
+   ],
+   [
+    "petshop-code-search.php",
+    "2026-08-03 17:24",
+    5447
+   ],
+   [
+    "petshop-darbalaukis.php",
+    "2026-11-19 09:30",
+    599068
+   ],
+   [
+    "petshop-desk.php",
+    "2026-11-15 09:17",
+    190780
+   ],
+   [
+    "petshop-dim-klientai.php",
+    "2026-09-18 17:33",
+    15196
+   ],
+   [
+    "petshop-dp-kainos.php",
+    "2026-11-03 07:59",
+    10858
+   ],
+   [
+    "petshop-dropship-matomumas.php",
+    "2026-11-02 08:49",
+    8094
+   ],
+   [
+    "petshop-dropship-sargas.php",
+    "2026-09-27 08:29",
+    5995
+   ],
+   [
+    "petshop-dydziai-automatas.php",
+    "2026-09-26 14:57",
+    11007
+   ],
+   [
+    "petshop-dydziai-katalogas.php",
+    "2026-11-02 22:58",
+    9501
+   ],
+   [
+    "petshop-dydziai-kortele.php",
+    "2026-11-03 08:26",
+    9327
+   ],
+   [
+    "petshop-dydziai.php",
+    "2026-11-03 08:26",
+    21557
+   ],
+   [
+    "petshop-fakt-atsargos.php",
+    "2026-11-20 09:22",
+    17121
+   ],
+   [
+    "petshop-fakt-grazinimai.php",
+    "2026-08-26 09:23",
+    17391
+   ],
+   [
+    "petshop-fakt-kainos.php",
+    "2026-08-26 14:47",
+    8960
+   ],
+   [
+    "petshop-fakt-reklama.php",
+    "2026-08-27 18:40",
+    10365
+   ],
+   [
+    "petshop-fakt-siuntos.php",
+    "2026-09-12 09:33",
+    56355
+   ],
+   [
+    "petshop-faktai.php",
+    "2026-09-14 19:16",
+    37824
+   ],
+   [
+    "petshop-feeding-calc-rest.php",
+    "2026-08-03 11:36",
+    19012
+   ],
+   [
+    "petshop-filtru-sargas.php",
+    "2026-09-24 19:26",
+    1419
+   ],
+   [
+    "petshop-ga4-serveris.php",
+    "2026-09-01 18:42",
+    19296
+   ],
+   [
+    "petshop-gavimas.php",
+    "2026-09-28 16:10",
+    97814
+   ],
+   [
+    "petshop-gavimo-perrusiavimas.php",
+    "2026-09-12 10:13",
+    6614
+   ],
+   [
+    "petshop-gidu-nuorodos.php",
+    "2026-09-29 18:23",
+    4448
+   ],
+   [
+    "petshop-greitis.php",
+    "2026-09-01 11:46",
+    3892
+   ],
+   [
+    "petshop-gsc-tvarka.php",
+    "2026-09-25 10:47",
+    11057
+   ],
+   [
+    "petshop-hero-preload.php",
+    "2026-09-01 11:21",
+    1533
+   ],
+   [
+    "petshop-higiena.php",
+    "2026-08-29 10:40",
+    1180
+   ],
+   [
+    "petshop-import-log.php",
+    "2026-08-04 19:39",
+    2826
+   ],
+   [
+    "petshop-import-tempas.php",
+    "2026-11-20 08:22",
+    4168
+   ],
+   [
+    "petshop-innodb.php",
+    "2026-08-17 11:45",
+    2126
+   ],
+   [
+    "petshop-islaidos.php",
+    "2026-08-26 12:57",
+    20689
+   ],
+   [
+    "petshop-istorijos-adapteris.php",
+    "2026-08-31 21:00",
+    32482
+   ],
+   [
+    "petshop-ivykiai.php",
+    "2026-08-09 12:57",
+    20773
+   ],
+   [
+    "petshop-juosta.php",
+    "2026-09-06 16:38",
+    23264
+   ],
+   [
+    "petshop-kalendorius.php",
+    "2026-08-12 17:06",
+    7970
+   ],
+   [
+    "petshop-kampaniju-langas.php",
+    "2026-08-29 20:58",
+    11212
+   ],
+   [
+    "petshop-kanalai.php",
+    "2026-09-29 15:40",
+    11829
+   ],
+   [
+    "petshop-kasa-paskyra.php",
+    "2026-11-10 08:50",
+    8167
+   ],
+   [
+    "petshop-katalogas.php",
+    "2026-11-20 09:39",
+    516762
+   ],
+   [
+    "petshop-kategorijos-aprasymas.php",
+    "2026-08-18 19:39",
+    4950
+   ],
+   [
+    "petshop-kelio-fiksavimas.php",
+    "2026-09-25 10:56",
+    5763
+   ],
+   [
+    "petshop-klientai.php",
+    "2026-09-18 17:33",
+    41884
+   ],
+   [
+    "petshop-kliento-siuntos.php",
+    "2026-09-28 17:43",
+    10086
+   ],
+   [
+    "petshop-klientui.php",
+    "2026-09-06 16:30",
+    1817
+   ],
+   [
+    "petshop-kreipinys.php",
+    "2026-08-31 15:19",
+    2385
+   ],
+   [
+    "petshop-krepselio-priminimai.php",
+    "2026-11-02 08:40",
+    8758
+   ],
+   [
+    "petshop-laiskai.php",
+    "2026-08-29 18:14",
+    23371
+   ],
+   [
+    "petshop-laisku-nuotraukos.php",
+    "2026-10-10 17:04",
+    5985
+   ],
+   [
+    "petshop-laisku-utm.php",
+    "2026-10-20 19:15",
+    6527
+   ],
+   [
+    "petshop-langai-admin.php",
+    "2026-08-29 18:41",
+    34634
+   ],
+   [
+    "petshop-laukai.php",
+    "2026-11-02 19:29",
+    188925
+   ],
+   [
+    "petshop-legacy-301.php",
+    "2026-09-10 07:27",
+    3329
+   ],
+   [
+    "petshop-legacy-importas.php",
+    "2026-08-29 13:30",
+    10116
+   ],
+   [
+    "petshop-lenteliu-valymas.php",
+    "2026-09-25 16:54",
+    3335
+   ],
+   [
+    "petshop-lifecycle-vartai.php",
+    "2026-09-16 10:14",
+    10468
+   ],
+   [
+    "petshop-login-sargas.php",
+    "2026-09-30 07:15",
+    6392
+   ],
+   [
+    "petshop-m8-food.php",
+    "2026-07-28 08:31",
+    35513
+   ],
+   [
+    "petshop-mobilus.php",
+    "2026-09-29 21:37",
+    19905
+   ],
+   [
+    "petshop-naujienlaiskiai-admin.php",
+    "2026-08-29 21:04",
+    22001
+   ],
+   [
+    "petshop-naujienlaiskiai.php",
+    "2026-08-29 20:58",
+    8041
+   ],
+   [
+    "petshop-nepamoketi.php",
+    "2026-08-19 20:33",
+    2708
+   ],
+   [
+    "petshop-nuotrauku-zurnalas.php",
+    "2026-09-29 17:15",
+    4547
+   ],
+   [
+    "petshop-paieska.php",
+    "2026-10-27 17:56",
+    35224
+   ],
+   [
+    "petshop-pakartojimo-grandine.php",
+    "2026-10-01 18:57",
+    8630
+   ],
+   [
+    "petshop-pakartoti.php",
+    "2026-10-03 18:46",
+    11735
+   ],
+   [
+    "petshop-pardavimai.php",
+    "2026-11-04 20:58",
+    15061
+   ],
+   [
+    "petshop-parseris.php",
+    "2026-08-10 11:26",
+    25728
+   ],
+   [
+    "petshop-partijos.php",
+    "2026-10-05 09:28",
+    31771
+   ],
+   [
+    "petshop-paruostu-ataskaita.php",
+    "2026-08-16 07:32",
+    29816
+   ],
+   [
+    "petshop-payment-failed.php",
+    "2026-08-04 18:12",
+    3704
+   ],
+   [
+    "petshop-perziuru-priminimas.php",
+    "2026-08-29 09:27",
+    8382
+   ],
+   [
+    "petshop-pet-claim.php",
+    "2026-08-03 12:46",
+    7126
+   ],
+   [
+    "petshop-pet-kontraktas.php",
+    "2026-08-16 19:23",
+    23204
+   ],
+   [
+    "petshop-pilnumas.php",
+    "2026-08-18 10:30",
+    19869
+   ],
+   [
+    "petshop-planas-langas.php",
+    "2026-09-29 17:48",
+    16271
+   ],
+   [
+    "petshop-prekes-tvarka.php",
+    "2026-09-25 20:08",
+    1182
+   ],
+   [
+    "petshop-pren-nuorodos.php",
+    "2026-08-30 19:45",
+    6352
+   ],
+   [
+    "petshop-pren-sutikimas.php",
+    "2026-11-18 21:53",
+    9349
+   ],
+   [
+    "petshop-prenumerata-katalogas.php",
+    "2026-11-18 21:53",
+    38406
+   ],
+   [
+    "petshop-prenumerata-paskyra.php",
+    "2026-11-20 15:16",
+    62502
+   ],
+   [
+    "petshop-prenumerata-paysera.php",
+    "2026-11-20 15:16",
+    27536
+   ],
+   [
+    "petshop-prenumerata-veiksmas.php",
+    "2026-11-20 14:39",
+    9454
+   ],
+   [
+    "petshop-prenumerata.php",
+    "2026-11-20 15:16",
+    110947
+   ],
+   [
+    "petshop-prenumeratos-langas.php",
+    "2026-11-20 10:00",
+    55034
+   ],
+   [
+    "petshop-prenumeratu-prognoze.php",
+    "2026-08-30 19:17",
+    6914
+   ],
+   [
+    "petshop-prieziura.php",
+    "2026-08-19 15:23",
+    6235
+   ],
+   [
+    "petshop-pristatymo-pazadas.php",
+    "2026-09-25 19:39",
+    11743
+   ],
+   [
+    "petshop-ps-pets-migration-freeze.php",
+    "2026-07-20 14:15",
+    7018
+   ],
+   [
+    "petshop-rankos.php",
+    "2026-08-12 12:04",
+    6887
+   ],
+   [
+    "petshop-rec-log.php",
+    "2026-08-16 17:37",
+    7374
+   ],
+   [
+    "petshop-rec-ui.php",
+    "2026-08-16 17:51",
+    4884
+   ],
+   [
+    "petshop-rec-variklis.php",
+    "2026-08-26 17:34",
+    12151
+   ],
+   [
+    "petshop-refill-ivykiai.php",
+    "2026-08-16 18:42",
+    7554
+   ],
+   [
+    "petshop-relaunch.php",
+    "2026-10-28 17:32",
+    33946
+   ],
+   [
+    "petshop-rezervacija-av.php",
+    "2026-10-13 07:27",
+    2638
+   ],
+   [
+    "petshop-rezultatai.php",
+    "2026-08-29 20:35",
+    17818
+   ],
+   [
+    "petshop-rinkiniai.php",
+    "2026-11-02 17:45",
+    218580
+   ],
+   [
+    "petshop-rinkiniu-ataskaita.php",
+    "2026-08-16 08:56",
+    41305
+   ],
+   [
+    "petshop-rinkiniu-likuciai.php",
+    "2026-08-12 08:50",
+    8750
+   ],
+   [
+    "petshop-rinkiniu-rusis.php",
+    "2026-09-02 12:23",
+    4427
+   ],
+   [
+    "petshop-rm-kesas.php",
+    "2026-09-30 07:06",
+    2290
+   ],
+   [
+    "petshop-rysiai.php",
+    "2026-08-09 14:15",
+    16535
+   ],
+   [
+    "petshop-rytas.php",
+    "2026-11-20 09:22",
+    54739
+   ],
+   [
+    "petshop-sargas-saugumas.php",
+    "2026-09-12 19:18",
+    2161
+   ],
+   [
+    "petshop-sargas.php",
+    "2026-08-29 11:50",
+    19899
+   ],
+   [
+    "petshop-schema-prekes.php",
+    "2026-09-25 19:30",
+    7739
+   ],
+   [
+    "petshop-schema.php",
+    "2026-08-19 17:00",
+    3870
+   ],
+   [
+    "petshop-seo-aprasymas.php",
+    "2026-08-18 17:22",
+    1838
+   ],
+   [
+    "petshop-seo-sablonai.php",
+    "2026-09-25 11:48",
+    8086
+   ],
+   [
+    "petshop-seo.php",
+    "2026-09-01 08:24",
+    42710
+   ],
+   [
+    "petshop-seseliai.php",
+    "2026-08-20 18:03",
+    3750
+   ],
+   [
+    "petshop-siuntu-laiskai.php",
+    "2026-08-26 13:59",
+    17047
+   ],
+   [
+    "petshop-siuntu-valymas.php",
+    "2026-08-29 08:20",
+    2208
+   ],
+   [
+    "petshop-skaiciuokle.php",
+    "2026-09-23 13:25",
+    28468
+   ],
+   [
+    "petshop-statistika-vitrina.php",
+    "2026-08-16 08:35",
+    12755
+   ],
+   [
+    "petshop-statistika.php",
+    "2026-10-17 19:21",
+    23324
+   ],
+   [
+    "petshop-straipsniai.php",
+    "2026-09-24 13:25",
+    3260
+   ],
+   [
+    "petshop-sugrazinimas.php",
+    "2026-09-15 17:12",
+    5475
+   ],
+   [
+    "petshop-sutikimai.php",
+    "2026-09-15 12:53",
+    4977
+   ],
+   [
+    "petshop-teises.php",
+    "2026-08-10 20:25",
+    11705
+   ],
+   [
+    "petshop-uzsakymu-ivykiai.php",
+    "2026-09-02 22:10",
+    27433
+   ],
+   [
+    "petshop-vartai.php",
+    "2026-08-11 09:03",
+    6748
+   ],
+   [
+    "petshop-veisles.php",
+    "2026-09-23 14:00",
+    18568
+   ],
+   [
+    "petshop-venipak-docno.php",
+    "2026-09-11 08:39",
+    1816
+   ],
+   [
+    "petshop-vertimai.php",
+    "2026-09-08 07:45",
+    2014
+   ],
+   [
+    "petshop-vf-feed.php",
+    "2026-09-02 08:30",
+    7075
+   ],
+   [
+    "petshop-wc-sync.php",
+    "2026-08-08 08:20",
+    10361
+   ],
+   [
+    "petshop-webp.php",
+    "2026-09-01 13:20",
+    8530
+   ],
+   [
+    "petshop-zb-matmenys.php",
+    "2026-10-27 20:10",
+    7331
+   ]
+  ],
+  "pakeisti_4h": [
+   [
+    "wp-content/mu-plugins/petshop-prenumerata-paysera.php",
+    "15:16"
+   ],
+   [
+    "wp-content/mu-plugins/ps-sablonai/subscription-t1.php",
+    "14:28"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-prenumerata-paskyra.php",
+    "15:16"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-prenumerata-veiksmas.php",
+    "14:39"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-prenumerata.php",
+    "15:16"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-prenumerata-paysera.php",
+    "15:16"
+   ],
+   [
+    "wp-content/mu-plugins/ps-sablonai/subscription-t1.php",
+    "14:28"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-prenumerata-paskyra.php",
+    "15:16"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-prenumerata-veiksmas.php",
+    "14:39"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-prenumerata.php",
+    "15:16"
+   ],
+   [
+    "wp-content/cache/view_ps_s1555c_debug.php",
+    "18:02"
+   ],
+   [
+    "wp-content/cache/supercache/petshop.lt/product-sitemap6.xml/wp-cache-649e4d93cc3681077a42ede347e9685f.php",
+    "18:02"
+   ],
+   [
+    "wp-content/cache/supercache/petshop.lt/product-sitemap6.xml/meta-wp-cache-649e4d93cc3681077a42ede347e9685f.php",
+    "18:02"
+   ],
+   [
+    "wp-content/cache/supercache/petshop.lt/product-sitemap15.xml/wp-cache-eed3d7baaea900bba8b88bdafd254d60.php",
+    "17:56"
+   ],
+   [
+    "wp-content/cache/supercache/petshop.lt/product-sitemap15.xml/meta-wp-cache-eed3d7baaea900bba8b88bdafd254d60.php",
+    "17:56"
+   ],
+   [
+    "wp-content/uploads/wpforms/cache/.htaccess",
+    "15:39"
+   ],
+   [
+    "wp-content/uploads/wpforms/.htaccess",
+    "15:39"
+   ],
+   [
+    "wp-content/uploads/wpallimport/logs/da91180458222a987ed2fd2fd52a5e50/index.php",
+    "16:01"
+   ],
+   [
+    "wp-content/uploads/wpallimport/logs/ec1cc6cabbfe41342afab110f118090a/index.php",
+    "17:01"
+   ],
+   [
+    "wp-content/uploads/wpallimport/logs/ad8de11c790ddd925e2041568aa59d0f/index.php",
+    "17:16"
+   ],
+   [
+    "wp-content/uploads/wpallimport/logs/20ad964e2bfc944273adf3a4a60452f0/index.php",
+    "18:01"
+   ],
+   [
+    "wp-content/uploads/wpallimport/logs/4eda45d90ffe4511c6b83ec464312415/index.php",
+    "16:01"
+   ],
+   [
+    "wp-content/uploads/wpallimport/logs/eeb9b767b4ba820bb83ed21cfe8263c6/index.php",
+    "16:16"
+   ],
+   [
+    "wp-content/uploads/wpallimport/uploads/8d083a03ac62e0ca0b801b8f1414c966/index.php",
+    "18:01"
+   ],
+   [
+    "wp-content/uploads/wpallimport/uploads/e756d94d8f387de40c6e65c80d82851b/index.php",
+    "16:01"
+   ],
+   [
+    "wp-content/uploads/wpallimport/uploads/36bf613464452aeada80fe859a7666bf/index.php",
+    "17:16"
+   ]
+  ],
+  "htaccess_mtime": "2026-10-19 08:17",
+  "vartotojai": [
+   {
+    "id": "1",
+    "login": "bdz487",
+    "role": "administrator",
+    "sesijos": [
+     {
+      "iki": "11-21 08:14",
+      "login": "11-07 08:14",
+      "ip": "84.15.1…",
+      "ua": "Mozilla/5.0 (Linux; Android 10; K) Apple"
+     },
+     {
+      "iki": "12-04 07:25",
+      "login": "11-20 07:25",
+      "ip": "216.128…",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64"
+     }
+    ]
+   }
+  ],
+  "lockout_opcijos": [],
+  "wp_login": {
+   "code": 200,
+   "location": "",
+   "len": 10536,
+   "user_login_lauko": 3
+  },
+  "wp_admin": {
+   "code": 302,
+   "location": "https://petshop.lt/wp-login.php?redirect_to=https%3A%2F%2Fpetshop.lt%2Fwp-admin%2F&reauth=1"
+  },
+  "log": {
+   "/home/gyvunai2/domains/petshop.lt/logs/php_error.log": {
+    "mtime": "11-20 16:33",
+    "tail": [
+     "[20-Nov-2026 16:32:58 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:00 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:00 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853",
+     "[20-Nov-2026 16:33:00 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:02 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:02 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853",
+     "[20-Nov-2026 16:33:02 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:04 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:04 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853",
+     "[20-Nov-2026 16:33:04 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:06 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:06 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853",
+     "[20-Nov-2026 16:33:06 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:08 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:08 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853",
+     "[20-Nov-2026 16:33:08 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:10 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:10 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853",
+     "[20-Nov-2026 16:33:10 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:12 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:12 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853",
+     "[20-Nov-2026 16:33:12 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:15 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841",
+     "[20-Nov-2026 16:33:15 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853",
+     "[20-Nov-2026 16:33:15 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841"
+    ]
+   }
+  }
+ }
+}
