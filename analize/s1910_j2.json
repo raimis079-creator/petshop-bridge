@@ -1,0 +1,69 @@
+{
+ "v": "dep-153659",
+ "kurimas": 200,
+ "sid": 8688,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "rows": [
+   {
+    "id": "3487",
+    "job_key": "s1910_mt_1795188906",
+    "flow": "subscription_started",
+    "flow_class": "transactional",
+    "recipient_email": "test-uedp5gpa4@srv1.mail-tester.com",
+    "recipient_user_id": "0",
+    "subject": null,
+    "payload": "{\"subscription_id\":75,\"product_name\":\"Animonda GranCarno Adult: konservai suaugusiems \\u0161unims su \\u017ev\\u0117riena, 800 g\",\"next_charge_amount\":31.29,\"pris",
+    "status": "pending",
+    "block_reason": null,
+    "provider": null,
+    "provider_message_id": null,
+    "attempts": "0",
+    "last_error": null,
+    "scheduled_at": "2026-11-20 15:35:06",
+    "sent_at": null,
+    "created_at": "2026-11-20 15:35:06",
+    "updated_at": "2026-11-20 15:35:06",
+    "skip_reason": null,
+    "error_message": null,
+    "decision_at": null,
+    "next_attempt_at": null,
+    "context_json": "{\"subscription_id\":75}",
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   }
+  ]
+ }
+}
