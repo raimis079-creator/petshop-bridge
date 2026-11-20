@@ -42,12 +42,12 @@
    "[20-Nov-2026 04:32:15 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-all-import-pro/models/import/record.php on line 2263",
    "[20-Nov-2026 07:36:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function suppress_errors() on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:4"
   ],
-  "laikas": "2026-11-20 10:30:41",
+  "laikas": "2026-11-20 10:31:44",
   "trukme_s": 0
  },
- "v": "dep-082934",
+ "v": "dep-083041",
  "kurimas": 200,
- "sid": 8640,
+ "sid": 8641,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
