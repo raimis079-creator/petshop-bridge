@@ -1,0 +1,135 @@
+{
+ "v": "dep-220219",
+ "kurimas": 200,
+ "sid": 8723,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "s1919u",
+  "viso": 65,
+  "busenos": {
+   "draft": 62,
+   "publish": 2,
+   "trash": 1
+  },
+  "publish": [
+   [
+    "36756",
+    "1.1_680257 TRIXIE Vimy lietpaltis, L: 62 cm, melsvas",
+    "0TR114_680257"
+   ],
+   [
+    "37288",
+    "1.1_680534 TRIXIE Ajou žieminė striukė, XS: 30 cm, pilka",
+    "0TR118_680534"
+   ]
+  ],
+  "pmxi": [
+   {
+    "import_id": "2",
+    "unique_key": "0TR1042_16281"
+   },
+   {
+    "import_id": "3",
+    "unique_key": ""
+   },
+   {
+    "import_id": "2",
+    "unique_key": "0TR114_680257"
+   },
+   {
+    "import_id": "3",
+    "unique_key": ""
+   },
+   {
+    "import_id": "2",
+    "unique_key": "0TR118_680534"
+   },
+   {
+    "import_id": "3",
+    "unique_key": ""
+   }
+  ],
+  "import": {
+   "2": {
+    "name": "products.php",
+    "is_update_title": "0",
+    "update_all_data": "no",
+    "title_tpl": "{name[1]}",
+    "is_update_existing": "no"
+   },
+   "3": {
+    "name": "stocks.php",
+    "is_update_title": "0",
+    "update_all_data": "no",
+    "title_tpl": "",
+    "is_update_existing": "no"
+   }
+  },
+  "meta36756": {
+   "_ps_publikuota": "2026-10-08 18:01:12",
+   "_wc_review_count": "0",
+   "_wc_rating_count": "0",
+   "_wc_average_rating": "0",
+   "total_sales": "0",
+   "_sku": "0TR114_680257",
+   "_regular_price": "34.99",
+   "_tax_status": "taxable",
+   "_tax_class": "",
+   "_manage_stock": "yes",
+   "_backorders": "no",
+   "_sold_individually": "no",
+   "_weight": "0.32",
+   "_length": "25",
+   "_width": "400",
+   "_height": "375",
+   "_virtual": "no",
+   "_downloadable": "no",
+   "_download_limit": "-1",
+   "_download_expiry": "-1",
+   "_stock": "5.000000",
+   "_stock_status": "instock",
+   "_product_version": "11.0.1",
+   "_price": "34.99",
+   "_zb_cost": "15.705",
+   "_zb_rrp": "34.99",
+   "_zb_ean": "4011905645476",
+   "_zb_brand": "Trixie",
+   "_zb_supplier_sku": "0TR114_680257",
+   "_zb_enabled": "yes",
+   "_zb_weight": "0.32",
+   "_zb_length": "25",
+   "_zb_width": "400",
+   "_zb_height": "375",
+   "_zb_category": "Šunims/Rūbeliai, batukai, aksesuarai šunims/Šunų rūbeliai laukui ir namams",
+   "_ean": "4011905645476",
+   "_zb_last_sync": "2026-11-20 18:23:49",
+   "_fulfillment_carrier": "venipak",
+   "_zb_cost_prev": "15.705",
+   "_fulfillment_courier_only": "yes",
+   "_active_fulfillment_source": "zb_dropship",
+   "_petshop_review_reason": "logistics_oversize, missing_category",
+   "_zb_qty_log_prev": "5",
+   "_ps_sandelis": "zb",
+   "_ps_sales_30d": "0",
+   "_ps_sales_90d": "0",
+   "_ps_sales_365d": "0",
+   "_ps_revenue_365d": "0",
+   "_ps_orders_365d": "0",
+   "_ps_last_sale": "",
+   "_ps_margin_365d": "0",
+   "_ps_sales_updated": "2026-11-20 06:50:54",
+   "_zb_qty": "5"
+  },
+  "failai": [
+   "petshop-av-expiry.php",
+   "petshop-av-stock.php"
+  ],
+  "src": {
+   "petshop-av-expiry.php:rikiavimo_query": "function rikiavimo_query( $q ) {\n\t\tif ( ! is_admin() || ! $q->is_main_query() ) { return; }\n\t\tif ( 'ps_expiry' !== $q->get( 'orderby' ) ) { return; }\n\t\t$q->set( 'meta_key', self::META );\n\t\t$q->set( 'orderby', 'meta_value' );\n\t}\n\n\tpublic static function filtras() {\n\t\t$s = get_current_screen();\n\t\tif ( ! $s || 'edit-product' !== $s->id ) { return; }\n\t\t$f = isset( $_GET['ps_exp_filter'] ) ? sanitize_key( $_GET['ps_exp_filter'] ) : '';\n\t\techo '<select name=\"ps_exp_filter\">';\n\t\techo '<option value=\"\">Galiojimas — visi</option>';\n\t\techo '<option value=\"skubu\"' . selected( $f, 'skubu', false ) . '>Artėja arba pasibaigė</option>';\n\t\techo '<option value=\"baige\"' . selected( $f, 'baige', false ) . '>Pasibaigę</option>';\n\t\techo '<option value=\"turi\"' . selected( $f, 'turi', false ) . '>Turi datą</option>';\n\t\techo '<option value=\"pastaba\"' . selected( $f, 'pastaba', false ) . '>Turi pastabą</option>';\n\t\techo '</select>';\n\t}\n\n\tpublic static function filtro_query( $q ) {\n\t\tglobal $pagenow;\n\t\tif ( ! is_admin() || 'edit.php' !== $pagenow ) { return; }\n\t\tif ( ( $q->get( 'post_type' ) ?: '' ) !== 'product' ) { return; }\n\t\t$f = isset( $_GET['ps_exp_filter'] ) ? sanitize_key( $_GET['ps_exp_filter'] ) : '';\n\t\tif ( '' === $f ) { return; }\n\t\t$mq = (array) $q->get( 'meta_query' );\n\t\t$riba = gmdate( 'Y-m-d', current_time( 'timestamp' ) + self::ISPEJIMAS * DAY_IN_SECONDS );\n\t\tif ( 'skubu' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'value' => $riba, 'compare' => '<=', 'type' => 'DATE' ];\n\t\t} elseif ( 'baige' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'value' => gmdate( 'Y-m-d' ), 'compare' => '<', 'type' => 'DATE' ];\n\t\t} elseif ( 'turi' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'compare' => 'EXISTS' ];\n\t\t} elseif ( 'pastaba' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META_NOTE, 'compare'",
+   "petshop-av-stock.php:sort_query": "function sort_query( $q ) {\n\t\tif ( ! is_admin() || ! $q->is_main_query() ) { return; }\n\t\tif ( 'ps_av' !== $q->get( 'orderby' ) ) { return; }\n\t\t$q->set( 'meta_key', self::META );\n\t\t$q->set( 'orderby', 'meta_value_num' );\n\t}\n\n\t/** Filtras „tik AV prekės\" prekių sąraše. */\n\tpublic static function filter_dropdown() {\n\t\t$s = get_current_screen();\n\t\tif ( ! $s || 'edit-product' !== $s->id ) { return; }\n\t\t$dabar = isset( $_GET['ps_av_filter'] ) ? sanitize_key( $_GET['ps_av_filter'] ) : '';\n\t\techo '<select name=\"ps_av_filter\">';\n\t\techo '<option value=\"\">AV sandėlis — visos</option>';\n\t\techo '<option value=\"turi\"' . selected( $dabar, 'turi', false ) . '>AV turi (&gt;0)</option>';\n\t\techo '<option value=\"nulis\"' . selected( $dabar, 'nulis', false ) . '>AV pasibaigė (0)</option>';\n\t\techo '<option value=\"nera\"' . selected( $dabar, 'nera', false ) . '>AV neturi (tuščia)</option>';\n\t\techo '</select>';\n\t}\n\n\tpublic static function filter_query( $q ) {\n\t\tglobal $pagenow;\n\t\tif ( ! is_admin() || 'edit.php' !== $pagenow ) { return; }\n\t\tif ( ( $q->get( 'post_type' ) ?: '' ) !== 'product' ) { return; }\n\t\t$f = isset( $_GET['ps_av_filter'] ) ? sanitize_key( $_GET['ps_av_filter'] ) : '';\n\t\tif ( '' === $f ) { return; }\n\t\t$mq = (array) $q->get( 'meta_query' );\n\t\tif ( 'turi' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'value' => 0, 'compare' => '>', 'type' => 'NUMERIC' ];\n\t\t} elseif ( 'nulis' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'value' => 0, 'compare' => '=', 'type' => 'NUMERIC' ];\n\t\t} elseif ( 'nera' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'compare' => 'NOT EXISTS' ];\n\t\t}\n\t\t$q->set( 'meta_query', $mq );\n\t}\n\n\t/** AV likutis. NULL = AV šios prekės neturi (laukas tuščias). */\n\tpublic static function qty( $product_id ) {\n\t\t$v = get_post_meta( (int) $product_id, self::META"
+  }
+ }
+}
