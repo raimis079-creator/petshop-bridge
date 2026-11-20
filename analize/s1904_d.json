@@ -1,0 +1,65 @@
+{
+ "1": {
+  "v": "S1904d",
+  "F": "1",
+  "md5": "5461ff5abfaa53a559fcf0f9c3b0b982",
+  "n_old": 1,
+  "n_old2": 1,
+  "bak_md5": "5461ff5abfaa53a559fcf0f9c3b0b982",
+  "md5_naujas": "ba3124f2292225548e9baeacad1bccc9",
+  "hc": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/parduotuve/": 200
+  }
+ },
+ "2": {
+  "v": "S1904d",
+  "F": "2",
+  "md5": "ba3124f2292225548e9baeacad1bccc9",
+  "n_old": 0,
+  "n_old2": 0,
+  "eilute": [
+   "\tconst VERSIJA  = '1.3';",
+   "\tconst IMPORTAI = [ 2, 3 ]; // v1.3 (S1904, 2026-11-20, Raimis): + #2 ZB prekes, kitaip baigdavosi tik kas ~5 d."
+  ],
+  "hc": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/parduotuve/": 200
+  },
+  "imp2": {
+   "triggered": "1",
+   "processing": "0",
+   "queue_chunk_number": "801",
+   "imported": "128",
+   "skipped": "672",
+   "count": "2779",
+   "last_activity": "2026-11-20 04:02:04"
+  },
+  "tempas_pask": {
+   "laikas": "2026-11-20 10:07:59",
+   "import_id": 3,
+   "veiksmas": "processing",
+   "hostas": "https://petshop.lt",
+   "sek": 39.7,
+   "atsakymas": "{\"status\":200,\"message\":\"Import #3 complete\"}"
+  },
+  "kitas": "10:23:15"
+ },
+ "v": "dep-082132",
+ "kurimas": 200,
+ "sid": 8637,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1904d",
+  "F": "D",
+  "md5": "5461ff5abfaa53a559fcf0f9c3b0b982",
+  "n_old": 1,
+  "n_old2": 1,
+  "bak_yra": false
+ }
+}
