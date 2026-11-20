@@ -1,0 +1,43 @@
+{
+ "v": "dep-104154",
+ "kurimas": 200,
+ "sid": 8660,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "b1",
+  "faze": "GO",
+  "pw_enc": "hhIVaCunRbD/YnBHf7Jln1QN4w9UvcnBkAgx2jOiZRuUHmOtXVDJoEihT1kx0TKJk35K6zg8bnuAJ+tvjkLXsNPZv6IFXXK9Bg+u+LyXLnISbhZ2rNfTz5oytcmLKexB7t5hipywLdcnFNBuVsdQTaJwhSN/VS+m9XMvhGEYp8eglfBVUbkVIUZ8PwmbWfq1c1Pe1bNPVtcheY5R0VJSDti2NvIefw8+9RapP6DIkyZQEz2giO7QaP6z8Ps1m/eRxNYYBnQWGCF8kS+cWb0/zvdqhEU0dZRtUrSJms2LvUIGrNpn+RckTw9qfn2o/rzQlUEMM+zdm6cBcoJ7Y3AyDw==",
+  "uid": 6156,
+  "naujas": true,
+  "testuotojai": [
+   44,
+   6156
+  ],
+  "sid": 75,
+  "sub": {
+   "id": "75",
+   "user_id": "6156",
+   "email": "paysera.patikra@gyvunai.lt",
+   "status": "active",
+   "interval_days": "30",
+   "next_cycle_date": "2027-02-15",
+   "mode": "confirm_required",
+   "payment_method": "manual",
+   "delivery_json": "{\"first_name\":\"Testas\",\"last_name\":\"Prenumerata\",\"tipas\":\"pastomatas\",\"adresas\":\"Testo g. 1\",\"address_1\":\"Testo g. 1\",\"city\":\"Vilnius\",\"postcode\":\"01100\",\"phone\":\"+37068187787\",\"pastomatas\":\"Venipak locker, AIBĖ Venipak paštomatas, Švenčionių g. 72, Nemenčinė\",\"terminal_id\":\"3648\"}"
+  },
+  "items": [
+   {
+    "product_id": "19496",
+    "qty": "6"
+   },
+   {
+    "product_id": "16950",
+    "qty": "1"
+   }
+  ],
+  "rezervas": 0
+ }
+}
