@@ -1,0 +1,54 @@
+{
+ "5": {
+  "v": "S1920a",
+  "faze": "5",
+  "h0": "/home/gyvunai2",
+  "backup_state": "{\n    \"last_result\": \"OK\",\n    \"last_run\": \"2026-11-21T02:00:30+00:00\",\n    \"file\": \"petshop-backups\\/2026\\/11\\/petshop-2026-11-21_020001.tar.gz.enc\",\n    \"bytes\": 60524598,\n    \"sha1\": \"e73b4c62d2d0a514e5480ed12358f3accc278014\",\n    \"tables\": 230,\n    \"rows\": 1882334,\n    \"code_files\": 625,\n    \"duration_s\": 29\n}",
+  "backup_state_mtime": "11-21 04:00",
+  "backup_naujausi": [
+   [
+    "ps-backup.php",
+    "0MB",
+    "11-02 10:27"
+   ],
+   [
+    "ps-backup.php.bak_s1815b",
+    "0MB",
+    "11-02 10:27"
+   ],
+   [
+    "ps-backup.php.bak_s1815",
+    "0MB",
+    "11-02 10:23"
+   ],
+   [
+    "ps-backup.php.bak_h256",
+    "0MB",
+    "08-24 20:27"
+   ],
+   [
+    "ps-backup-watch.php",
+    "0MB",
+    "08-04 11:08"
+   ],
+   [
+    "ps-backup.php.bak_20260804-064640",
+    "0MB",
+    "08-04 09:46"
+   ]
+  ],
+  "fatal": [
+   "[20-Nov-2026 04:32:15 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-all-import-pro/models/import/record.php on line 2263",
+   "[20-Nov-2026 07:36:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function suppress_errors() on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:4"
+  ],
+  "laikas": "2026-11-21 09:42:05",
+  "trukme_s": 0
+ },
+ "v": "dep-074058",
+ "kurimas": 200,
+ "sid": 8728,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
