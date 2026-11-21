@@ -1,0 +1,123 @@
+{
+ "1": {
+  "v": "S1920k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-19 21:20"
+   ],
+   [
+    "backups",
+    "11-21 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-24 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "8",
+    "pask": "2026-11-21 06:10:52"
+   },
+   {
+    "status": "wc-completed",
+    "n": "293",
+    "pask": "2026-11-21 03:36:04"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "pask": "2026-11-21 07:34:55"
+   },
+   {
+    "status": "wc-processing",
+    "n": "14",
+    "pask": "2026-11-21 07:39:16"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38999",
+    "date_created_gmt": "2026-11-19 11:42:56",
+    "date_updated_gmt": "2026-11-21 03:36:04"
+   },
+   {
+    "id": "38602",
+    "date_created_gmt": "2026-11-13 18:47:48",
+    "date_updated_gmt": "2026-11-21 03:36:04"
+   },
+   {
+    "id": "39007",
+    "date_created_gmt": "2026-11-19 18:39:56",
+    "date_updated_gmt": "2026-11-21 02:36:13"
+   },
+   {
+    "id": "39003",
+    "date_created_gmt": "2026-11-19 17:32:12",
+    "date_updated_gmt": "2026-11-21 02:36:13"
+   },
+   {
+    "id": "38950",
+    "date_created_gmt": "2026-11-18 13:40:25",
+    "date_updated_gmt": "2026-11-20 22:06:34"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "39113",
+    "comment_date": "2026-11-21 09:39:14",
+    "c": "PVM s/f AVPN011739 suteikta apmokėjus, data 2026-11-21 (S1839)."
+   },
+   {
+    "oid": "39113",
+    "comment_date": "2026-11-21 09:39:14",
+    "c": "Email \"Užsakymas vykdomas\" sent."
+   },
+   {
+    "oid": "39113",
+    "comment_date": "2026-11-21 09:39:14",
+    "c": "Paysera: Naujo užsakymo kūrimo būsena"
+   },
+   {
+    "oid": "39113",
+    "comment_date": "2026-11-21 09:39:14",
+    "c": "Email \"Naujas užsakymas\" sent."
+   },
+   {
+    "oid": "39113",
+    "comment_date": "2026-11-21 09:39:13",
+    "c": "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta"
+   },
+   {
+    "oid": "39113",
+    "comment_date": "2026-11-21 09:39:13",
+    "c": "Surūšiuota pati: Kraikas katėms TOFU BeloCat, persikų kva — Iš AV"
+   },
+   {
+    "oid": "39113",
+    "comment_date": "2026-11-21 09:39:13",
+    "c": "Faktai irasyti: 1 eilutes · pajamos 14,71 EUR (be PVM, po nuolaidu) · PVM 3,46 EUR · marza"
+   },
+   {
+    "oid": "39113",
+    "comment_date": "2026-11-21 09:39:13",
+    "c": "Partijos nurašytos: #17677 −4 vnt. (1 partijos)"
+   }
+  ]
+ },
+ "v": "dep-074504",
+ "kurimas": 200,
+ "sid": 8731,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
