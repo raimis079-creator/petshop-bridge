@@ -1,0 +1,524 @@
+{
+ "1": {
+  "v": "S1920z",
+  "ej_due_utc": [],
+  "ej_pending_next": [
+   {
+    "flow": "post_purchase_14d",
+    "n": "134",
+    "mn": "2026-11-21 14:02:06"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "56",
+    "mn": "2026-11-23 09:06:30"
+   }
+  ],
+  "ej_sent_24h": [
+   {
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "n": "4",
+    "max_velu": "5"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "n": "1",
+    "max_velu": "5"
+   },
+   {
+    "flow": "payment_failed",
+    "status": "sent",
+    "n": "2",
+    "max_velu": "0"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "n": "15",
+    "max_velu": "6"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "n": "10",
+    "max_velu": "3"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "n": "7",
+    "max_velu": "4"
+   },
+   {
+    "flow": "subscription_changed",
+    "status": "sent",
+    "n": "2",
+    "max_velu": "0"
+   },
+   {
+    "flow": "subscription_started",
+    "status": "sent",
+    "n": "4",
+    "max_velu": "4"
+   },
+   {
+    "flow": "subscription_t1_notice",
+    "status": "sent",
+    "n": "5",
+    "max_velu": "5"
+   },
+   {
+    "flow": "subscription_t5_notice",
+    "status": "sent",
+    "n": "2",
+    "max_velu": "0"
+   }
+  ],
+  "ej_failed_7d": [],
+  "pragma_log": [
+   {
+    "time": "2026-10-21 23:06:34",
+    "message": "2026-09: PATAISYTI pardavimai + pardavimai_sum issiusti (OK) S1793"
+   },
+   {
+    "time": "2026-11-05 10:58:44",
+    "message": "2026-10: eksportas sekmingai. Uzsakymu: 314, Nauju klientu: 275"
+   },
+   {
+    "time": "2026-11-05 11:05:08",
+    "message": "2026-10: eksportas ISSIUSTAS dalimis 3/3 laiskai (S1829 rankinis po 11-05 cron gedimo). Uzsakymu: 314, Nauju klientu: 275"
+   }
+  ],
+  "pragma_cron": {
+   "petshop_pragma_dry_check": "2026-12-04 10:00",
+   "petshop_pragma_monthly_export": "2026-12-05 10:00",
+   "petshop_pragma_retry": "nera"
+  },
+  "sources": {
+   "laikas": "2026-11-21 06:20:14",
+   "prekiu": 5242,
+   "prideta": 4,
+   "atnaujinta": 4377,
+   "isjungta": 2,
+   "be_saltinio": 975,
+   "atm_mb": 134
+  },
+  "vf_ap": 0,
+  "vmvt_pub": 0,
+  "ranka_pub": 0,
+  "kanap_n": 0,
+  "nauji": [
+   {
+    "ID": "39029",
+    "t": "Ėriuko kojos baltos 20vnt",
+    "st": "draft",
+    "d": "2026-11-20 10:35:42"
+   },
+   {
+    "ID": "39031",
+    "t": "Ėriuko kojos baltos 100vnt",
+    "st": "draft",
+    "d": "2026-11-20 10:35:42"
+   },
+   {
+    "ID": "39033",
+    "t": "Ėriuko kojos natūralios 20vnt",
+    "st": "draft",
+    "d": "2026-11-20 10:35:42"
+   },
+   {
+    "ID": "39035",
+    "t": "Ėriuko kojos natūralios 100vnt",
+    "st": "draft",
+    "d": "2026-11-20 10:35:42"
+   },
+   {
+    "ID": "39037",
+    "t": "Jaučio ausys natūralios 55g 50vnt",
+    "st": "draft",
+    "d": "2026-11-20 10:35:42"
+   },
+   {
+    "ID": "39039",
+    "t": "Jaučio ausys natūralios S 25g 60vnt",
+    "st": "draft",
+    "d": "2026-11-20 10:35:42"
+   },
+   {
+    "ID": "39041",
+    "t": "Jaučio uodegos 35-45cm 10vnt",
+    "st": "draft",
+    "d": "2026-11-20 10:35:52"
+   },
+   {
+    "ID": "39043",
+    "t": "Triušių ausys natūralios 500g",
+    "st": "draft",
+    "d": "2026-11-20 10:35:52"
+   },
+   {
+    "ID": "39057",
+    "t": "Boksas KIM 60 su ratukais pilkas/tamsus 60x40x45",
+    "st": "draft",
+    "d": "2026-11-20 18:04:16"
+   },
+   {
+    "ID": "39059",
+    "t": "02.426174 GIMCAT KITTEN TABS 40G skanėstai jaunoms katė",
+    "st": "draft",
+    "d": "2026-11-20 18:05:23"
+   },
+   {
+    "ID": "39061",
+    "t": "02.418711 GIMCAT SKIN & COAT TABS 40G skanėstai katėms",
+    "st": "draft",
+    "d": "2026-11-20 18:05:28"
+   },
+   {
+    "ID": "39063",
+    "t": "02.428093 GIMCAT NUTRI VITAMIN BITES CHICKEN (su vitami",
+    "st": "draft",
+    "d": "2026-11-20 18:22:47"
+   },
+   {
+    "ID": "39065",
+    "t": "EA52927 EARLS Dog Pouches in Gravy Mix 12 vnt.",
+    "st": "draft",
+    "d": "2026-11-20 18:23:33"
+   },
+   {
+    "ID": "39067",
+    "t": "EA52910 EARLS Dog Pouches in Jelly Mix 12 vnt.",
+    "st": "draft",
+    "d": "2026-11-20 18:23:35"
+   },
+   {
+    "ID": "39069",
+    "t": "SU5708 FAMILY DOG DEŠRA SU KIAULIENA, 900 g",
+    "st": "draft",
+    "d": "2026-11-20 18:23:40"
+   },
+   {
+    "ID": "39071",
+    "t": "SU5692 FAMILY DOG DEŠRA SU JAUTIENA, 900 g",
+    "st": "draft",
+    "d": "2026-11-20 18:23:40"
+   },
+   {
+    "ID": "39073",
+    "t": "BioFeed EHC Salmon Oil 1L",
+    "st": "draft",
+    "d": "2026-11-20 18:23:59"
+   },
+   {
+    "ID": "39075",
+    "t": "B21434 BioFeed Tasty Dog Life antiena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39077",
+    "t": "B21410 BioFeed Tasty Dog Life elniena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39079",
+    "t": "B21403 BioFeed Tasty Dog Life ėriena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39081",
+    "t": "B21472 BioFeed Tasty Dog Life jautiena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39083",
+    "t": "B21427 BioFeed Tasty Dog Life kalakutiena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39085",
+    "t": "B21465 BioFeed Tasty Dog Life kiauliena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39087",
+    "t": "B21458 BioFeed Tasty Dog Life paukštiena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39089",
+    "t": "B21441 BioFeed Tasty Dog Life veršiena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39091",
+    "t": "B23582 BioFeed Tasty Dog Life Junior antiena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39093",
+    "t": "B23629 BioFeed Tasty Dog Life Junior veršiena 90% 500g",
+    "st": "draft",
+    "d": "2026-11-20 18:24:02"
+   },
+   {
+    "ID": "39095",
+    "t": "TRIXIE Vital Wooly guolis, ovalus, 45 × 35 cm, pilkšvai",
+    "st": "draft",
+    "d": "2026-11-20 18:24:18"
+   },
+   {
+    "ID": "39097",
+    "t": "TRIXIE Vital Wooly guolis, ovalus, 55 × 45 cm, pilkšvai",
+    "st": "draft",
+    "d": "2026-11-20 18:24:18"
+   },
+   {
+    "ID": "39099",
+    "t": "TRIXIE Vital Wooly guolis, ovalus, 80 × 60 cm, pilkšvai",
+    "st": "draft",
+    "d": "2026-11-20 18:24:18"
+   },
+   {
+    "ID": "39101",
+    "t": "TRIXIE Vital Wooly guolis, ovalus, 100 × 70 cm, pilkšva",
+    "st": "draft",
+    "d": "2026-11-20 18:25:33"
+   },
+   {
+    "ID": "39103",
+    "t": "TRIXIE Vital Wooly guolis, apvalus, 45 cm, smėlio",
+    "st": "draft",
+    "d": "2026-11-20 18:25:33"
+   }
+  ],
+  "kaledu": [
+   {
+    "ID": "17928",
+    "t": "Kalėdinis skanėstų rinkinys vidutinių ir didelių v",
+    "st": "draft"
+   },
+   {
+    "ID": "17932",
+    "t": "Kalėdinis skanėstų rinkinys vidutinių ir didelių v",
+    "st": "draft"
+   },
+   {
+    "ID": "17937",
+    "t": "Kalėdinis skanėstų rinkinys mažų veislių šunims",
+    "st": "draft"
+   },
+   {
+    "ID": "36762",
+    "t": "TRX_927130 TRIXIE Xmas Guolis elfas, 45 × 47 cm, r",
+    "st": "draft"
+   },
+   {
+    "ID": "36764",
+    "t": "TRX_927131 TRIXIE Xmas Guolis elfas 45 × 47 cm, bu",
+    "st": "draft"
+   },
+   {
+    "ID": "38707",
+    "t": "Trixie Premio advento kalendorius šunims, 30x34x3,",
+    "st": "publish"
+   },
+   {
+    "ID": "38709",
+    "t": "Trixie Premio advento kalendorius katėms, 30x34x3,",
+    "st": "publish"
+   },
+   {
+    "ID": "38737",
+    "t": "TRX_9268 TRIXIE Xmas Advento kalendorius šunims, 3",
+    "st": "draft"
+   }
+  ],
+  "ps_av_busenu_log": {
+   "8": [
+    "2026-11-17 14:51:20",
+    17348,
+    "outofstock",
+    "instock",
+    "patikra"
+   ],
+   "9": [
+    "2026-11-17 14:51:19",
+    15838,
+    "instock",
+    "outofstock",
+    "patikra"
+   ]
+  },
+  "ps_dp_busenu_log": {
+   "48": [
+    "2026-11-17 14:49:40",
+    37923,
+    "instock",
+    "outofstock",
+    "patikra"
+   ],
+   "49": [
+    "2026-11-17 14:49:40",
+    37920,
+    "instock",
+    "outofstock",
+    "patikra"
+   ]
+  },
+  "tempas_cb": [
+   {
+    "f": "wp-content/mu-plugins/petshop-sargas.php",
+    "l": "208-215",
+    "src": [
+     "\tpublic static function cron_atsiskaite() {",
+     "\t\t$hook = current_action();",
+     "\t\tif ( ! $hook ) { return; }",
+     "\t\t$z = get_option( self::CRON_ZINIOS, array() );",
+     "\t\tif ( ! is_array( $z ) ) { $z = array(); }",
+     "\t\t$z[ $hook ] = time();",
+     "\t\tupdate_option( self::CRON_ZINIOS, $z, false );",
+     "\t}"
+    ]
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-import-tempas.php",
+    "l": "59-75",
+    "src": [
+     "\tpublic static function vykdyti(): void {",
+     "\t\tglobal $wpdb;",
+     "\t\t$key = self::raktas();",
+     "\t\tif ( $key === '' ) return;",
+     "\t\tforeach ( self::IMPORTAI as $id ) {",
+     "\t\t\t$r = $wpdb->get_row( $wpdb->prepare( \"SELECT triggered, processing, executing FROM {$wpdb->prefix}pmxi_imports WHERE id=%d\", $id ), ARRAY_A );",
+     "\t\t\tif ( ! $r || (int) $r['triggered'] !== 1 || (int) $r['processing'] === 1 || (int) $r['executing'] === 1 ) continue;",
+     "\t\t\tif ( get_transient( 'ps_import_tempas_lock_' . $id ) ) continue;",
+     "\t\t\tset_transient( 'ps_import_tempas_lock_' . $id, 1, 90 );",
+     "\t\t\t$url = self::hostas() . '/wp-load.php?import_key=' . rawurlencode( $key ) . '&import_id=' . $id . '&action=processing';",
+     "\t\t\t$t0  = microtime( true );",
+     "\t\t\t$r   = wp_remote_get( $url, [ 'timeout' => 75, 'sslverify' => false ] );",
+     "\t\t\t$ats = is_wp_error( $r ) ? $r->get_error_message() : mb_substr( (string) wp_remote_retrieve_body( $r ), 0, 120 );",
+     "\t\t\tdelete_transient( 'ps_import_tempas_lock_' . $id );",
+     "\t\t\tupdate_option( self::OPT, [ 'laikas' => current_time( 'mysql' ), 'import_id' => $id, 'veiksmas' => 'processing', 'hostas' => self::hostas(), 'sek' => round( microtime( true ) - $t0, 1 ), 'atsakymas' => $ats ], false )",
+     "\t\t}",
+     "\t}"
+    ]
+   }
+  ],
+  "cron_imp": [
+   [
+    "petshop_import_tempas",
+    "11-21 09:53",
+    "petshop_2min",
+    120
+   ]
+  ],
+  "opt_tempas": [
+   {
+    "option_name": "petshop_import_log",
+    "v": "a:500:{i:0;a:9:{s:4:\"kada\";s:19:\"2026-11-11 02:21:02\";s:9:\"import_id\";i:7;s:7:\"created\";i:0;s:7:\"updated\";i:0;s:7:\"skipped\";i:2623;s:6:\"trukme\";N;s:11:\"pavadinimas\";s:11:\"vf-feed.xml\";s:8:\"imported\";i:0;s:16:\"uzsakymu_per_val\";i:0;}i:1;a:9:{s:4:\"kada\";s:19:\"2026-11-11 03:20:59\";s:9:\"import_id\";i:7;s:7:\"created\";i:0;s:7:\"updated\";i:0;s:7:\"skipped\";i:2623;s:6:\"trukme\";N;s:11:\"pavadinimas\";s:11:\"vf-feed.xml\";s:8:\"imported\";i:0;s:16:\"uzsakymu_per_val\";i:0;}i:2;a:9:{s:4:\"kada\";s:19:\"2026-11-11 04:21:02\";s:9:\"import_id\";i:7;s:7:\"created\";i:0;s:7:\"updated\";i:0;s:7:\"skipped\";i:2623;s:6:\"trukme\";N;s:11"
+   },
+   {
+    "option_name": "ps_import_tempas_host",
+    "v": "https://petshop.lt"
+   },
+   {
+    "option_name": "ps_import_tempas_paskutinis",
+    "v": "a:6:{s:6:\"laikas\";s:19:\"2026-11-21 09:07:31\";s:9:\"import_id\";i:3;s:8:\"veiksmas\";s:10:\"processing\";s:6:\"hostas\";s:18:\"https://petshop.lt\";s:3:\"sek\";d:13.6;s:9:\"atsakymas\";s:45:\"{\"status\":200,\"message\":\"Import #3 complete\"}\";}"
+   }
+  ],
+  "imp2": {
+   "triggered": "0",
+   "processing": "0",
+   "executing": "0",
+   "queue_chunk_number": "0",
+   "imported": "5",
+   "skipped": "2798",
+   "count": "2803",
+   "last_activity": "2026-11-21 04:16:30",
+   "registered_on": "2026-11-21 04:16:30"
+  },
+  "imp2_opt": {
+   "create_new_records": "1",
+   "is_delete_missing": "0",
+   "records_per_request": "10",
+   "is_fast_mode": "0",
+   "chuncking": "1",
+   "import_processing": "ajax",
+   "processing_iteration_logic": "auto"
+  },
+  "log_uzraktas": [],
+  "log_import": [],
+  "log_tempas": [],
+  "pren_ciklas": {
+   "kada": "2026-11-21 06:10:14",
+   "diena": "2026-11-21",
+   "rez": {
+    "t5": 0,
+    "uzsakymai": 0,
+    "sulaikyta": 0,
+    "dunning": 0,
+    "atkurta": 0,
+    "truksta_t2": 0,
+    "t1": 0,
+    "t1_sms": 0,
+    "laukia_prekes": 0,
+    "rezervas": {
+     "prenumeratu": 2,
+     "rezervuota": 0,
+     "atlaisvinta": 0,
+     "perkelta": 0,
+     "tiekejui": 0,
+     "klaidos": []
+    },
+    "klaidos": []
+   }
+  },
+  "pren_rez": [],
+  "pren_akt": [
+   {
+    "status": "active",
+    "n": "2"
+   }
+  ],
+  "av_pastabos": [
+   {
+    "oid": "39113",
+    "d": "2026-11-21 09:39:13",
+    "c": "AV nurašymas: #17677 AV 10 -> 6"
+   },
+   {
+    "oid": "39111",
+    "d": "2026-11-21 09:17:05",
+    "c": "AV nurašymas: #15553 grynai AV 10 -> 9 · #15556 grynai AV 5 -> 4"
+   }
+  ],
+  "snip_stat": {
+   "n": "699",
+   "mb": "6.9",
+   "akt": "78",
+   "temp_n": "621",
+   "temp_akt": "1",
+   "temp_mb": "6.4"
+  },
+  "trukme_s": 0.2
+ },
+ "v": "dep-075040",
+ "kurimas": 200,
+ "sid": 8735,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
