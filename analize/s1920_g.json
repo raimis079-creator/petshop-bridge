@@ -1,0 +1,387 @@
+{
+ "1": {
+  "v": "S1920g",
+  "langas": [
+   "11-20 09:48",
+   "11-21 09:48"
+  ],
+  "failai": [
+   [
+    "Nov-2026.tar.gz",
+    "0.3MB",
+    "11-21 07:14"
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    "1.3MB",
+    "11-21 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.10",
+    "0.4MB",
+    "11-16 08:00"
+   ],
+   [
+    "Nov-2026.tar.gz.11",
+    "1.1MB",
+    "11-16 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.12",
+    "0.3MB",
+    "11-15 07:17"
+   ],
+   [
+    "Nov-2026.tar.gz.2",
+    "0.2MB",
+    "11-20 04:42"
+   ],
+   [
+    "Nov-2026.tar.gz.3",
+    "1.4MB",
+    "11-20 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.4",
+    "0.3MB",
+    "11-19 05:59"
+   ],
+   [
+    "Nov-2026.tar.gz.5",
+    "1.2MB",
+    "11-19 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.6",
+    "0.3MB",
+    "11-18 06:02"
+   ],
+   [
+    "Nov-2026.tar.gz.7",
+    "1.6MB",
+    "11-18 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.8",
+    "0.4MB",
+    "11-17 06:29"
+   ],
+   [
+    "Nov-2026.tar.gz.9",
+    "1.2MB",
+    "11-17 00:10"
+   ],
+   [
+    "php_error.log",
+    "7.6MB",
+    "11-21 09:40"
+   ]
+  ],
+  "skaityta": [
+   [
+    "Nov-2026.tar.gz",
+    7667
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    34714
+   ]
+  ],
+  "viso": 400,
+  "statusai": {
+   "103": 4,
+   "200": 396
+  },
+  "view_statusai": {
+   "-|200": 365,
+   "visos_kruvoje|200": 30,
+   "-|103": 4,
+   "uzsakyti|200": 1
+  },
+  "kruva_uzkl": [
+   {
+    "t": "11-20 09:50:32",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "vital",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 10:15:13",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "aladdin",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 10:30:55",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "aladdin",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 10:36:47",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "640180",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:07:44",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "hyps06",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:10:15",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "eud739",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:10:51",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "eud739",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:11:08",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "eud739",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:11:22",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "eud739",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:12:22",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "eud740",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:16:30",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "exclu",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:17:01",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "exclu",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:24:33",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "eud740",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:24:50",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "eud740",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:25:03",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "eud740",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 11:59:02",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "404842214604",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 12:15:19",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "ZOOV061",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 12:17:47",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "ZOOV061",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 13:31:30",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "širdys",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 16:12:25",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "jaučio",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 17:01:49",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "DP-01ORDW042-12",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 17:06:52",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "01ORDW042",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 17:07:21",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "01ORDW032",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 17:22:11",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "malt-soft",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 17:22:43",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "cream",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 17:25:36",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "drebučiuose",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 17:26:59",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "feinsten",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 17:27:17",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "feinsten",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 17:30:19",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "špinatais",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-20 18:35:27",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "rasco",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   }
+  ],
+  "e500": [],
+  "php_log": "php_error.log",
+  "fatal_para_n": 0,
+  "fatal_para": [],
+  "e500_fatal": [],
+  "trukme_s": 0.2
+ },
+ "v": "dep-074749",
+ "kurimas": 200,
+ "sid": 8733,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
